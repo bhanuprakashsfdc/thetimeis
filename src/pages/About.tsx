@@ -1,0 +1,107 @@
+
+import React from 'react';
+import Layout from '@/components/Layout';
+import { Clock, Globe, Calendar, Github } from 'lucide-react';
+
+const AboutPage = () => {
+  return (
+    <Layout>
+      <div className="container mx-auto px-4 py-8">
+        <div className="text-center mb-10">
+          <h1 className="text-4xl font-bold mb-4">About TimeSync</h1>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            Your trusted source for accurate time information worldwide.
+          </p>
+        </div>
+        
+        <div className="max-w-4xl mx-auto">
+          <div className="bg-card rounded-lg shadow-md p-8 mb-8 elevation-shadow">
+            <h2 className="text-2xl font-bold mb-4">Our Mission</h2>
+            <p className="text-lg mb-4">
+              TimeSync was created to provide users with accurate, reliable time information 
+              across different timezones around the world. Our mission is to make global time 
+              synchronization easy to access and understand for everyone.
+            </p>
+            <p className="text-lg">
+              Whether you're scheduling international meetings, coordinating with remote teams, 
+              or simply curious about the time in different parts of the world, TimeSync 
+              is designed to be your go-to resource for all time-related information.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div className="bg-card rounded-lg shadow-md p-6 text-center elevation-shadow">
+              <div className="flex justify-center mb-4">
+                <Clock className="h-12 w-12 text-primary" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Precision Timing</h3>
+              <p className="text-muted-foreground">
+                Our clocks are synchronized with atomic time servers to ensure accuracy within milliseconds.
+              </p>
+            </div>
+            
+            <div className="bg-card rounded-lg shadow-md p-6 text-center elevation-shadow">
+              <div className="flex justify-center mb-4">
+                <Globe className="h-12 w-12 text-primary" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Global Coverage</h3>
+              <p className="text-muted-foreground">
+                Support for all major timezones with detailed regional information.
+              </p>
+            </div>
+            
+            <div className="bg-card rounded-lg shadow-md p-6 text-center elevation-shadow">
+              <div className="flex justify-center mb-4">
+                <Calendar className="h-12 w-12 text-primary" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Calendar Integration</h3>
+              <p className="text-muted-foreground">
+                Comprehensive calendar functions with day tracking and date calculations.
+              </p>
+            </div>
+          </div>
+          
+          <div className="bg-card rounded-lg shadow-md p-8 mb-8 elevation-shadow">
+            <h2 className="text-2xl font-bold mb-4">Technical Information</h2>
+            <p className="mb-4">
+              TimeSync is built using modern web technologies to ensure reliability,
+              performance, and accuracy:
+            </p>
+            <ul className="list-disc pl-6 space-y-2">
+              <li>React framework for responsive user interface</li>
+              <li>JavaScript's Date API with timezone support</li>
+              <li>Intl.DateTimeFormat for locale-aware time formatting</li>
+              <li>Support for all IANA timezone database entries</li>
+              <li>Client-side processing for minimal latency</li>
+              <li>Responsive design that works on all devices</li>
+            </ul>
+          </div>
+          
+          <div className="bg-card rounded-lg shadow-md p-8 elevation-shadow">
+            <h2 className="text-2xl font-bold mb-4">Contact Us</h2>
+            <p className="mb-4">
+              Have questions, suggestions, or feedback about TimeSync? We'd love to hear from you.
+            </p>
+            <div className="flex flex-col md:flex-row justify-between">
+              <div>
+                <h3 className="font-semibold mb-2">Email</h3>
+                <p className="text-muted-foreground">support@timesync.example</p>
+              </div>
+              
+              <div>
+                <h3 className="font-semibold mb-2">Follow Us</h3>
+                <div className="flex space-x-4">
+                  <a href="#" className="text-primary hover:text-primary/80">
+                    <Github className="h-6 w-6" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Layout>
+  );
+};
+
+export default AboutPage;
