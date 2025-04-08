@@ -3,13 +3,19 @@ import React from 'react';
 import Layout from '@/components/Layout';
 import PomodoroTimer from '@/components/PomodoroTimer';
 import { Timer, CheckCircle } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 
 const PomodoroPage = () => {
   return (
     <Layout>
+      <Helmet>
+        <title>Pomodoro Timer - TimeSync</title>
+        <meta name="description" content="Use our Pomodoro Timer to boost your productivity with focused work sessions and regular breaks." />
+      </Helmet>
+      
       <div className="container mx-auto px-4 py-8">
         <div className="flex items-center justify-center mb-8">
-          <Timer className="h-8 w-8 text-primary mr-3" />
+          <Timer className="h-10 w-10 text-primary mr-3" />
           <h1 className="text-4xl font-bold">Pomodoro Timer</h1>
         </div>
         
@@ -18,7 +24,7 @@ const PomodoroPage = () => {
           Work for 25 minutes, then take a 5-minute break.
         </p>
         
-        <div className="max-w-md mx-auto">
+        <div className="max-w-xl mx-auto mb-12">
           <PomodoroTimer />
         </div>
         

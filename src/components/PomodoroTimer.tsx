@@ -1,8 +1,9 @@
 
-import React, { useState, useEffect, useCallback } from 'react';
-import { Clock, Play, Pause, RefreshCw, Settings } from 'lucide-react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
+import { Clock, Play, Pause, RefreshCw, Settings, Volume2, VolumeX } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
+import { cn } from '@/lib/utils';
 
 type TimerMode = 'pomodoro' | 'shortBreak' | 'longBreak';
 
@@ -14,7 +15,9 @@ const PomodoroTimer: React.FC<PomodoroTimerProps> = ({ minimal = false }) => {
   const [isActive, setIsActive] = useState(false);
   const [time, setTime] = useState(25 * 60); // 25 minutes in seconds
   const [mode, setMode] = useState<TimerMode>('pomodoro');
+  const [soundEnabled, setSoundEnabled] = useState(true);
   const { toast } = useToast();
+  const audioRef = useRef<HTMLAudioElement | null>(null);
   
   // Timer durations in seconds
   const durations = {
@@ -23,10 +26,40 @@ const PomodoroTimer: React.FC<PomodoroTimerProps> = ({ minimal = false }) => {
     longBreak: 15 * 60
   };
 
+  // Initialize audio element
+  useEffect(() => {
+    audioRef.current = new Audio('data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQQAAAAAAA==');
+    if (audioRef.current) {
+      audioRef.current.loop = true;
+    }
+    
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current = null;
+      }
+    };
+  }, []);
+
+  // Play/pause ticking sound based on timer state
+  useEffect(() => {
+    if (audioRef.current) {
+      if (isActive && soundEnabled) {
+        audioRef.current.play().catch(e => console.log('Audio play failed:', e));
+      } else {
+        audioRef.current.pause();
+      }
+    }
+  }, [isActive, soundEnabled]);
+
   // Reset timer when mode changes
   useEffect(() => {
     setTime(durations[mode]);
     setIsActive(false);
+    
+    if (audioRef.current) {
+      audioRef.current.pause();
+    }
   }, [mode]);
 
   // Timer logic
@@ -64,6 +97,10 @@ const PomodoroTimer: React.FC<PomodoroTimerProps> = ({ minimal = false }) => {
   const resetTimer = useCallback(() => {
     setIsActive(false);
     setTime(durations[mode]);
+    
+    if (audioRef.current) {
+      audioRef.current.pause();
+    }
   }, [mode]);
 
   const switchMode = useCallback((newMode: TimerMode) => {
@@ -71,6 +108,10 @@ const PomodoroTimer: React.FC<PomodoroTimerProps> = ({ minimal = false }) => {
       setMode(newMode);
     }
   }, [mode]);
+
+  const toggleSound = useCallback(() => {
+    setSoundEnabled(prev => !prev);
+  }, []);
 
   // Format time as MM:SS
   const formatTime = (seconds: number) => {
@@ -97,16 +138,17 @@ const PomodoroTimer: React.FC<PomodoroTimerProps> = ({ minimal = false }) => {
   }
 
   return (
-    <div className="bg-card rounded-lg shadow-md p-4 border border-border/50">
-      <div className="text-center mb-4">
-        <h2 className="text-xl font-semibold">Pomodoro Timer</h2>
+    <div className="bg-card rounded-lg shadow-md p-6 border border-border/50">
+      <div className="text-center mb-6">
+        <h2 className="text-2xl font-semibold">Pomodoro Timer</h2>
       </div>
       
-      <div className="flex justify-center space-x-2 mb-4">
+      <div className="flex justify-center space-x-3 mb-6">
         <Button 
           variant={mode === 'pomodoro' ? 'default' : 'outline'} 
           size="sm"
           onClick={() => switchMode('pomodoro')}
+          className="px-4"
         >
           Focus
         </Button>
@@ -114,6 +156,7 @@ const PomodoroTimer: React.FC<PomodoroTimerProps> = ({ minimal = false }) => {
           variant={mode === 'shortBreak' ? 'default' : 'outline'} 
           size="sm"
           onClick={() => switchMode('shortBreak')}
+          className="px-4"
         >
           Short Break
         </Button>
@@ -121,23 +164,41 @@ const PomodoroTimer: React.FC<PomodoroTimerProps> = ({ minimal = false }) => {
           variant={mode === 'longBreak' ? 'default' : 'outline'} 
           size="sm"
           onClick={() => switchMode('longBreak')}
+          className="px-4"
         >
           Long Break
         </Button>
       </div>
       
-      <div className="flex justify-center mb-6">
-        <div className="text-4xl font-mono font-bold">{formatTime(time)}</div>
+      <div className="flex justify-center mb-8">
+        <div className="text-7xl font-mono font-bold">{formatTime(time)}</div>
       </div>
       
-      <div className="flex justify-center space-x-3">
-        <Button onClick={toggleTimer}>
-          {isActive ? <Pause className="mr-2 h-4 w-4" /> : <Play className="mr-2 h-4 w-4" />}
+      <div className="flex justify-center space-x-4">
+        <Button 
+          size="lg"
+          onClick={toggleTimer}
+          className="text-lg px-6 py-6"
+        >
+          {isActive ? <Pause className="mr-2 h-5 w-5" /> : <Play className="mr-2 h-5 w-5" />}
           {isActive ? 'Pause' : 'Start'}
         </Button>
-        <Button variant="outline" onClick={resetTimer}>
-          <RefreshCw className="mr-2 h-4 w-4" />
+        <Button 
+          variant="outline" 
+          size="lg"
+          onClick={resetTimer}
+          className="text-lg px-6 py-6"
+        >
+          <RefreshCw className="mr-2 h-5 w-5" />
           Reset
+        </Button>
+        <Button
+          variant="outline"
+          size="icon"
+          onClick={toggleSound}
+          className="h-14 w-14"
+        >
+          {soundEnabled ? <Volume2 className="h-5 w-5" /> : <VolumeX className="h-5 w-5" />}
         </Button>
       </div>
     </div>
