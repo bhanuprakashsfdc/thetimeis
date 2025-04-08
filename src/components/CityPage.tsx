@@ -4,7 +4,7 @@ import { useParams, Navigate } from 'react-router-dom';
 import ClockDisplay from '@/components/ClockDisplay';
 import { getCityBySlug } from '@/lib/cities';
 import { Card, CardContent } from '@/components/ui/card';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { useToast } from '@/hooks/use-toast';
 
 const CityPage = () => {
