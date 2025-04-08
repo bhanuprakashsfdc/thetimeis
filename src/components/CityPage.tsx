@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import ClockDisplay from '@/components/ClockDisplay';
@@ -27,7 +26,6 @@ const CityPage = () => {
   useEffect(() => {
     if (!cityInfo) return;
     
-    // Update the time every second
     const timer = setInterval(() => {
       setTime(new Date());
     }, 1000);
