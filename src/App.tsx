@@ -13,6 +13,7 @@ import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
 import NotFound from "./pages/NotFound";
 import CityPage from "./components/CityPage";
+import Pomodoro from "./pages/Pomodoro";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 
 const queryClient = new QueryClient();
@@ -33,6 +34,7 @@ const App = () => (
             <Route path="/world-clock.html" element={<WorldClock />} />
             <Route path="/timezone.html" element={<Timezone />} />
             <Route path="/calendar.html" element={<Calendar />} />
+            <Route path="/pomodoro.html" element={<Pomodoro />} />
             <Route path="/about.html" element={<About />} />
             <Route path="/terms.html" element={<Terms />} />
             <Route path="/privacy.html" element={<Privacy />} />

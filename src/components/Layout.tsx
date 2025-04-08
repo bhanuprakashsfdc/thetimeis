@@ -1,9 +1,10 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Clock, Sun, Moon, Menu, X } from 'lucide-react';
+import { Clock, Sun, Moon, Menu, X, Timer } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
+import PomodoroTimer from './PomodoroTimer';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -48,6 +49,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     { name: "Home", path: "/" },
     { name: "World Clock", path: "/world-clock.html" },
     { name: "Time Zone", path: "/timezone.html" },
+    { name: "Pomodoro", path: "/pomodoro.html" },
     { name: "Calendar", path: "/calendar.html" },
     { name: "About", path: "/about.html" }
   ];
@@ -72,6 +74,12 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 {item.name}
               </Link>
             ))}
+            
+            {/* Pomodoro Timer in Header */}
+            <div className="border-l border-primary-foreground/30 pl-4 ml-2">
+              <PomodoroTimer minimal />
+            </div>
+            
             <Button 
               variant="ghost" 
               size="icon" 
@@ -118,6 +126,18 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 {item.name}
               </Link>
             ))}
+            
+            {/* Mobile Pomodoro Link */}
+            <div className="pt-2 border-t border-border">
+              <Link 
+                to="/pomodoro.html" 
+                className="flex items-center gap-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <Timer className="h-4 w-4" />
+                <span>Pomodoro Timer</span>
+              </Link>
+            </div>
           </nav>
         </div>
       )}
