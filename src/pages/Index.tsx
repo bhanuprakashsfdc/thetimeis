@@ -9,6 +9,7 @@ import { getPopularCities } from '@/lib/cities';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Globe, Clock, Calendar } from 'lucide-react';
+import { APP_NAME } from '@/lib/constants';
 
 const Index = () => {
   const [format24h, setFormat24h] = useState(false);
@@ -101,7 +102,7 @@ const Index = () => {
           </div>
           
           <div className="bg-card shadow-md rounded-xl p-6 elevation-shadow border border-border/50">
-            <h2 className="text-xl font-semibold mb-4">Why Use TimeSync?</h2>
+            <h2 className="text-xl font-semibold mb-4">Why Use {APP_NAME}?</h2>
             <ul className="space-y-3">
               <li className="flex items-start">
                 <span className="bg-primary text-primary-foreground rounded-full w-5 h-5 flex items-center justify-center mr-2 mt-0.5">✓</span>

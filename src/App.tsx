@@ -15,6 +15,7 @@ import NotFound from "./pages/NotFound";
 import CityPage from "./components/CityPage";
 import Pomodoro from "./pages/Pomodoro";
 import { Helmet, HelmetProvider } from "react-helmet-async";
+import { APP_NAME } from "./lib/constants";
 
 const queryClient = new QueryClient();
 
@@ -23,7 +24,7 @@ const App = () => (
     <TooltipProvider>
       <HelmetProvider>
         <Helmet>
-          <title>TimeSync - Precise Time, Anywhere</title>
+          <title>{APP_NAME} - Precise Time, Anywhere</title>
           <meta name="description" content="Get accurate time synchronized with atomic clocks around the world. The most reliable time service for your needs." />
         </Helmet>
         <Toaster />

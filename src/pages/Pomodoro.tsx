@@ -4,12 +4,13 @@ import Layout from '@/components/Layout';
 import PomodoroTimer from '@/components/PomodoroTimer';
 import { Timer, CheckCircle } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
+import { APP_NAME } from '@/lib/constants';
 
 const PomodoroPage = () => {
   return (
     <Layout>
       <Helmet>
-        <title>Pomodoro Timer - TimeSync</title>
+        <title>Pomodoro Timer - {APP_NAME}</title>
         <meta name="description" content="Use our Pomodoro Timer to boost your productivity with focused work sessions and regular breaks." />
       </Helmet>
       

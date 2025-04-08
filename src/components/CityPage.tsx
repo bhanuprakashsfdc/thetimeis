@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import ClockDisplay from '@/components/ClockDisplay';
@@ -5,6 +6,7 @@ import { getCityBySlug } from '@/lib/cities';
 import { Card, CardContent } from '@/components/ui/card';
 import { Helmet } from 'react-helmet-async';
 import { useToast } from '@/hooks/use-toast';
+import { APP_NAME } from '@/lib/constants';
 
 const CityPage = () => {
   const { citySlug } = useParams<{ citySlug: string }>();
@@ -18,7 +20,7 @@ const CityPage = () => {
       const city = getCityBySlug(citySlug);
       if (city) {
         setCityInfo(city);
-        document.title = `Current Time in ${city.name} | TimeSync`;
+        document.title = `Current Time in ${city.name} | ${APP_NAME}`;
       }
     }
   }, [citySlug]);
@@ -48,9 +50,9 @@ const CityPage = () => {
   return (
     <>
       <Helmet>
-        <title>Current Time in {cityInfo.name} | TimeSync</title>
+        <title>Current Time in {cityInfo.name} | {APP_NAME}</title>
         <meta name="description" content={`Current accurate time in ${cityInfo.name}, ${cityInfo.country}. Local time, time zone, DST, GMT/UTC offset.`} />
-        <meta property="og:title" content={`Time in ${cityInfo.name} | TimeSync`} />
+        <meta property="og:title" content={`Time in ${cityInfo.name} | ${APP_NAME}`} />
         <meta property="og:description" content={`Exact current time in ${cityInfo.name}, ${cityInfo.country} with time zone information`} />
       </Helmet>
       <div className="city-page-container">
