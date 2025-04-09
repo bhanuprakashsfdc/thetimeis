@@ -1,10 +1,11 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Clock, Sun, Moon, Menu, X, Timer } from 'lucide-react';
+import { Clock, Sun, Moon, Menu, X, Timer, RotateCw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import PomodoroTimer from './PomodoroTimer';
+import SpinWheel from './SpinWheel';
 import { APP_NAME } from '@/lib/constants';
 
 interface LayoutProps {
@@ -76,6 +77,14 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               </Link>
             ))}
             
+            {/* Spin Wheel in Header */}
+            <div className="border-l border-primary-foreground/30 pl-4 ml-2">
+              <div className="flex items-center gap-2">
+                <SpinWheel minimal />
+                <span className="text-sm">Spin</span>
+              </div>
+            </div>
+            
             {/* Pomodoro Timer in Header */}
             <div className="border-l border-primary-foreground/30 pl-4 ml-2">
               <PomodoroTimer minimal />
@@ -127,6 +136,25 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 {item.name}
               </Link>
             ))}
+            
+            {/* Mobile Spin Wheel Link */}
+            <div className="pt-2 border-t border-border">
+              <Link 
+                to="#" 
+                className="flex items-center gap-2"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setMobileMenuOpen(false);
+                  document.getElementById('mobile-spin-trigger')?.click();
+                }}
+              >
+                <RotateCw className="h-4 w-4" />
+                <span>Spin Wheel</span>
+              </Link>
+              <button id="mobile-spin-trigger" className="hidden">
+                <SpinWheel minimal />
+              </button>
+            </div>
             
             {/* Mobile Pomodoro Link */}
             <div className="pt-2 border-t border-border">

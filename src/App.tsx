@@ -14,6 +14,7 @@ import Privacy from "./pages/Privacy";
 import NotFound from "./pages/NotFound";
 import CityPage from "./components/CityPage";
 import Pomodoro from "./pages/Pomodoro";
+import SpinWheel from "./pages/SpinWheel";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { APP_NAME } from "./lib/constants";
 
@@ -36,6 +37,7 @@ const App = () => (
             <Route path="/timezone.html" element={<Timezone />} />
             <Route path="/calendar.html" element={<Calendar />} />
             <Route path="/pomodoro.html" element={<Pomodoro />} />
+            <Route path="/spin-wheel.html" element={<SpinWheel />} />
             <Route path="/about.html" element={<About />} />
             <Route path="/terms.html" element={<Terms />} />
             <Route path="/privacy.html" element={<Privacy />} />
