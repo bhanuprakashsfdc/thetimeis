@@ -1,11 +1,9 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Clock, Sun, Moon, Menu, X, Timer, RotateCw, Home, Wrench, Info, BookOpen, MessageSquare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
-import PomodoroTimer from './PomodoroTimer';
-import SpinWheel from './SpinWheel';
 import { APP_NAME } from '@/lib/constants';
 import {
   NavigationMenu,
@@ -22,11 +20,12 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
-  const [darkMode, setDarkMode] = React.useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+  const [darkMode, setDarkMode] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [currentTime, setCurrentTime] = useState(new Date());
   const { toast } = useToast();
 
-  React.useEffect(() => {
+  useEffect(() => {
     // Check for user preference
     const isDark = localStorage.getItem('dark-mode') === 'true' || 
       window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -35,6 +34,15 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     if (isDark) {
       document.documentElement.classList.add('dark');
     }
+  }, []);
+
+  // Update time every second
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
+    
+    return () => clearInterval(timer);
   }, []);
 
   const toggleDarkMode = () => {
@@ -54,6 +62,16 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
+  };
+  
+  // Format time based on user's locale
+  const formatTime = () => {
+    return new Intl.DateTimeFormat(navigator.language || 'en-US', {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: true
+    }).format(currentTime);
   };
   
   // Main menu items
@@ -131,17 +149,12 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               </NavigationMenuList>
             </NavigationMenu>
             
-            {/* Spin Wheel in Header */}
+            {/* Current time based on user's IP timezone */}
             <div className="border-l border-primary-foreground/30 pl-4 ml-2">
               <div className="flex items-center gap-2">
-                <SpinWheel minimal />
-                <span className="text-sm">Spin</span>
+                <Clock className="h-4 w-4" />
+                <span className="text-sm font-mono">{formatTime()}</span>
               </div>
-            </div>
-            
-            {/* Pomodoro Timer in Header */}
-            <div className="border-l border-primary-foreground/30 pl-4 ml-2">
-              <PomodoroTimer minimal />
             </div>
             
             <Button 
@@ -156,6 +169,14 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
+            {/* Current time for mobile */}
+            <div className="mr-4">
+              <div className="flex items-center gap-1">
+                <Clock className="h-4 w-4" />
+                <span className="text-xs font-mono">{formatTime()}</span>
+              </div>
+            </div>
+            
             <Button 
               variant="ghost" 
               size="icon" 
@@ -213,37 +234,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 </Link>
               )
             )}
-            
-            {/* Mobile Spin Wheel Link */}
-            <div className="pt-2 border-t border-border">
-              <Link 
-                to="#" 
-                className="flex items-center gap-2"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setMobileMenuOpen(false);
-                  document.getElementById('mobile-spin-trigger')?.click();
-                }}
-              >
-                <RotateCw className="h-4 w-4" />
-                <span>Spin Wheel</span>
-              </Link>
-              <button id="mobile-spin-trigger" className="hidden">
-                <SpinWheel minimal />
-              </button>
-            </div>
-            
-            {/* Mobile Pomodoro Link */}
-            <div className="pt-2 border-t border-border">
-              <Link 
-                to="/pomodoro.html" 
-                className="flex items-center gap-2"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                <Timer className="h-4 w-4" />
-                <span>Pomodoro Timer</span>
-              </Link>
-            </div>
           </nav>
         </div>
       )}
