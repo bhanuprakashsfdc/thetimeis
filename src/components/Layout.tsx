@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Clock, Sun, Moon, Menu, X, Timer, RotateCw, Home, Tool, Info, BookOpen, MessageSquare } from 'lucide-react';
+import { Clock, Sun, Moon, Menu, X, Timer, RotateCw, Home, Wrench, Info, BookOpen, MessageSquare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import PomodoroTimer from './PomodoroTimer';
@@ -59,7 +59,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   // Main menu items
   const mainMenuItems = [
     { name: "Home", path: "/", icon: <Home className="h-4 w-4 mr-2" /> },
-    { name: "Tools", path: "#", icon: <Tool className="h-4 w-4 mr-2" />, hasSubmenu: true },
+    { name: "Tools", path: "#", icon: <Wrench className="h-4 w-4 mr-2" />, hasSubmenu: true },
     { name: "About", path: "/about.html", icon: <Info className="h-4 w-4 mr-2" /> },
     { name: "Blog", path: "#", icon: <BookOpen className="h-4 w-4 mr-2" /> },
     { name: "Contact", path: "#", icon: <MessageSquare className="h-4 w-4 mr-2" /> }
