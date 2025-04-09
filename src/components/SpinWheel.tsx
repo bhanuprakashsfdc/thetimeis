@@ -170,13 +170,39 @@ const SpinWheel: React.FC<SpinWheelProps> = ({ minimal = false }) => {
           </Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[600px]">
-          <FullSpinWheel names={names} setNames={setNames} canvasRef={canvasRef} spinning={spinning} spinWheel={spinWheel} winner={winner} inputValue={inputValue} setInputValue={setInputValue} handleKeyDown={handleKeyDown} removeName={removeName} />
+          <FullSpinWheel 
+            names={names} 
+            setNames={setNames} 
+            canvasRef={canvasRef} 
+            spinning={spinning} 
+            spinWheel={spinWheel} 
+            winner={winner} 
+            inputValue={inputValue} 
+            setInputValue={setInputValue} 
+            handleKeyDown={handleKeyDown} 
+            removeName={removeName}
+            addName={addName}  // Add this prop to fix the error
+          />
         </DialogContent>
       </Dialog>
     );
   }
 
-  return <FullSpinWheel names={names} setNames={setNames} canvasRef={canvasRef} spinning={spinning} spinWheel={spinWheel} winner={winner} inputValue={inputValue} setInputValue={setInputValue} handleKeyDown={handleKeyDown} removeName={removeName} />;
+  return (
+    <FullSpinWheel 
+      names={names} 
+      setNames={setNames} 
+      canvasRef={canvasRef} 
+      spinning={spinning} 
+      spinWheel={spinWheel} 
+      winner={winner} 
+      inputValue={inputValue} 
+      setInputValue={setInputValue} 
+      handleKeyDown={handleKeyDown} 
+      removeName={removeName}
+      addName={addName}  // Add this prop to fix the error
+    />
+  );
 };
 
 interface FullSpinWheelProps {
@@ -190,6 +216,7 @@ interface FullSpinWheelProps {
   setInputValue: React.Dispatch<React.SetStateAction<string>>;
   handleKeyDown: (e: React.KeyboardEvent) => void;
   removeName: (index: number) => void;
+  addName: (name: string) => void;  // Add this to the interface
 }
 
 const FullSpinWheel: React.FC<FullSpinWheelProps> = ({ 
@@ -202,7 +229,8 @@ const FullSpinWheel: React.FC<FullSpinWheelProps> = ({
   inputValue,
   setInputValue,
   handleKeyDown,
-  removeName
+  removeName,
+  addName  // Include the prop here
 }) => {
   return (
     <div className="flex flex-col md:flex-row gap-6 items-center justify-center p-4">
