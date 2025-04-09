@@ -1,6 +1,6 @@
 
 import React, { useState, useRef, useEffect } from 'react';
-import { RotateCw } from 'lucide-react';
+import { RotateCw, Trophy } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { useToast } from '@/hooks/use-toast';
@@ -170,6 +170,9 @@ const SpinWheel: React.FC<SpinWheelProps> = ({ minimal = false }) => {
           </Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[600px]">
+          <DialogHeader>
+            <DialogTitle>Spin the Wheel</DialogTitle>
+          </DialogHeader>
           <FullSpinWheel 
             names={names} 
             setNames={setNames} 
@@ -181,7 +184,7 @@ const SpinWheel: React.FC<SpinWheelProps> = ({ minimal = false }) => {
             setInputValue={setInputValue} 
             handleKeyDown={handleKeyDown} 
             removeName={removeName}
-            addName={addName}  // Add this prop to fix the error
+            addName={addName}
           />
         </DialogContent>
       </Dialog>
@@ -200,7 +203,7 @@ const SpinWheel: React.FC<SpinWheelProps> = ({ minimal = false }) => {
       setInputValue={setInputValue} 
       handleKeyDown={handleKeyDown} 
       removeName={removeName}
-      addName={addName}  // Add this prop to fix the error
+      addName={addName}
     />
   );
 };
@@ -216,7 +219,7 @@ interface FullSpinWheelProps {
   setInputValue: React.Dispatch<React.SetStateAction<string>>;
   handleKeyDown: (e: React.KeyboardEvent) => void;
   removeName: (index: number) => void;
-  addName: (name: string) => void;  // Add this to the interface
+  addName: (name: string) => void;
 }
 
 const FullSpinWheel: React.FC<FullSpinWheelProps> = ({ 
@@ -230,7 +233,7 @@ const FullSpinWheel: React.FC<FullSpinWheelProps> = ({
   setInputValue,
   handleKeyDown,
   removeName,
-  addName  // Include the prop here
+  addName
 }) => {
   return (
     <div className="flex flex-col md:flex-row gap-6 items-center justify-center p-4">
@@ -258,9 +261,12 @@ const FullSpinWheel: React.FC<FullSpinWheelProps> = ({
           Spin the Wheel
         </Button>
         {winner && !spinning && (
-          <div className="mt-4 text-center">
-            <div className="text-lg">Winner:</div>
-            <div className="text-2xl font-bold text-primary">{winner}</div>
+          <div className="mt-4 text-center p-3 bg-primary/10 rounded-lg border border-primary/20 animate-fade-in">
+            <div className="text-lg flex items-center justify-center gap-2">
+              <Trophy className="h-5 w-5 text-yellow-500" />
+              <span>Winner:</span>
+            </div>
+            <div className="text-2xl font-bold text-primary mt-1">{winner}</div>
           </div>
         )}
       </div>
