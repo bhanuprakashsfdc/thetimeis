@@ -5,6 +5,7 @@ import { Clock, Sun, Moon, Menu, X, Timer } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import PomodoroTimer from './PomodoroTimer';
+import { APP_NAME } from '@/lib/constants';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -60,7 +61,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <div className="container mx-auto flex justify-between items-center">
           <div className="flex items-center space-x-2">
             <Clock className="h-6 w-6" />
-            <Link to="/" className="text-xl font-bold tracking-tight">TimeSync</Link>
+            <Link to="/" className="text-xl font-bold tracking-tight">{APP_NAME}</Link>
           </div>
           
           {/* Desktop Navigation */}
@@ -151,7 +152,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0">
               <p className="text-secondary-foreground">
-                &copy; {new Date().getFullYear()} TimeSync. All rights reserved.
+                &copy; {new Date().getFullYear()} {APP_NAME}. All rights reserved.
               </p>
             </div>
             <div className="flex space-x-4">
