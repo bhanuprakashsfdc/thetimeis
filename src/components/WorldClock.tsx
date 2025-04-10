@@ -29,6 +29,8 @@ import {
 import { useToast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
 import { timezones } from '@/lib/timezones';
+import { Link } from 'react-router-dom';
+import { cityToSlug } from '@/lib/cities';
 
 interface WorldClockProps {
   className?: string;
@@ -159,18 +161,25 @@ const WorldClock: React.FC<WorldClockProps> = ({ className }) => {
     }, [timezone]);
     
     const cityName = timezone.split('/').pop()?.replace(/_/g, ' ') || timezone;
+    const citySlug = cityToSlug(cityName);
     
     return (
       <Card className="elevation-shadow">
         <CardHeader className="flex flex-row items-center justify-between py-4">
-          <CardTitle className="text-lg font-medium">{cityName}</CardTitle>
+          <CardTitle className="text-lg font-medium">
+            <Link to={`/city/${citySlug}.html`} className="hover:text-primary">
+              {cityName}
+            </Link>
+          </CardTitle>
           <Button variant="ghost" size="icon" onClick={onRemove}>
             <Trash2 className="h-4 w-4" />
           </Button>
         </CardHeader>
         <CardContent>
-          <div className="text-3xl font-bold text-center">{time}</div>
-          <div className="text-sm text-muted-foreground text-center mt-2">{date}</div>
+          <Link to={`/city/${citySlug}.html`} className="block hover:no-underline">
+            <div className="text-3xl font-bold text-center">{time}</div>
+            <div className="text-sm text-muted-foreground text-center mt-2">{date}</div>
+          </Link>
         </CardContent>
       </Card>
     );
