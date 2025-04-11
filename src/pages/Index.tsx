@@ -19,31 +19,7 @@ const Index = () => {
   return (
     <Layout>
       <div className="container mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16">
-          <div className="flex flex-col">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              Precise Time, <span className="text-primary">Anywhere</span>
-            </h1>
-            <p className="text-xl text-muted-foreground mb-8">
-              Get accurate time synchronized with atomic clocks around the world.
-              The most reliable time service for your needs.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Button asChild size="lg">
-                <Link to="/world-clock.html" className="gap-2">
-                  <Clock className="h-5 w-5" />
-                  <span>World Clock</span>
-                </Link>
-              </Button>
-              <Button asChild size="lg" variant="outline">
-                <Link to="/calendar.html" className="gap-2">
-                  <Calendar className="h-5 w-5" />
-                  <span>Calendar</span>
-                </Link>
-              </Button>
-            </div>
-          </div>
-          
+        <div className="flex flex-col items-center justify-center mb-16">          
           <div className="flex justify-center md:justify-end">
             <div className="bg-card rounded-xl shadow-xl p-8 text-center elevation-shadow w-full max-w-md border border-border/50">
               <Tabs defaultValue="12h" className="w-full mb-6">
