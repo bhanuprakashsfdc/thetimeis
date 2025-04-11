@@ -19,6 +19,7 @@ import BlogPost from "./pages/BlogPost";
 import Contact from "./pages/Contact";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { APP_NAME } from "./lib/constants";
+import { TooltipProvider } from '@/components/ui/tooltip';
 
 // Create a new QueryClient instance
 const queryClient = new QueryClient();
