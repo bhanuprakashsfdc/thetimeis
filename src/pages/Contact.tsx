@@ -18,7 +18,6 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
     // Validate form
     if (!name || !email || !message) {
       toast({
@@ -28,15 +27,12 @@ const Contact = () => {
       });
       return;
     }
-
     // Show success message
     toast({
       title: "Message sent",
       description: "We'll get back to you soon!",
     });
-
     setSubmitted(true);
-
     // Reset form after 3 seconds
     setTimeout(() => {
       setName('');
@@ -52,7 +48,6 @@ const Contact = () => {
         <title>Contact Us</title>
         <meta name="description" content="Get in touch with our team for any questions or feedback about our time services." />
       </Helmet>
-
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto mb-10">
           <h1 className="text-4xl font-bold mb-4">Contact Us</h1>
@@ -60,7 +55,6 @@ const Contact = () => {
             We'd love to hear from you! Reach out with any questions or feedback.
           </p>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <Card className="elevation-shadow">
             <CardHeader>
@@ -81,7 +75,6 @@ const Contact = () => {
                     disabled={submitted}
                   />
                 </div>
-
                 <div className="grid gap-2">
                   <Label htmlFor="email">Email</Label>
                   <Input 
@@ -93,7 +86,6 @@ const Contact = () => {
                     disabled={submitted}
                   />
                 </div>
-
                 <div className="grid gap-2">
                   <Label htmlFor="message">Message</Label>
                   <Textarea 
@@ -105,7 +97,6 @@ const Contact = () => {
                     disabled={submitted}
                   />
                 </div>
-
                 <Button 
                   type="submit" 
                   className="w-full"
@@ -124,7 +115,6 @@ const Contact = () => {
               </form>
             </CardContent>
           </Card>
-
           <Card className="elevation-shadow">
             <CardHeader>
               <CardTitle>Contact Information</CardTitle>
@@ -141,7 +131,6 @@ const Contact = () => {
                   <p className="text-sm text-muted-foreground mt-1">We respond within 24 hours</p>
                 </div>
               </div>
-
               <div className="flex items-start">
                 <Phone className="h-5 w-5 text-primary mr-3 mt-1" />
                 <div>
@@ -150,7 +139,6 @@ const Contact = () => {
                   <p className="text-sm text-muted-foreground mt-1">Mon-Fri, 9AM to 6PM EST</p>
                 </div>
               </div>
-
               <div className="flex items-start">
                 <MapPin className="h-5 w-5 text-primary mr-3 mt-1" />
                 <div>

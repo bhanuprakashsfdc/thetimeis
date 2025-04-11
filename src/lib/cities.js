@@ -43,7 +43,10 @@ export const getCitiesByRegion = (region) => {
  * Get a city by its URL-friendly name
  */
 export const getCityBySlug = (slug) => {
-  const normalizedSlug = slug.replace(/[-]/g, ' ').toLowerCase();
+  if (!slug) return null;
+  
+  // Clean up the slug (remove .html extension and any trailing slashes)
+  const normalizedSlug = slug.replace(/\.html$/, '').replace(/\/$/, '').replace(/[-]/g, ' ').toLowerCase();
   
   return cities.find(city => city.name.toLowerCase() === normalizedSlug);
 };

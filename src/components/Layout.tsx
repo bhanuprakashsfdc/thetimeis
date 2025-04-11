@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Clock, Sun, Moon, Menu, X, Timer, RotateCw, Home, Wrench, Info, BookOpen, MessageSquare } from 'lucide-react';
@@ -88,9 +87,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const toolsItems = [
     { name: "World Clock", path: "/world-clock.html", icon: <Clock className="h-4 w-4" /> },
     { name: "Time Zone", path: "/timezone.html", icon: <Clock className="h-4 w-4" /> },
-    { name: "Pomodoro", path: "/pomodoro.html", icon: <Timer className="h-4 w-4" /> },
-    { name: "Calendar", path: "/calendar.html", icon: <Clock className="h-4 w-4" /> },
-    { name: "Spin Wheel", path: "/spin-wheel.html", icon: <RotateCw className="h-4 w-4" /> }
+    { name: "Calendar", path: "/calendar.html", icon: <Clock className="h-4 w-4" /> }
   ];
 
   return (
@@ -242,7 +239,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       <main className="flex-1 container mx-auto px-4 py-8">
         <TooltipProvider>
             {children}
-          </TooltipProvider>
+        </TooltipProvider>
       </main>
       
       <footer className="bg-secondary py-6 mt-auto">

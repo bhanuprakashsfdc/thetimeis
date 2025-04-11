@@ -6,10 +6,6 @@ import TimezoneInfo from '@/components/TimezoneInfo';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import CityCard from '@/components/CityCard';
 import { getPopularCities } from '@/lib/cities';
-import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
-import { ArrowRight, Globe, Clock, Calendar } from 'lucide-react';
-import { APP_NAME } from '@/lib/constants';
 
 const Index = () => {
   const [format24h, setFormat24h] = useState(false);
@@ -54,14 +50,12 @@ const Index = () => {
         <div className="mb-16">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-2xl font-bold">Popular Cities</h2>
-            <Button asChild variant="ghost" size="sm">
-              <Link to="/world-clock.html" className="flex items-center gap-2">
-                View All <ArrowRight className="h-4 w-4" />
-              </Link>
-            </Button>
+            <a href="/world-clock.html" className="text-primary flex items-center gap-2 hover:underline">
+              View All <span>→</span>
+            </a>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {popularCities.map((city) => (
+            {popularCities.slice(0, 8).map((city) => (
               <CityCard 
                 key={city.name}
                 name={city.name}
@@ -69,38 +63,6 @@ const Index = () => {
                 country={city.country}
               />
             ))}
-          </div>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div>
-            <TimezoneInfo />
-          </div>
-          
-          <div className="bg-card shadow-md rounded-xl p-6 elevation-shadow border border-border/50">
-            <h2 className="text-xl font-semibold mb-4">Why Use {APP_NAME}?</h2>
-            <ul className="space-y-3">
-              <li className="flex items-start">
-                <span className="bg-primary text-primary-foreground rounded-full w-5 h-5 flex items-center justify-center mr-2 mt-0.5">✓</span>
-                <span>Atomic clock precision synchronized across the globe</span>
-              </li>
-              <li className="flex items-start">
-                <span className="bg-primary text-primary-foreground rounded-full w-5 h-5 flex items-center justify-center mr-2 mt-0.5">✓</span>
-                <span>Multiple time formats and timezone support</span>
-              </li>
-              <li className="flex items-start">
-                <span className="bg-primary text-primary-foreground rounded-full w-5 h-5 flex items-center justify-center mr-2 mt-0.5">✓</span>
-                <span>World clock with customizable locations</span>
-              </li>
-              <li className="flex items-start">
-                <span className="bg-primary text-primary-foreground rounded-full w-5 h-5 flex items-center justify-center mr-2 mt-0.5">✓</span>
-                <span>Calendar integration with date calculations</span>
-              </li>
-              <li className="flex items-start">
-                <span className="bg-primary text-primary-foreground rounded-full w-5 h-5 flex items-center justify-center mr-2 mt-0.5">✓</span>
-                <span>Free to use with no ads or subscriptions</span>
-              </li>
-            </ul>
           </div>
         </div>
       </div>

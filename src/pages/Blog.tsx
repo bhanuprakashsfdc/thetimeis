@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import Layout from '@/components/Layout';
@@ -48,7 +49,6 @@ const Blog = () => {
         </PaginationItem>
       );
     }
-
     // Add pages around current page
     for (let i = Math.max(2, currentPage - 1); i <= Math.min(totalPages - 1, currentPage + 1); i++) {
       if (i === 1 || i === totalPages) continue; // Skip first and last pages as they're added separately
@@ -64,7 +64,6 @@ const Blog = () => {
         </PaginationItem>
       );
     }
-
     // Add ellipsis if needed
     if (currentPage < totalPages - 2) {
       items.push(
@@ -73,7 +72,6 @@ const Blog = () => {
         </PaginationItem>
       );
     }
-
     // Add last page if there are more than one page
     if (totalPages > 1) {
       items.push(
@@ -87,7 +85,6 @@ const Blog = () => {
         </PaginationItem>
       );
     }
-
     return items;
   };
 
@@ -97,7 +94,6 @@ const Blog = () => {
         <title>Blog - Time Management and History</title>
         <meta name="description" content="Read articles about time management, history of timekeeping, and how different cultures perceive time." />
       </Helmet>
-
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto mb-10">
           <h1 className="text-4xl font-bold mb-4">The Time Blog</h1>
@@ -119,10 +115,8 @@ const Blog = () => {
                 <PaginationPrevious onClick={() => handlePageChange(currentPage - 1)} />
               </PaginationItem>
             )}
-
             {renderPaginationItems()}
-
-            {currentPage < totalPages && (
+           {currentPage < totalPages && (
               <PaginationItem>
                 <PaginationNext onClick={() => handlePageChange(currentPage + 1)} />
               </PaginationItem>

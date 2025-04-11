@@ -8,6 +8,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Helmet } from 'react-helmet-async';
 import { useToast } from '@/hooks/use-toast';
 import { APP_NAME } from '@/lib/constants';
+
 import { getPopularCities } from '@/lib/cities';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Globe, Clock, Calendar } from 'lucide-react';
@@ -22,11 +23,12 @@ const CityPage = () => {
   const [format24h, setFormat24h] = useState(false);
   const [loading, setLoading] = useState(true);
   const popularCities = getPopularCities();
-
   useEffect(() => {
     if (citySlug) {
+      // Remove the .html extension for processing
       const cleanSlug = citySlug.replace('.html', '');
-      const city = getCityBySlug(citySlug);
+      const city = getCityBySlug(cleanSlug);
+
       if (city) {
         setCityInfo(city);
         document.title = `Current Time in ${city.name} | ${APP_NAME}`;

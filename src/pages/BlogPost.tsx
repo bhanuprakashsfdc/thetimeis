@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import Layout from '@/components/Layout';
@@ -12,13 +13,11 @@ import BlogCard from '@/components/BlogCard';
 const BlogPostPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
-
   // Remove .html from slug if present
   const cleanSlug = slug?.replace(/\.html$/, '');
 
   const post = getBlogPostBySlug(cleanSlug || '');
   const relatedPosts = post ? getRelatedPosts(post.id, 3) : [];
-
   if (!post) {
     return (
       <Layout>
@@ -48,9 +47,7 @@ const BlogPostPage: React.FC = () => {
           >
             <ArrowLeft className="mr-2 h-4 w-4" /> Back to Blog
           </Link>
-
           <h1 className="text-3xl md:text-4xl font-bold mb-4">{post.title}</h1>
-
           <div className="flex flex-wrap items-center gap-4 text-muted-foreground mb-6">
             <div className="flex items-center gap-1">
               <User className="h-4 w-4" />
@@ -67,21 +64,18 @@ const BlogPostPage: React.FC = () => {
             <Badge variant="secondary">{post.category}</Badge>
           </div>
         </div>
-
         <div className="max-w-3xl mx-auto">
           <Card className="p-6 md:p-8 mb-12">
             <div 
               className="prose dark:prose-invert max-w-none"
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
-
             <div className="flex flex-wrap gap-2 mt-8 pt-4 border-t">
               {post.tags.map(tag => (
                 <Badge key={tag} variant="outline">#{tag}</Badge>
               ))}
             </div>
           </Card>
-
           {relatedPosts.length > 0 && (
             <div>
               <h2 className="text-2xl font-bold mb-6">Related Articles</h2>
@@ -99,3 +93,4 @@ const BlogPostPage: React.FC = () => {
 };
 
 export default BlogPostPage;
+
