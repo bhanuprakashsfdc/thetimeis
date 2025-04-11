@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { cityToSlug } from '@/lib/cities';
 import { Clock } from 'lucide-react';
+import { TooltipProvider } from '@/components/ui/tooltip';
 
 interface CityCardProps {
   name: string;

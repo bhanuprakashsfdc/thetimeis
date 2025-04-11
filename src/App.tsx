@@ -1,7 +1,6 @@
 
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
@@ -21,38 +20,37 @@ import Contact from "./pages/Contact";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { APP_NAME } from "./lib/constants";
 
+// Create a new QueryClient instance
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <HelmetProvider>
-        <Helmet>
-          <title>{APP_NAME} - Precise Time, Anywhere</title>
-          <meta name="description" content="Get accurate time synchronized with atomic clocks around the world. The most reliable time service for your needs." />
-        </Helmet>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/world-clock.html" element={<WorldClock />} />
-            <Route path="/timezone.html" element={<Timezone />} />
-            <Route path="/calendar.html" element={<Calendar />} />
-            <Route path="/pomodoro.html" element={<Pomodoro />} />
-            <Route path="/spin-wheel.html" element={<SpinWheel />} />
-            <Route path="/about.html" element={<About />} />
-            <Route path="/terms.html" element={<Terms />} />
-            <Route path="/privacy.html" element={<Privacy />} />
-            <Route path="/blog.html" element={<Blog />} />
-            <Route path="/contact.html" element={<Contact />} />
-            <Route path="/blog/:slug" element={<BlogPost />} />
-            <Route path="/city/:citySlug" element={<CityPage />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </HelmetProvider>
-    </TooltipProvider>
+    <HelmetProvider>
+      <Helmet>
+        <title>{APP_NAME} - Precise Time, Anywhere</title>
+        <meta name="description" content="Get accurate time synchronized with atomic clocks around the world. The most reliable time service for your needs." />
+      </Helmet>
+      <Toaster />
+      <Sonner />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Index />} />
+          <Route path="/world-clock.html" element={<WorldClock />} />
+          <Route path="/timezone.html" element={<Timezone />} />
+          <Route path="/calendar.html" element={<Calendar />} />
+          <Route path="/pomodoro.html" element={<Pomodoro />} />
+          <Route path="/spin-wheel.html" element={<SpinWheel />} />
+          <Route path="/about.html" element={<About />} />
+          <Route path="/terms.html" element={<Terms />} />
+          <Route path="/privacy.html" element={<Privacy />} />
+          <Route path="/blog.html" element={<Blog />} />
+          <Route path="/contact.html" element={<Contact />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
+          <Route path="/city/:citySlug" element={<CityPage />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </HelmetProvider>
   </QueryClientProvider>
 );
 

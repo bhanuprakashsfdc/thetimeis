@@ -13,6 +13,7 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
+import { TooltipProvider } from '@/components/ui/tooltip';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -236,7 +237,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       )}
 
       <main className="flex-1 container mx-auto px-4 py-8">
-        {children}
+        <TooltipProvider>
+          {children}
+        </TooltipProvider>
       </main>
       
       <footer className="bg-secondary py-6 mt-auto">
