@@ -15,21 +15,21 @@ const Terms = () => {
             <section className="mb-8">
               <h2 className="text-2xl font-semibold mb-4">1. Introduction</h2>
               <p>
-                Welcome to TimeSync. These Terms of Service govern your use of the TimeSync website
-                and all related services. By accessing or using TimeSync, you agree to be bound by
+                Welcome to <a href="https://www.thetimeis.net/">TheTimeIs.net</a>. These Terms of Service govern your use of the TheTimeIs.net website
+                and all related services. By accessing or using <a href="https://www.thetimeis.net/">TheTimeIs.net</a>TheTimeIs.net, you agree to be bound by
                 these Terms and our Privacy Policy.
               </p>
             </section>
             
             <section className="mb-8">
-              <h2 className="text-2xl font-semibold mb-4">2. Using TimeSync</h2>
+              <h2 className="text-2xl font-semibold mb-4">2. Using <a href="https://www.thetimeis.net/">TheTimeIs.net</a></h2>
               <p className="mb-4">
-                TimeSync provides accurate time and date information across different timezones.
+              <a href="https://www.thetimeis.net/">TheTimeIs.net</a> provides accurate time and date information across different timezones.
                 While we strive for accuracy, we cannot guarantee that the information provided is
                 error-free or will be available at all times.
               </p>
               <p>
-                You may use TimeSync for personal or commercial purposes, but you may not:
+                You may use <a href="https://www.thetimeis.net/">TheTimeIs.net</a> for personal or commercial purposes, but you may not:
               </p>
               <ul className="list-disc pl-6 my-4 space-y-2">
                 <li>Attempt to bypass, disable, or interfere with any security features of the service</li>
@@ -42,7 +42,7 @@ const Terms = () => {
             <section className="mb-8">
               <h2 className="text-2xl font-semibold mb-4">3. Accuracy of Information</h2>
               <p>
-                TimeSync makes every effort to ensure that the time and date information provided
+              <a href="https://www.thetimeis.net/">TheTimeIs.net</a> makes every effort to ensure that the time and date information provided
                 is accurate and reliable. However, we do not warrant that the information will be
                 error-free or uninterrupted. For critical timing applications, we recommend verifying
                 with multiple sources.
@@ -52,8 +52,8 @@ const Terms = () => {
             <section className="mb-8">
               <h2 className="text-2xl font-semibold mb-4">4. Intellectual Property</h2>
               <p>
-                All content on TimeSync, including but not limited to text, graphics, logos, icons,
-                images, and software, is the property of TimeSync or its content suppliers and is
+                All content on <a href="https://www.thetimeis.net/">TheTimeIs.net</a>, including but not limited to text, graphics, logos, icons,
+                images, and software, is the property of <a href="https://www.thetimeis.net/">TheTimeIs.net</a> or its content suppliers and is
                 protected by international copyright laws.
               </p>
             </section>
@@ -61,7 +61,7 @@ const Terms = () => {
             <section className="mb-8">
               <h2 className="text-2xl font-semibold mb-4">5. Limitation of Liability</h2>
               <p>
-                In no event shall TimeSync be liable for any indirect, incidental, special,
+                In no event shall <a href="https://www.thetimeis.net/">TheTimeIs.net</a> be liable for any indirect, incidental, special,
                 consequential, or punitive damages, including without limitation, loss of profits,
                 data, or use, arising out of or in any way connected with the use or performance of
                 our services.
@@ -73,7 +73,7 @@ const Terms = () => {
               <p>
                 We reserve the right to modify these Terms at any time. If we make changes,
                 we will provide notice by updating the date at the top of these Terms. Your
-                continued use of TimeSync after any changes indicates your acceptance of the
+                continued use of TheTimeIs.net after any changes indicates your acceptance of the
                 new Terms.
               </p>
             </section>
@@ -81,7 +81,7 @@ const Terms = () => {
             <section>
               <h2 className="text-2xl font-semibold mb-4">7. Contact Information</h2>
               <p>
-                If you have any questions about these Terms, please contact us at support@timesync.example.
+                If you have any questions about these Terms, please contact us at support@TheTimeIs.net.example.
               </p>
             </section>
           </div>

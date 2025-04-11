@@ -8,7 +8,7 @@ const AboutPage = () => {
     <Layout>
       <div className="container mx-auto px-4 py-8">
         <div className="text-center mb-10">
-          <h1 className="text-4xl font-bold mb-4">About TimeSync</h1>
+          <h1 className="text-4xl font-bold mb-4">About <a href="https://www.thetimeis.net/">TheTimeIs.net</a></h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Your trusted source for accurate time information worldwide.
           </p>
@@ -18,13 +18,13 @@ const AboutPage = () => {
           <div className="bg-card rounded-lg shadow-md p-8 mb-8 elevation-shadow">
             <h2 className="text-2xl font-bold mb-4">Our Mission</h2>
             <p className="text-lg mb-4">
-              TimeSync was created to provide users with accurate, reliable time information 
+            <a href="https://www.thetimeis.net/">TheTimeIs.net</a> was created to provide users with accurate, reliable time information 
               across different timezones around the world. Our mission is to make global time 
               synchronization easy to access and understand for everyone.
             </p>
             <p className="text-lg">
               Whether you're scheduling international meetings, coordinating with remote teams, 
-              or simply curious about the time in different parts of the world, TimeSync 
+              or simply curious about the time in different parts of the world, <a href="https://www.thetimeis.net/">TheTimeIs.net</a>.net 
               is designed to be your go-to resource for all time-related information.
             </p>
           </div>
@@ -64,7 +64,7 @@ const AboutPage = () => {
           <div className="bg-card rounded-lg shadow-md p-8 mb-8 elevation-shadow">
             <h2 className="text-2xl font-bold mb-4">Technical Information</h2>
             <p className="mb-4">
-              TimeSync is built using modern web technologies to ensure reliability,
+            <a href="https://www.thetimeis.net/">TheTimeIs.net</a> is built using modern web technologies to ensure reliability,
               performance, and accuracy:
             </p>
             <ul className="list-disc pl-6 space-y-2">
@@ -80,12 +80,12 @@ const AboutPage = () => {
           <div className="bg-card rounded-lg shadow-md p-8 elevation-shadow">
             <h2 className="text-2xl font-bold mb-4">Contact Us</h2>
             <p className="mb-4">
-              Have questions, suggestions, or feedback about TimeSync? We'd love to hear from you.
+              Have questions, suggestions, or feedback about TheTimeIs.net? We'd love to hear from you.
             </p>
             <div className="flex flex-col md:flex-row justify-between">
               <div>
                 <h3 className="font-semibold mb-2">Email</h3>
-                <p className="text-muted-foreground">support@timesync.example</p>
+                <p className="text-muted-foreground">support@thetimeis.net.example</p>
               </div>
               
               <div>
