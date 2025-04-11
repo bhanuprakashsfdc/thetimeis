@@ -14,6 +14,7 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
+import { TooltipProvider } from '@/components/ui/tooltip';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -79,8 +80,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     { name: "Home", path: "/", icon: <Home className="h-4 w-4 mr-2" /> },
     { name: "Tools", path: "#", icon: <Wrench className="h-4 w-4 mr-2" />, hasSubmenu: true },
     { name: "About", path: "/about.html", icon: <Info className="h-4 w-4 mr-2" /> },
-    { name: "Blog", path: "#", icon: <BookOpen className="h-4 w-4 mr-2" /> },
-    { name: "Contact", path: "#", icon: <MessageSquare className="h-4 w-4 mr-2" /> }
+    { name: "Blog", path: "/blog.html", icon: <BookOpen className="h-4 w-4 mr-2" /> },
+    { name: "Contact", path: "/contact.html", icon: <MessageSquare className="h-4 w-4 mr-2" /> }
   ];
   
   // Tools submenu items
@@ -239,7 +240,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       )}
 
       <main className="flex-1 container mx-auto px-4 py-8">
-        {children}
+        <TooltipProvider>
+            {children}
+          </TooltipProvider>
       </main>
       
       <footer className="bg-secondary py-6 mt-auto">
