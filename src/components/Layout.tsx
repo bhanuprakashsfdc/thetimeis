@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Clock, Sun, Moon, Menu, X, Timer, RotateCw, Home, Wrench, Info, BookOpen, MessageSquare } from 'lucide-react';
@@ -79,17 +78,15 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     { name: "Home", path: "/", icon: <Home className="h-4 w-4 mr-2" /> },
     { name: "Tools", path: "#", icon: <Wrench className="h-4 w-4 mr-2" />, hasSubmenu: true },
     { name: "About", path: "/about.html", icon: <Info className="h-4 w-4 mr-2" /> },
-    { name: "Blog", path: "#", icon: <BookOpen className="h-4 w-4 mr-2" /> },
-    { name: "Contact", path: "#", icon: <MessageSquare className="h-4 w-4 mr-2" /> }
+    { name: "Blog", path: "/blog.html", icon: <BookOpen className="h-4 w-4 mr-2" /> },
+    { name: "Contact", path: "/contact.html", icon: <MessageSquare className="h-4 w-4 mr-2" /> }
   ];
   
   // Tools submenu items
   const toolsItems = [
     { name: "World Clock", path: "/world-clock.html", icon: <Clock className="h-4 w-4" /> },
     { name: "Time Zone", path: "/timezone.html", icon: <Clock className="h-4 w-4" /> },
-    { name: "Pomodoro", path: "/pomodoro.html", icon: <Timer className="h-4 w-4" /> },
-    { name: "Calendar", path: "/calendar.html", icon: <Clock className="h-4 w-4" /> },
-    { name: "Spin Wheel", path: "/spin-wheel.html", icon: <RotateCw className="h-4 w-4" /> }
+    { name: "Calendar", path: "/calendar.html", icon: <Clock className="h-4 w-4" /> }
   ];
 
   return (

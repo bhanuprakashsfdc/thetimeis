@@ -17,6 +17,7 @@ import Pomodoro from "./pages/Pomodoro";
 import SpinWheel from "./pages/SpinWheel";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
+import Contact from "./pages/Contact";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { APP_NAME } from "./lib/constants";
 
@@ -44,8 +45,9 @@ const App = () => (
             <Route path="/terms.html" element={<Terms />} />
             <Route path="/privacy.html" element={<Privacy />} />
             <Route path="/blog.html" element={<Blog />} />
+            <Route path="/contact.html" element={<Contact />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
-            <Route path="/city/:citySlug.html" element={<CityPage />} />
+            <Route path="/city/:citySlug" element={<CityPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

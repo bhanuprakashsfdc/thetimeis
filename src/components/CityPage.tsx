@@ -17,7 +17,9 @@ const CityPage = () => {
 
   useEffect(() => {
     if (citySlug) {
-      const city = getCityBySlug(citySlug);
+      // Remove the .html extension for processing
+      const cleanSlug = citySlug.replace('.html', '');
+      const city = getCityBySlug(cleanSlug);
       if (city) {
         setCityInfo(city);
         document.title = `Current Time in ${city.name} | ${APP_NAME}`;

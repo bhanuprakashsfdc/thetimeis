@@ -33,7 +33,7 @@ const CityCard: React.FC<CityCardProps> = ({ name, timezone, country }) => {
   const citySlug = cityToSlug(name);
   
   return (
-    <Link to={`/city/${citySlug}.html`} className="block hover:no-underline">
+    <Link to={`/city/${citySlug}`} className="block hover:no-underline">
       <Card className="h-full transition-all duration-300 hover:shadow-lg hover:scale-[1.02] border-2 border-transparent hover:border-primary/30">
         <CardContent className="pt-6">
           <div className="flex items-center justify-between mb-2">
