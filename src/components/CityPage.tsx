@@ -7,6 +7,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Helmet } from 'react-helmet-async';
 import { useToast } from '@/hooks/use-toast';
 import { APP_NAME } from '@/lib/constants';
+import Layout from '@/components/Layout';
 
 const CityPage = () => {
   const { citySlug } = useParams<{ citySlug: string }>();
@@ -14,16 +15,19 @@ const CityPage = () => {
   const [cityInfo, setCityInfo] = useState<any>(null);
   const { toast } = useToast();
   const [format24h, setFormat24h] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (citySlug) {
       // Remove the .html extension for processing
       const cleanSlug = citySlug.replace('.html', '');
       const city = getCityBySlug(cleanSlug);
+      
       if (city) {
         setCityInfo(city);
         document.title = `Current Time in ${city.name} | ${APP_NAME}`;
       }
+      setLoading(false);
     }
   }, [citySlug]);
 
@@ -37,8 +41,21 @@ const CityPage = () => {
     return () => clearInterval(timer);
   }, [cityInfo]);
 
+  // Show loading while we determine if city exists
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+  
+  // If we've finished loading but found no city, show an appropriate message instead of redirecting
   if (!citySlug || !cityInfo) {
-    return <Navigate to="/not-found" replace />;
+    return (
+      <Layout>
+        <div className="container mx-auto px-4 py-8 text-center">
+          <h1 className="text-3xl font-bold mb-4">City Not Found</h1>
+          <p className="text-lg mb-8">Sorry, we couldn't find information for the requested city.</p>
+        </div>
+      </Layout>
+    );
   }
 
   const toggleTimeFormat = () => {
@@ -50,7 +67,7 @@ const CityPage = () => {
   };
 
   return (
-    <>
+    <Layout>
       <Helmet>
         <title>Current Time in {cityInfo.name} | {APP_NAME}</title>
         <meta name="description" content={`Current accurate time in ${cityInfo.name}, ${cityInfo.country}. Local time, time zone, DST, GMT/UTC offset.`} />
@@ -106,7 +123,7 @@ const CityPage = () => {
           </div>
         </div>
       </div>
-    </>
+    </Layout>
   );
 };
 
