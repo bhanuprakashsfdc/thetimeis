@@ -23,7 +23,7 @@ export interface BlogPost {
         <p>Time zones are a system of dividing the Earth into 24 regions, each approximately 15 degrees of longitude wide, where the same standard time is used. This system allows for a standardized way of keeping time across different parts of the world.</p>
         
         <h2>The Origin of Time Zones</h2>
-        <p>Prior to the late 19th century, time was determined locally based on solar noon. However, the expansion of railroad networks and telecommunications made this system impractical. In 1884, the International Meridian Conference established Greenwich, London as the Prime Meridian (0° longitude), and created the system of 24 time zones that we use today.</p>
+        <p>Prior to the late 19th century, time was determined locally based on solar noon. However, the expansion of railroad networks and telecommunications made this system impractical. In 1884, the International Meridian Conference established Greenwich, London as the Prime Meridian (0° longitude), and created the system of 24 time zones that we use today. Check our <a href="/timezone.html">Timezone Converter</a> to explore different time zones.</p>
         
         <h2>How Time Zones Work</h2>
         <p>Each time zone is ideally 15° of longitude wide, corresponding to a one-hour difference in mean solar time. As you travel east, the time becomes later; as you travel west, the time becomes earlier. The International Date Line marks where one day changes to the next.</p>
@@ -67,7 +67,7 @@ export interface BlogPost {
         <p>Developed in the 1950s, atomic clocks measure time using the resonance frequencies of atoms. They are incredibly precise, losing just one second over millions of years. Today, networks of atomic clocks maintain Coordinated Universal Time (UTC), the global time standard.</p>
         
         <h2>Digital Age</h2>
-        <p>In our modern era, time is synchronized globally through GPS satellites and network time protocols. Our smartphones, computers, and other digital devices automatically synchronize to maintain accurate time without human intervention.</p>
+        <p>In our modern era, time is synchronized globally through GPS satellites and network time protocols. Our smartphones, computers, and other digital devices automatically synchronize to maintain accurate time without human intervention. Experience this synchronization with our <a href="/world-clock.html">World Clock</a> feature.</p>
       `,
       author: "Robert Chen",
       date: "2025-03-15",
@@ -93,7 +93,7 @@ export interface BlogPost {
         <p>When traveling across multiple time zones, our circadian rhythms remain synchronized with the original time zone, resulting in jet lag. This temporary condition can cause fatigue, insomnia, poor concentration, and digestive issues. It typically takes one day per time zone crossed to fully adjust.</p>
         
         <h2>Optimizing Your Circadian Rhythm</h2>
-        <p>Maintaining a regular sleep schedule, getting exposure to natural light during the day, avoiding blue light from screens before bedtime, and managing meal times can all help optimize your circadian rhythm and improve overall health.</p>
+        <p>Maintaining a regular sleep schedule, getting exposure to natural light during the day, avoiding blue light from screens before bedtime, and managing meal times can all help optimize your circadian rhythm and improve overall health. Use our <a href="/calendar.html">Calendar</a> tool to help maintain a consistent schedule.</p>
         
         <h2>Chronotherapy</h2>
         <p>Chronotherapy involves planning treatment approaches around the body's natural rhythms. For example, some cancer treatments and medications are more effective or have fewer side effects when given at specific times that align with the body's circadian clock.</p>

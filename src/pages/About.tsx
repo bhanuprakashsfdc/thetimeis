@@ -36,7 +36,7 @@ const AboutPage = () => {
               </div>
               <h3 className="text-xl font-semibold mb-2">Precision Timing</h3>
               <p className="text-muted-foreground">
-                Our clocks are synchronized with atomic time servers to ensure accuracy within milliseconds.
+                Our <a href="/world-clock.html" className="text-primary hover:underline">clocks</a> are synchronized with atomic time servers to ensure accuracy within milliseconds.
               </p>
             </div>
             
@@ -46,7 +46,7 @@ const AboutPage = () => {
               </div>
               <h3 className="text-xl font-semibold mb-2">Global Coverage</h3>
               <p className="text-muted-foreground">
-                Support for all major timezones with detailed regional information.
+                Support for all major timezones with <a href="/timezone.html" className="text-primary hover:underline">detailed regional information</a>.
               </p>
             </div>
             
@@ -56,7 +56,7 @@ const AboutPage = () => {
               </div>
               <h3 className="text-xl font-semibold mb-2">Calendar Integration</h3>
               <p className="text-muted-foreground">
-                Comprehensive calendar functions with day tracking and date calculations.
+                Comprehensive <a href="/calendar.html" className="text-primary hover:underline">calendar functions</a> with day tracking and date calculations.
               </p>
             </div>
           </div>
