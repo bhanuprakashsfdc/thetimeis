@@ -238,7 +238,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
       <main className="flex-1 container mx-auto px-4 py-8">
         <TooltipProvider>
-          {children}
+            {children}
         </TooltipProvider>
       </main>
       

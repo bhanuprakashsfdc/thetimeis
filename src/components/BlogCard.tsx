@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
@@ -40,3 +39,4 @@ const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
 };
 
 export default BlogCard;
+

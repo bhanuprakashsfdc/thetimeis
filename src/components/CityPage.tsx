@@ -2,11 +2,17 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import ClockDisplay from '@/components/ClockDisplay';
+import CityCard from '@/components/CityCard';
 import { getCityBySlug } from '@/lib/cities';
 import { Card, CardContent } from '@/components/ui/card';
 import { Helmet } from 'react-helmet-async';
 import { useToast } from '@/hooks/use-toast';
 import { APP_NAME } from '@/lib/constants';
+
+import { getPopularCities } from '@/lib/cities';
+import { Button } from '@/components/ui/button';
+import { ArrowRight, Globe, Clock, Calendar } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import Layout from '@/components/Layout';
 
 const CityPage = () => {
@@ -16,13 +22,13 @@ const CityPage = () => {
   const { toast } = useToast();
   const [format24h, setFormat24h] = useState(false);
   const [loading, setLoading] = useState(true);
-
+  const popularCities = getPopularCities();
   useEffect(() => {
     if (citySlug) {
       // Remove the .html extension for processing
       const cleanSlug = citySlug.replace('.html', '');
       const city = getCityBySlug(cleanSlug);
-      
+
       if (city) {
         setCityInfo(city);
         document.title = `Current Time in ${city.name} | ${APP_NAME}`;
@@ -40,12 +46,11 @@ const CityPage = () => {
     
     return () => clearInterval(timer);
   }, [cityInfo]);
-
   // Show loading while we determine if city exists
   if (loading) {
     return <p>Loading...</p>;
   }
-  
+
   // If we've finished loading but found no city, show an appropriate message instead of redirecting
   if (!citySlug || !cityInfo) {
     return (
@@ -120,6 +125,26 @@ const CityPage = () => {
                 </div>
               </CardContent>
             </Card>
+          </div>
+        </div>
+        <div className="mb-16">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-2xl font-bold">Popular Cities</h2>
+            <Button asChild variant="ghost" size="sm">
+              <Link to="/world-clock.html" className="flex items-center gap-2">
+                View All <ArrowRight className="h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {popularCities.map((city) => (
+              <CityCard 
+                key={city.name}
+                name={city.name}
+                timezone={city.timezone}
+                country={city.country}
+              />
+            ))}
           </div>
         </div>
       </div>

@@ -100,12 +100,9 @@
   .elevation-shadow {
     @apply shadow-md hover:shadow-lg transition-shadow duration-300;
   }
-  
-  /* Blog post content styling */
   .prose {
     @apply text-foreground max-w-none;
-  }
-  
+  }  
   .prose h2 {
     @apply text-xl font-semibold mt-8 mb-4;
   }
@@ -129,8 +126,7 @@
   .prose a {
     @apply text-primary hover:underline;
   }
-  
-  .prose blockquote {
+   .prose blockquote {
     @apply border-l-4 border-primary/30 pl-4 italic;
   }
 }
