@@ -15,6 +15,8 @@ import NotFound from "./pages/NotFound";
 import CityPage from "./components/CityPage";
 import Pomodoro from "./pages/Pomodoro";
 import SpinWheel from "./pages/SpinWheel";
+import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { APP_NAME } from "./lib/constants";
 
@@ -41,6 +43,8 @@ const App = () => (
             <Route path="/about.html" element={<About />} />
             <Route path="/terms.html" element={<Terms />} />
             <Route path="/privacy.html" element={<Privacy />} />
+            <Route path="/blog.html" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/city/:citySlug.html" element={<CityPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
