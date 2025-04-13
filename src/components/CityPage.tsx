@@ -3,13 +3,13 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import ClockDisplay from '@/components/ClockDisplay';
 import CityCard from '@/components/CityCard';
-import { getCityBySlug } from '@/lib/cities';
+import { getCityBySlug } from '@/constants/cities';
 import { Card, CardContent } from '@/components/ui/card';
 import { Helmet } from 'react-helmet-async';
 import { useToast } from '@/hooks/use-toast';
 import { APP_NAME } from '@/lib/constants';
 
-import { getPopularCities } from '@/lib/cities';
+import { getPopularCities } from '@/constants/cities';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Globe, Clock, Calendar } from 'lucide-react';
 import { Link } from 'react-router-dom';

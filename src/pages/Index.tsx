@@ -3,9 +3,10 @@ import React, { useState } from 'react';
 import Layout from '@/components/Layout';
 import ClockDisplay from '@/components/ClockDisplay';
 import TimezoneInfo from '@/components/TimezoneInfo';
+import TimeZoneDisplay from '@/components/TimeZoneDisplay';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import CityCard from '@/components/CityCard';
-import { getPopularCities } from '@/lib/cities';
+import { getPopularCities } from '@/constants/cities';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { APP_NAME } from '@/lib/constants';
@@ -76,7 +77,7 @@ const Index = () => {
             </div>
           </div>
         </div>
-        
+        <TimeZoneDisplay />
         <nav className="mb-8" aria-label="breadcrumb">
           <ol className="flex items-center space-x-2 text-sm">
             <li><Link to="/" className="text-primary hover:underline">Home</Link></li>
