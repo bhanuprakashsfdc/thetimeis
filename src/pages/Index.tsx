@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import Layout from '@/components/Layout';
 import ClockDisplay from '@/components/ClockDisplay';
@@ -9,6 +10,7 @@ import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { APP_NAME, TIMEIN } from '@/constants/constants';
 import Weather from '@/components/Weather';
+import TimezonesComponent from '@/components/TimezonesComponent';
 
 const Index = () => {
   const [format24h, setFormat24h] = useState(false);
@@ -87,6 +89,11 @@ const Index = () => {
             <li>Current Time</li>
           </ol>
         </nav>
+
+        {/* Add TimezonesComponent before Popular Cities section */}
+        <div className="mb-16">
+          <TimezonesComponent />
+        </div>
 
         <div className="mb-16">
           <div className="flex items-center justify-between mb-6">
