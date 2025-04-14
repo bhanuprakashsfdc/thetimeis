@@ -3,13 +3,13 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import ClockDisplay from '@/components/ClockDisplay';
 import CityCard from '@/components/CityCard';
-import { getCityBySlug } from '@/lib/cities';
+import { getCityBySlug } from '@/constants/cities';
 import { Card, CardContent } from '@/components/ui/card';
 import { Helmet } from 'react-helmet-async';
 import { useToast } from '@/hooks/use-toast';
-import { APP_NAME } from '@/lib/constants';
+import { APP_NAME } from '@/constants/constants';
 
-import { getPopularCities } from '@/lib/cities';
+import { getPopularCities } from '@/constants/cities';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Globe, Clock, Calendar } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -84,7 +84,7 @@ const CityPage = () => {
           <div className="text-center mb-10">
             <h1 className="text-4xl font-bold mb-4">Current Time in {cityInfo.name}</h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              {cityInfo.country}, {cityInfo.region} • {cityInfo.timezone.replace('_', ' ')}
+            {cityInfo?.country ?? 'Unknown Country'}, {cityInfo?.region ?? 'Unknown Region'} • {cityInfo?.timezone?.replace('_', ' ') ?? 'Unknown Timezone'}
             </p>
           </div>
 
@@ -104,14 +104,14 @@ const CityPage = () => {
                   <ClockDisplay 
                     format24h={format24h}
                     showSeconds={true}
-                    timezone={cityInfo.timezone}
+                    timezone={cityInfo.timeZone}
                     className="scale-125 mb-8"
                   />
                 </div>
                 
                 <div className="city-info mt-8 text-center">
                   <div className="text-lg">
-                    <strong>Time Zone:</strong> {cityInfo.timezone}
+                    <strong>Time Zone:</strong> {cityInfo.timeZone}
                   </div>
                   <div className="text-muted-foreground">
                     {new Intl.DateTimeFormat('en-US', {
@@ -119,7 +119,7 @@ const CityPage = () => {
                       year: 'numeric',
                       month: 'long', 
                       day: 'numeric',
-                      timeZone: cityInfo.timezone
+                      timeZone: cityInfo.timeZone
                     }).format(time)}
                   </div>
                 </div>
@@ -141,8 +141,8 @@ const CityPage = () => {
               <CityCard 
                 key={city.name}
                 name={city.name}
-                timezone={city.timezone}
-                country={city.country}
+                timezone={city.timeZone}
+                country={city.Country}
               />
             ))}
           </div>

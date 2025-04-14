@@ -4,7 +4,7 @@ import Layout from '@/components/Layout';
 import PomodoroTimer from '@/components/PomodoroTimer';
 import { Timer, CheckCircle } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
-import { APP_NAME } from '@/lib/constants';
+import { APP_NAME } from '@/constants/constants';
 
 const PomodoroPage = () => {
   return (

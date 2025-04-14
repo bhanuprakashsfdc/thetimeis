@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Clock, Sun, Moon, Menu, X, Timer, RotateCw, Home, Wrench, Info, BookOpen, MessageSquare, Calendar1, LoaderPinwheel } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
-import { APP_NAME } from '@/lib/constants';
+import { APP_NAME } from '@/constants/constants';
 import {
   NavigationMenu,
   NavigationMenuContent,

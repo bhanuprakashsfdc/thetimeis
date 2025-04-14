@@ -18,8 +18,10 @@ import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import Contact from "./pages/Contact";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-import { APP_NAME } from "./lib/constants";
+import { APP_NAME, TIMEIN } from "@/constants/constants";
 import { TooltipProvider } from '@/components/ui/tooltip';
+import { cities } from '@/constants/cities';
+import CityTime from '@/components/CityTime';   
 
 // Create a new QueryClient instance
 const queryClient = new QueryClient();
@@ -48,7 +50,7 @@ const App = () => (
             <Route path="/blog.html" element={<Blog />} />
             <Route path="/contact.html" element={<Contact />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
-            <Route path="/city/:citySlug.html" element={<CityPage />} />
+            <Route path={`/${TIMEIN}:citySlug`} element={<CityPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
