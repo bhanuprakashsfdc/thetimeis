@@ -50,14 +50,14 @@ const SearchDialog: React.FC<SearchDialogProps> = ({ open, onOpenChange }) => {
           id: `city-${city.name}`,
           type: 'city',
           name: city.name,
-          details: city.country || 'Unknown',
+          details: city.Country || 'Unknown',
           path: `/${TIMEIN}${slug}.html`
         });
       }
       
       // Collect unique countries
-      if (city.country && city.country.toLowerCase().includes(lowerQuery)) {
-        uniqueCountries.add(city.country);
+      if (city.Country && city.Country.toLowerCase().includes(lowerQuery)) {
+        uniqueCountries.add(city.Country);
       }
       
       // Collect unique timezones

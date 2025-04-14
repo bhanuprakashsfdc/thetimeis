@@ -56,8 +56,8 @@ const generateSitemap = () => {
   // Create country paths for sitemap
   const countriesSet = new Set();
   cities.forEach(city => {
-    if (city.country) {
-      countriesSet.add(city.country);
+    if (city.Country) {
+      countriesSet.add(city.Country);
     }
   });
 

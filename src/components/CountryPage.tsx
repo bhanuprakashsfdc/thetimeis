@@ -31,7 +31,7 @@ const CountryPage = () => {
 
       // Find cities in this country
       const matchedCities = cities.filter(
-        city => city.country && city.country.toLowerCase() === formattedCountry.toLowerCase()
+        city => city.Country && city.Country.toLowerCase() === formattedCountry.toLowerCase()
       );
 
       if (matchedCities.length > 0) {
