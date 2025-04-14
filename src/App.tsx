@@ -14,6 +14,7 @@ import Privacy from "./pages/Privacy";
 import NotFound from "./pages/NotFound";
 import CityPage from "./components/CityPage";
 import CountryPage from "./components/CountryPage";
+import TimezonePage from "./components/TimezonePage";
 import Pomodoro from "./pages/Pomodoro";
 import SpinWheel from "./pages/SpinWheel";
 import Blog from "./pages/Blog";
@@ -49,6 +50,7 @@ const App = () => (
             <Route path="/blog.html" element={<Blog />} />
             <Route path="/contact.html" element={<Contact />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
+            <Route path="/:timezoneSlug" element={<TimezonePage />} />
             <Route path={`/${TIMEIN}:citySlug`} element={<CityPage />} />
             <Route path="/country/:countrySlug" element={<CountryPage />} />
             <Route path="*" element={<NotFound />} />

@@ -14,6 +14,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight, Globe, Clock, Calendar } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Layout from '@/components/Layout';
+import Weather from '@/components/Weather';
 
 const CityPage = () => {
   const { citySlug } = useParams<{ citySlug: string }>();
@@ -86,6 +87,9 @@ const CityPage = () => {
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             {cityInfo?.country ?? 'Unknown Country'}, {cityInfo?.region ?? 'Unknown Region'} • {cityInfo?.timezone?.replace('_', ' ') ?? 'Unknown Timezone'}
             </p>
+            <div className="flex justify-center mt-4">
+              <Weather city={cityInfo.name} />
+            </div>
           </div>
 
           <div className="grid grid-cols-1 gap-8">
