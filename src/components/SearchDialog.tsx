@@ -1,14 +1,7 @@
 
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Search, X } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import {
   Command,
   CommandEmpty,
@@ -51,7 +44,7 @@ const SearchDialog: React.FC<SearchDialogProps> = ({ open, onOpenChange }) => {
 
     // Search cities
     cities.forEach(city => {
-      if (city.name.toLowerCase().includes(lowerQuery)) {
+      if (city.name && city.name.toLowerCase().includes(lowerQuery)) {
         const slug = cityToSlug(city.name);
         results.push({
           id: `city-${city.name}`,
@@ -122,48 +115,54 @@ const SearchDialog: React.FC<SearchDialogProps> = ({ open, onOpenChange }) => {
             <CommandEmpty>No results found.</CommandEmpty>
             {searchResults.length > 0 && (
               <>
-                <CommandGroup heading="Cities">
-                  {searchResults
-                    .filter(result => result.type === 'city')
-                    .map(result => (
-                      <CommandItem 
-                        key={result.id} 
-                        onSelect={() => handleSelect(result)}
-                        className="flex justify-between cursor-pointer"
-                      >
-                        <div>{result.name}</div>
-                        <div className="text-muted-foreground text-sm">{result.details}</div>
-                      </CommandItem>
-                    ))}
-                </CommandGroup>
+                {searchResults.filter(result => result.type === 'city').length > 0 && (
+                  <CommandGroup heading="Cities">
+                    {searchResults
+                      .filter(result => result.type === 'city')
+                      .map(result => (
+                        <CommandItem 
+                          key={result.id} 
+                          onSelect={() => handleSelect(result)}
+                          className="flex justify-between cursor-pointer"
+                        >
+                          <div>{result.name}</div>
+                          <div className="text-muted-foreground text-sm">{result.details}</div>
+                        </CommandItem>
+                      ))}
+                  </CommandGroup>
+                )}
                 
-                <CommandGroup heading="Countries">
-                  {searchResults
-                    .filter(result => result.type === 'country')
-                    .map(result => (
-                      <CommandItem 
-                        key={result.id} 
-                        onSelect={() => handleSelect(result)}
-                        className="cursor-pointer"
-                      >
-                        {result.name}
-                      </CommandItem>
-                    ))}
-                </CommandGroup>
+                {searchResults.filter(result => result.type === 'country').length > 0 && (
+                  <CommandGroup heading="Countries">
+                    {searchResults
+                      .filter(result => result.type === 'country')
+                      .map(result => (
+                        <CommandItem 
+                          key={result.id} 
+                          onSelect={() => handleSelect(result)}
+                          className="cursor-pointer"
+                        >
+                          {result.name}
+                        </CommandItem>
+                      ))}
+                  </CommandGroup>
+                )}
                 
-                <CommandGroup heading="Timezones">
-                  {searchResults
-                    .filter(result => result.type === 'timezone')
-                    .map(result => (
-                      <CommandItem 
-                        key={result.id} 
-                        onSelect={() => handleSelect(result)}
-                        className="cursor-pointer"
-                      >
-                        {result.name}
-                      </CommandItem>
-                    ))}
-                </CommandGroup>
+                {searchResults.filter(result => result.type === 'timezone').length > 0 && (
+                  <CommandGroup heading="Timezones">
+                    {searchResults
+                      .filter(result => result.type === 'timezone')
+                      .map(result => (
+                        <CommandItem 
+                          key={result.id} 
+                          onSelect={() => handleSelect(result)}
+                          className="cursor-pointer"
+                        >
+                          {result.name}
+                        </CommandItem>
+                      ))}
+                  </CommandGroup>
+                )}
               </>
             )}
           </CommandList>
