@@ -26,7 +26,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const { toast } = useToast();
 
   useEffect(() => {
-    // Check for user preference
     const isDark = localStorage.getItem('dark-mode') === 'true' || 
       window.matchMedia('(prefers-color-scheme: dark)').matches;
     
@@ -36,7 +35,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     }
   }, []);
 
-  // Update time every second
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentTime(new Date());
@@ -64,7 +62,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
   
-  // Format time based on user's locale
   const formatTime = () => {
     return new Intl.DateTimeFormat(navigator.language || 'en-US', {
       hour: '2-digit',
@@ -74,7 +71,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     }).format(currentTime);
   };
   
-  // Main menu items
   const mainMenuItems = [
     { name: "Home", path: "/", icon: <Home className="h-4 w-4 mr-2" /> },
     { name: "Tools", path: "#", icon: <Wrench className="h-4 w-4 mr-2" />, hasSubmenu: true },
@@ -83,7 +79,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     { name: "Contact", path: "/contact.html", icon: <MessageSquare className="h-4 w-4 mr-2" /> }
   ];
   
-  // Tools submenu items
   const toolsItems = [
     { name: "World Clock", path: "/world-clock.html", icon: <Clock className="h-4 w-4" /> },
     { name: "Time Zone", path: "/timezone.html", icon: <Timer className="h-4 w-4" /> },
@@ -101,7 +96,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             <Link to="/" className="text-xl font-bold tracking-tight">{APP_NAME}</Link>
           </div>
           
-          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-2">
             <NavigationMenu>
               <NavigationMenuList>
@@ -149,7 +143,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               </NavigationMenuList>
             </NavigationMenu>
             
-            {/* Current time based on user's IP timezone */}
             <div className="border-l border-primary-foreground/30 pl-4 ml-2">
               <div className="flex items-center gap-2">
                 <Clock className="h-4 w-4" />
@@ -167,16 +160,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             </Button>
           </nav>
           
-          {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
-            {/* Current time for mobile 
-            <div className="mr-4">
-              <div className="flex items-center gap-1">
-                <Clock className="h-4 w-4" />
-                <span className="text-xs font-mono">{formatTime()}</span>
-              </div>
-            </div>
-            */}
             <Button 
               variant="ghost" 
               size="icon" 
@@ -197,7 +181,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         </div>
       </header>
 
-      {/* Mobile Navigation Menu */}
       {mobileMenuOpen && (
         <div className="md:hidden bg-background border-b border-border">
           <nav className="container mx-auto py-4 flex flex-col space-y-4 px-6">
@@ -240,7 +223,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
       <main className="flex-1 container mx-auto px-4 py-8">
         <TooltipProvider>
-            {children}
+          {children}
         </TooltipProvider>
       </main>
       
