@@ -5,5 +5,5 @@
 
 export const APP_NAME = "thetimeis.net";
 
-export const TIMEIN = "time-in";
+export const TIMEIN = "time-in/";
 

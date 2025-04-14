@@ -8,7 +8,7 @@ import CityCard from '@/components/CityCard';
 import { getPopularCities } from '@/constants/cities';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import { APP_NAME } from '@/constants/constants';
+import { APP_NAME, TIMEIN } from '@/constants/constants';
 
 const Index = () => {
   const [format24h, setFormat24h] = useState(false);
@@ -44,7 +44,7 @@ const Index = () => {
           <h1 className="text-4xl font-bold text-center mb-8">Current Time</h1>
           <p className="text-xl text-muted-foreground text-center mb-8 max-w-2xl">
             Displaying exact time for {currentCity.name}, {currentCity.country}. 
-            <Link to={`/time-in/${currentCity.name.toLowerCase().replace(/ /g, '-')}.html`} className="text-primary hover:underline">View details</Link>
+            <Link to={`/${TIMEIN}${currentCity.name.toLowerCase().replace(/ /g, '-')}.html`} className="text-primary hover:underline">View details</Link>
           </p>
           <div className="flex justify-center w-full">
             <div className="bg-card rounded-xl shadow-xl p-8 text-center elevation-shadow w-full max-w-md border border-border/50">
