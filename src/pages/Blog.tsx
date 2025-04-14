@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import Layout from '@/components/Layout';
 import BlogCard from '@/components/BlogCard';
-import { getBlogPosts } from '@/lib/blog';
+import { getBlogPosts } from '@/constants/blog';
 import { 
   Pagination, 
   PaginationContent, 

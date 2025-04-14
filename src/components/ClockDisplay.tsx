@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { cn } from '@/lib/utils';
+import { cn } from '@/constants/utils';
 
 interface ClockDisplayProps {
   timezone?: string;
@@ -8,7 +8,7 @@ interface ClockDisplayProps {
   showSeconds?: boolean;
   format24h?: boolean;
 }
-
+const WEBSITE_NAME = 'The Time Is';
 const ClockDisplay: React.FC<ClockDisplayProps> = ({
   timezone = Intl.DateTimeFormat().resolvedOptions().timeZone,
   className,
@@ -19,6 +19,23 @@ const ClockDisplay: React.FC<ClockDisplayProps> = ({
   const [isColonVisible, setIsColonVisible] = useState(true);
   
   useEffect(() => {
+    const updateTime = () => {
+      const now = new Date();
+      setTime(now);
+
+      // Format for document title
+      const options: Intl.DateTimeFormatOptions = {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: showSeconds ? '2-digit' : undefined,
+        hour12: !format24h,
+        timeZone: timezone,
+      };
+      const formattedTime = new Intl.DateTimeFormat('en-US', options).format(now);
+      document.title = `Time is ${formattedTime} - ${WEBSITE_NAME}`;
+    };
+
+    updateTime(); // initial call
     // Update time every 100ms for smooth transitions
     const timeInterval = setInterval(() => {
       setTime(new Date());

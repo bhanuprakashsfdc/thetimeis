@@ -14,7 +14,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
-import { timezones } from '@/lib/timezones';
+import { timezones } from '@/constants/timezones';
 
 const TimezonePage = () => {
   const [selectedTimezone, setSelectedTimezone] = useState<string>(
@@ -92,7 +92,7 @@ const TimezonePage = () => {
         <div className="text-center mb-10">
           <h1 className="text-4xl font-bold mb-4">Timezone Converter</h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            View accurate time in any timezone around the world.
+            View accurate time in any timezone around the world. Learn more about <a href="/blog/understanding-time-zones.html" className="text-primary hover:underline">time zones</a> or check our <a href="/world-clock.html" className="text-primary hover:underline">World Clock</a>.
           </p>
         </div>
         

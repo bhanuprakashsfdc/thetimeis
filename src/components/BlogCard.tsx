@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Calendar } from 'lucide-react';
-import { BlogPost } from '@/lib/blog';
+import { BlogPost } from '@/constants/blog';
 
 interface BlogCardProps {
   post: BlogPost;
@@ -23,9 +23,21 @@ const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
         <p className="text-muted-foreground line-clamp-3 mb-4">
           {post.excerpt}
         </p>
-        <Badge variant="secondary" className="mb-2">
-          {post.category}
-        </Badge>
+        <div className="flex flex-wrap gap-2 mb-2">
+          <Badge variant="secondary">
+            {post.category}
+          </Badge>
+          {post.tags.includes('time zones') && (
+            <Badge variant="outline" className="hover:bg-primary/10">
+              <a href="/timezone.html" className="hover:text-primary">Timezone Tool</a>
+            </Badge>
+          )}
+          {post.tags.includes('clocks') && (
+            <Badge variant="outline" className="hover:bg-primary/10">
+              <a href="/world-clock.html" className="hover:text-primary">World Clock</a>
+            </Badge>
+          )}
+        </div>
       </CardContent>
       <CardFooter className="pt-0 flex items-center justify-between text-sm text-muted-foreground border-t pt-3">
         <div className="flex items-center gap-1">

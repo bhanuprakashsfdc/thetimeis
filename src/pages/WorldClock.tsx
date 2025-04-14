@@ -4,7 +4,7 @@ import Layout from '@/components/Layout';
 import WorldClock from '@/components/WorldClock';
 import { Globe } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
-import { APP_NAME } from '@/lib/constants';
+import { APP_NAME } from '@/constants/constants';
 
 const WorldClockPage = () => {
   return (
@@ -21,7 +21,7 @@ const WorldClockPage = () => {
         
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto text-center mb-10">
           Track time in multiple locations around the world.
-          Add and customize your preferred timezones.
+          Add and customize your preferred timezones. Explore our <a href="/timezone.html" className="text-primary hover:underline">Timezone Converter</a> or learn about <a href="/blog/understanding-time-zones.html" className="text-primary hover:underline">time zones</a>.
         </p>
         
         <WorldClock />

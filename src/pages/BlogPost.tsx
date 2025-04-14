@@ -2,7 +2,7 @@
 import React from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import Layout from '@/components/Layout';
-import { getBlogPostBySlug, getRelatedPosts, BlogPost } from '@/lib/blog';
+import { getBlogPostBySlug, getRelatedPosts, BlogPost } from '@/constants/blog';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';

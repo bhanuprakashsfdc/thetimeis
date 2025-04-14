@@ -15,7 +15,7 @@ const Privacy = () => {
             <section className="mb-8">
               <h2 className="text-2xl font-semibold mb-4">1. Introduction</h2>
               <p>
-                At TimeSync, we respect your privacy and are committed to protecting your personal data.
+                At <a href="https://www.thetimeis.net/">TheTimeIs.net</a>, we respect your privacy and are committed to protecting your personal data.
                 This Privacy Policy explains how we collect, use, and safeguard your information when
                 you visit our website.
               </p>
@@ -24,7 +24,7 @@ const Privacy = () => {
             <section className="mb-8">
               <h2 className="text-2xl font-semibold mb-4">2. Information We Collect</h2>
               <p className="mb-4">
-                When you use TimeSync, we may collect the following types of information:
+                When you use <a href="https://www.thetimeis.net/">TheTimeIs.net</a>, we may collect the following types of information:
               </p>
               
               <h3 className="text-xl font-semibold mb-2">2.1 Technical Data</h3>
@@ -63,7 +63,7 @@ const Privacy = () => {
             <section className="mb-8">
               <h2 className="text-2xl font-semibold mb-4">4. Local Storage</h2>
               <p className="mb-4">
-                TimeSync uses local storage to store certain preferences and settings on your device,
+              <a href="https://www.thetimeis.net/">TheTimeIs.net</a> uses local storage to store certain preferences and settings on your device,
                 such as your preferred timezones and display format. This information is stored locally
                 on your device and is not transmitted to our servers.
               </p>
@@ -90,7 +90,7 @@ const Privacy = () => {
             <section className="mb-8">
               <h2 className="text-2xl font-semibold mb-4">7. Children's Privacy</h2>
               <p>
-                TimeSync is not intended for children under the age of 13. We do not knowingly collect
+              <a href="https://www.thetimeis.net/">TheTimeIs.net</a>is not intended for children under the age of 13. We do not knowingly collect
                 personal information from children under 13. If you believe we have collected information
                 from a child under 13, please contact us immediately.
               </p>
@@ -107,7 +107,7 @@ const Privacy = () => {
             <section>
               <h2 className="text-2xl font-semibold mb-4">9. Contact Us</h2>
               <p>
-                If you have any questions about this Privacy Policy, please contact us at privacy@timesync.example.
+                If you have any questions about this Privacy Policy, please contact us at privacy@TheTimeIs.net.example.
               </p>
             </section>
           </div>

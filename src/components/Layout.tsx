@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Clock, Sun, Moon, Menu, X, Timer, RotateCw, Home, Wrench, Info, BookOpen, MessageSquare } from 'lucide-react';
+import { Clock, Sun, Moon, Menu, X, Timer, RotateCw, Home, Wrench, Info, BookOpen, MessageSquare, Calendar1, LoaderPinwheel } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
-import { APP_NAME } from '@/lib/constants';
+import { APP_NAME } from '@/constants/constants';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -86,8 +86,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   // Tools submenu items
   const toolsItems = [
     { name: "World Clock", path: "/world-clock.html", icon: <Clock className="h-4 w-4" /> },
-    { name: "Time Zone", path: "/timezone.html", icon: <Clock className="h-4 w-4" /> },
-    { name: "Calendar", path: "/calendar.html", icon: <Clock className="h-4 w-4" /> }
+    { name: "Time Zone", path: "/timezone.html", icon: <Timer className="h-4 w-4" /> },
+    { name: "Calendar", path: "/calendar.html", icon: <Calendar1 className="h-4 w-4" /> },
+    { name: "Spin Wheel", path: "/spin-wheel.html", icon: <LoaderPinwheel className="h-4 w-4" /> },
+    { name: "Pomodoro Timer", path: "/pomodoro.html", icon: <Timer className="h-4 w-4" /> }
   ];
 
   return (
@@ -167,14 +169,14 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
-            {/* Current time for mobile */}
+            {/* Current time for mobile 
             <div className="mr-4">
               <div className="flex items-center gap-1">
                 <Clock className="h-4 w-4" />
                 <span className="text-xs font-mono">{formatTime()}</span>
               </div>
             </div>
-            
+            */}
             <Button 
               variant="ghost" 
               size="icon" 

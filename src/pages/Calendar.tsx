@@ -15,7 +15,7 @@ const CalendarPage = () => {
         </div>
         
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto text-center mb-10">
-          View the calendar and get detailed information about dates.
+          View the calendar and get detailed information about dates. Learn about <a href="/blog/circadian-rhythms-internal-clock.html" className="text-primary hover:underline">circadian rhythms</a> and how they affect your schedule.
         </p>
         
         <Card className="mb-8 border border-border/50 shadow-lg">
