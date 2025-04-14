@@ -3,6 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { TooltipProvider } from '@/components/ui/tooltip';
 import Index from "./pages/Index";
 import WorldClock from "./pages/WorldClock";
 import Timezone from "./pages/Timezone";
@@ -12,6 +13,7 @@ import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
 import NotFound from "./pages/NotFound";
 import CityPage from "./components/CityPage";
+import CountryPage from "./components/CountryPage";
 import Pomodoro from "./pages/Pomodoro";
 import SpinWheel from "./pages/SpinWheel";
 import Blog from "./pages/Blog";
@@ -19,21 +21,18 @@ import BlogPost from "./pages/BlogPost";
 import Contact from "./pages/Contact";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { APP_NAME, TIMEIN } from "@/constants/constants";
-import { TooltipProvider } from '@/components/ui/tooltip';
-import { cities } from '@/constants/cities';
-import CityTime from '@/components/CityTime';   
 
 // Create a new QueryClient instance
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <HelmetProvider>
-        <Helmet>
-          <title>{APP_NAME} - Precise Time, Anywhere</title>
-          <meta name="description" content="Get accurate time synchronized with atomic clocks around the world. The most reliable time service for your needs." />
-        </Helmet>
+    <HelmetProvider>
+      <Helmet>
+        <title>{APP_NAME} - Precise Time, Anywhere</title>
+        <meta name="description" content="Get accurate time synchronized with atomic clocks around the world. The most reliable time service for your needs." />
+      </Helmet>
+      <TooltipProvider>
         <Toaster />
         <Sonner />
         <BrowserRouter>
@@ -51,11 +50,12 @@ const App = () => (
             <Route path="/contact.html" element={<Contact />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path={`/${TIMEIN}:citySlug`} element={<CityPage />} />
+            <Route path="/country/:countrySlug" element={<CountryPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
-      </HelmetProvider>
-    </TooltipProvider>
+      </TooltipProvider>
+    </HelmetProvider>
   </QueryClientProvider>
 );
 

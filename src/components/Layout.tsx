@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Clock, Sun, Moon, Menu, X, Timer, RotateCw, Home, Wrench, Info, BookOpen, MessageSquare, Calendar1, LoaderPinwheel } from 'lucide-react';
+import { Clock, Sun, Moon, Menu, X, Timer, Home, Wrench, Info, BookOpen, MessageSquare, Calendar1, LoaderPinwheel, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { APP_NAME } from '@/constants/constants';
+import SearchDialog from './SearchDialog';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -11,9 +12,7 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import { TooltipProvider } from '@/components/ui/tooltip';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -22,11 +21,10 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [darkMode, setDarkMode] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [currentTime, setCurrentTime] = useState(new Date());
+  const [searchDialogOpen, setSearchDialogOpen] = useState(false);
   const { toast } = useToast();
 
   useEffect(() => {
-    // Check for user preference
     const isDark = localStorage.getItem('dark-mode') === 'true' || 
       window.matchMedia('(prefers-color-scheme: dark)').matches;
     
@@ -34,15 +32,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     if (isDark) {
       document.documentElement.classList.add('dark');
     }
-  }, []);
-
-  // Update time every second
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentTime(new Date());
-    }, 1000);
-    
-    return () => clearInterval(timer);
   }, []);
 
   const toggleDarkMode = () => {
@@ -64,17 +53,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
   
-  // Format time based on user's locale
-  const formatTime = () => {
-    return new Intl.DateTimeFormat(navigator.language || 'en-US', {
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit',
-      hour12: true
-    }).format(currentTime);
+  const openSearchDialog = () => {
+    setSearchDialogOpen(true);
   };
   
-  // Main menu items
   const mainMenuItems = [
     { name: "Home", path: "/", icon: <Home className="h-4 w-4 mr-2" /> },
     { name: "Tools", path: "#", icon: <Wrench className="h-4 w-4 mr-2" />, hasSubmenu: true },
@@ -83,7 +65,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     { name: "Contact", path: "/contact.html", icon: <MessageSquare className="h-4 w-4 mr-2" /> }
   ];
   
-  // Tools submenu items
   const toolsItems = [
     { name: "World Clock", path: "/world-clock.html", icon: <Clock className="h-4 w-4" /> },
     { name: "Time Zone", path: "/timezone.html", icon: <Timer className="h-4 w-4" /> },
@@ -101,7 +82,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             <Link to="/" className="text-xl font-bold tracking-tight">{APP_NAME}</Link>
           </div>
           
-          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-2">
             <NavigationMenu>
               <NavigationMenuList>
@@ -149,47 +129,54 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               </NavigationMenuList>
             </NavigationMenu>
             
-            {/* Current time based on user's IP timezone */}
-            <div className="border-l border-primary-foreground/30 pl-4 ml-2">
-              <div className="flex items-center gap-2">
-                <Clock className="h-4 w-4" />
-                <span className="text-sm font-mono">{formatTime()}</span>
-              </div>
-            </div>
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              onClick={openSearchDialog}
+              className="text-primary-foreground"
+              aria-label="Search"
+            >
+              <Search className="h-5 w-5" />
+            </Button>
             
             <Button 
               variant="ghost" 
               size="icon" 
               onClick={toggleDarkMode}
               className="text-primary-foreground"
+              aria-label="Toggle dark mode"
             >
               {darkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
             </Button>
           </nav>
           
-          {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
-            {/* Current time for mobile 
-            <div className="mr-4">
-              <div className="flex items-center gap-1">
-                <Clock className="h-4 w-4" />
-                <span className="text-xs font-mono">{formatTime()}</span>
-              </div>
-            </div>
-            */}
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              onClick={openSearchDialog}
+              className="text-primary-foreground mr-2"
+              aria-label="Search"
+            >
+              <Search className="h-5 w-5" />
+            </Button>
+            
             <Button 
               variant="ghost" 
               size="icon" 
               onClick={toggleDarkMode}
               className="text-primary-foreground mr-2"
+              aria-label="Toggle dark mode"
             >
               {darkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
             </Button>
+            
             <Button
               variant="ghost"
               size="icon"
               onClick={toggleMobileMenu}
               className="text-primary-foreground"
+              aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>
@@ -197,7 +184,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         </div>
       </header>
 
-      {/* Mobile Navigation Menu */}
       {mobileMenuOpen && (
         <div className="md:hidden bg-background border-b border-border">
           <nav className="container mx-auto py-4 flex flex-col space-y-4 px-6">
@@ -238,10 +224,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         </div>
       )}
 
+      <SearchDialog open={searchDialogOpen} onOpenChange={setSearchDialogOpen} />
+
       <main className="flex-1 container mx-auto px-4 py-8">
-        <TooltipProvider>
-            {children}
-        </TooltipProvider>
+        {children}
       </main>
       
       <footer className="bg-secondary py-6 mt-auto">
