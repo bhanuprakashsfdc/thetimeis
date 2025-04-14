@@ -26,10 +26,10 @@ import {
 } from '@/components/ui/select';
 
 import { useToast } from '@/hooks/use-toast';
-import { cn } from '@/lib/utils';
-import { timezones } from '@/lib/timezones';
+import { cn } from '@/constants/utils';
+import { timezones } from '@/constants/timezones';
 import { Link } from 'react-router-dom';
-import { cityToSlug } from '@/lib/cities';
+import { cityToSlug } from '@/constants/cities';
 
 interface WorldClockProps {
   className?: string;
@@ -166,7 +166,7 @@ const WorldClock: React.FC<WorldClockProps> = ({ className }) => {
       <Card className="elevation-shadow">
         <CardHeader className="flex flex-row items-center justify-between py-4">
           <CardTitle className="text-lg font-medium">
-            <Link to={`/city/${citySlug}.html`} className="hover:text-primary">
+            <Link to={`/time-in/${citySlug}.html`} className="hover:text-primary">
               {cityName}
             </Link>
           </CardTitle>
@@ -175,7 +175,7 @@ const WorldClock: React.FC<WorldClockProps> = ({ className }) => {
           </Button>
         </CardHeader>
         <CardContent>
-          <Link to={`/city/${citySlug}.html`} className="block hover:no-underline">
+          <Link to={`/time-in/${citySlug}.html`} className="block hover:no-underline">
             <div className="text-3xl font-bold text-center">{time}</div>
             <div className="text-sm text-muted-foreground text-center mt-2">{date}</div>
           </Link>

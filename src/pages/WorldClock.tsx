@@ -4,7 +4,7 @@ import Layout from '@/components/Layout';
 import WorldClock from '@/components/WorldClock';
 import { Globe } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
-import { APP_NAME } from '@/lib/constants';
+import { APP_NAME } from '@/constants/constants';
 
 const WorldClockPage = () => {
   return (

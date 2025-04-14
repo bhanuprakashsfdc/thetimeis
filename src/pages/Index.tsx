@@ -3,20 +3,19 @@ import React, { useState } from 'react';
 import Layout from '@/components/Layout';
 import ClockDisplay from '@/components/ClockDisplay';
 import TimezoneInfo from '@/components/TimezoneInfo';
-import TimeZoneDisplay from '@/components/TimeZoneDisplay';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import CityCard from '@/components/CityCard';
 import { getPopularCities } from '@/constants/cities';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import { APP_NAME } from '@/lib/constants';
+import { APP_NAME } from '@/constants/constants';
 
 const Index = () => {
   const [format24h, setFormat24h] = useState(false);
   const [showSeconds, setShowSeconds] = useState(true);
   const popularCities = getPopularCities();
   const currentTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-  const currentCity = popularCities.find(city => city.timezone === currentTimezone) || popularCities[0];
+  const currentCity = popularCities.find(city => city.timeZone === currentTimezone) || popularCities[0];
   
   return (
     <Layout>
@@ -45,7 +44,7 @@ const Index = () => {
           <h1 className="text-4xl font-bold text-center mb-8">Current Time</h1>
           <p className="text-xl text-muted-foreground text-center mb-8 max-w-2xl">
             Displaying exact time for {currentCity.name}, {currentCity.country}. 
-            <Link to={`/city/${currentCity.name.toLowerCase().replace(/ /g, '-')}.html`} className="text-primary hover:underline">View details</Link>
+            <Link to={`/time-in/${currentCity.name.toLowerCase().replace(/ /g, '-')}.html`} className="text-primary hover:underline">View details</Link>
           </p>
           <div className="flex justify-center w-full">
             <div className="bg-card rounded-xl shadow-xl p-8 text-center elevation-shadow w-full max-w-md border border-border/50">
@@ -77,7 +76,6 @@ const Index = () => {
             </div>
           </div>
         </div>
-        <TimeZoneDisplay />
         <nav className="mb-8" aria-label="breadcrumb">
           <ol className="flex items-center space-x-2 text-sm">
             <li><Link to="/" className="text-primary hover:underline">Home</Link></li>
@@ -98,8 +96,8 @@ const Index = () => {
               <CityCard 
                 key={city.name}
                 name={city.name}
-                timezone={city.timezone}
-                country={city.country}
+                timezone={city.timeZone}
+                country={city.Country}
               />
             ))}
           </div>

@@ -14,7 +14,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
-import { timezones } from '@/lib/timezones';
+import { timezones } from '@/constants/timezones';
 
 const TimezonePage = () => {
   const [selectedTimezone, setSelectedTimezone] = useState<string>(

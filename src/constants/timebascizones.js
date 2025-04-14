@@ -1,6 +1,6 @@
 // src/constants/constants.js
 
-export const TIME_ZONES = [
+export const timezones = [
     { id: 1, name: 'UTC', path: '/utc.html', timeZone: 'UTC' },
     { id: 2, name: 'GMT', path: '/gmt.html', timeZone: 'GMT' },
     { id: 3, name: 'CET', path: '/cet.html', timeZone: 'Europe/Berlin' }, // CET is usually Europe/Berlin

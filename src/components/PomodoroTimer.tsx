@@ -3,7 +3,7 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Clock, Play, Pause, RefreshCw, Settings, Volume2, VolumeX } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
-import { cn } from '@/lib/utils';
+import { cn } from '@/constants/utils';
 
 type TimerMode = 'pomodoro' | 'shortBreak' | 'longBreak';
 

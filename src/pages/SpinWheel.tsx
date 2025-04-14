@@ -5,7 +5,7 @@ import SpinWheel from '@/components/SpinWheel';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { RotateCw } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
-import { APP_NAME } from '@/lib/constants';
+import { APP_NAME } from '@/constants/constants';
 
 const SpinWheelPage = () => {
   return (
