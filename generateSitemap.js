@@ -1,3 +1,4 @@
+
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -41,7 +42,7 @@ const generateSitemap = () => {
     priority: 0.8
   }));
  */
-  const paths = cities.map(city => {
+  const cityPaths = cities.map(city => {
     const slug = escapeXml(cityToSlug(city.name));
     return {
       keyword: city.name, // keep this for keyword-based usage
@@ -52,9 +53,27 @@ const generateSitemap = () => {
     };
   });
 
+  // Create country paths for sitemap
+  const countriesSet = new Set();
+  cities.forEach(city => {
+    if (city.country) {
+      countriesSet.add(city.country);
+    }
+  });
 
- /* const urls = [...pages, ...blogPostUrls, ...paths];  */
- const urls = [...pages, ...paths];
+  const countryPaths = Array.from(countriesSet).map(country => {
+    const slug = escapeXml(country.toLowerCase().replace(/\s+/g, '-'));
+    return {
+      keyword: country,
+      loc: `${websiteUrl}/country/${slug}.html`,
+      lastmod: new Date().toISOString(),
+      changefreq: 'weekly',
+      priority: 0.8
+    };
+  });
+
+  /* const urls = [...pages, ...blogPostUrls, ...paths];  */
+  const urls = [...pages, ...cityPaths, ...countryPaths];
   const urlEntries = urls.map(url => `
     <url>
       <loc>${url.loc}</loc>
