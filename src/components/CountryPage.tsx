@@ -10,6 +10,7 @@ import { ArrowRight, Globe, Clock } from 'lucide-react';
 import Layout from '@/components/Layout';
 import CityCard from '@/components/CityCard';
 import { cities } from '@/constants/cities';
+import Weather from '@/components/Weather';
 
 const CountryPage = () => {
   const { countrySlug } = useParams<{ countrySlug: string }>();
@@ -80,6 +81,11 @@ const CountryPage = () => {
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             View accurate time for all cities in {country}
           </p>
+          {citiesInCountry.length > 0 && (
+            <div className="flex justify-center mt-4">
+              <Weather city={citiesInCountry[0].name} />
+            </div>
+          )}
         </div>
 
         <div className="mb-16">
