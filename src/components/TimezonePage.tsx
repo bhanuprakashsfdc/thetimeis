@@ -7,6 +7,7 @@ import { timezones } from '@/constants/timebascizones';
 import { APP_NAME } from '@/constants/constants';
 import ClockDisplay from '@/components/ClockDisplay';
 import TimezoneInfo from '@/components/TimezoneInfo';
+import SunriseSunset from '@/components/SunriseSunset';
 import { Card, CardContent } from '@/components/ui/card';
 import { Globe, ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -35,6 +36,9 @@ const TimezonePage = () => {
       </Layout>
     );
   }
+  
+  // Find a representative city for this timezone to get sunrise/sunset data
+  const representativeCity = timezone.name.split('/').pop()?.replace(/_/g, ' ') || '';
   
   return (
     <Layout>
@@ -81,8 +85,11 @@ const TimezonePage = () => {
             </CardContent>
           </Card>
           
-          <div className="md:col-span-1">
+          <div className="md:col-span-1 space-y-4">
             <TimezoneInfo timezone={timezone.timeZone} />
+            {representativeCity && (
+              <SunriseSunset city={representativeCity} />
+            )}
           </div>
         </div>
         

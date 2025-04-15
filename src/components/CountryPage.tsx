@@ -11,6 +11,7 @@ import Layout from '@/components/Layout';
 import CityCard from '@/components/CityCard';
 import { cities } from '@/constants/cities';
 import Weather from '@/components/Weather';
+import SunriseSunset from '@/components/SunriseSunset';
 
 const CountryPage = () => {
   const { countrySlug } = useParams<{ countrySlug: string }>();
@@ -87,6 +88,17 @@ const CountryPage = () => {
             </div>
           )}
         </div>
+
+        {citiesInCountry.length > 0 && (
+          <div className="mb-8">
+            <Card className="rounded-xl overflow-hidden elevation-shadow">
+              <CardContent className="p-6">
+                <h2 className="text-xl font-bold mb-4">Daylight Information</h2>
+                <SunriseSunset city={citiesInCountry[0].name} />
+              </CardContent>
+            </Card>
+          </div>
+        )}
 
         <div className="mb-16">
           <div className="flex items-center justify-between mb-6">

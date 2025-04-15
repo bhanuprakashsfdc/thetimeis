@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import ClockDisplay from '@/components/ClockDisplay';
@@ -15,6 +14,7 @@ import { ArrowRight, Globe, Clock, Calendar } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Layout from '@/components/Layout';
 import Weather from '@/components/Weather';
+import SunriseSunset from '@/components/SunriseSunset';
 
 const CityPage = () => {
   const { citySlug } = useParams<{ citySlug: string }>();
@@ -24,9 +24,9 @@ const CityPage = () => {
   const [format24h, setFormat24h] = useState(false);
   const [loading, setLoading] = useState(true);
   const popularCities = getPopularCities();
+
   useEffect(() => {
     if (citySlug) {
-      // Remove the .html extension for processing
       const cleanSlug = citySlug.replace('.html', '');
       const city = getCityBySlug(cleanSlug);
 
@@ -47,12 +47,11 @@ const CityPage = () => {
     
     return () => clearInterval(timer);
   }, [cityInfo]);
-  // Show loading while we determine if city exists
+
   if (loading) {
     return <p>Loading...</p>;
   }
 
-  // If we've finished loading but found no city, show an appropriate message instead of redirecting
   if (!citySlug || !cityInfo) {
     return (
       <Layout>
@@ -92,8 +91,8 @@ const CityPage = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 gap-8">
-            <Card className="rounded-xl overflow-hidden elevation-shadow bg-gradient-to-r from-background to-background/70">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <Card className="md:col-span-2 rounded-xl overflow-hidden elevation-shadow bg-gradient-to-r from-background to-background/70">
               <CardContent className="p-8">
                 <div className="mb-6 flex justify-center">
                   <button 
@@ -129,9 +128,13 @@ const CityPage = () => {
                 </div>
               </CardContent>
             </Card>
+            
+            <div className="md:col-span-1 space-y-4">
+              <SunriseSunset city={cityInfo.name} />
+            </div>
           </div>
         </div>
-        <div className="mb-16">
+        <div className="container mx-auto px-4 mb-16">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-2xl font-bold">Popular Cities</h2>
             <Button asChild variant="ghost" size="sm">
