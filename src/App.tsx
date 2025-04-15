@@ -16,6 +16,7 @@ import NotFound from "./pages/NotFound";
 import CityPage from "./components/CityPage";
 import CountryPage from "./components/CountryPage";
 import TimezonePage from "./components/TimezonePage";
+import WorldTimeMapPage from "./pages/WorldTimeMapPage";
 import Pomodoro from "./pages/Pomodoro";
 import SpinWheel from "./pages/SpinWheel";
 import Blog from "./pages/Blog";
@@ -40,21 +41,22 @@ const App = () => (
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
-            <Route path="/world-clock.html" element={<WorldClock />} />
-            <Route path="/timezone.html" element={<Timezone />} />
-            <Route path="/calendar.html" element={<Calendar />} />
-            <Route path="/countdown-timer.html" element={<CountdownTimer />} />
-            <Route path="/pomodoro.html" element={<Pomodoro />} />
-            <Route path="/spin-wheel.html" element={<SpinWheel />} />
             <Route path="/about.html" element={<About />} />
             <Route path="/terms.html" element={<Terms />} />
             <Route path="/privacy.html" element={<Privacy />} />
             <Route path="/blog.html" element={<Blog />} />
             <Route path="/contact.html" element={<Contact />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
+            <Route path="/world-clock.html" element={<WorldClock />} />
+            <Route path="/timezone.html" element={<Timezone />} />
+            <Route path="/calendar.html" element={<Calendar />} />
+            <Route path="/countdown-timer.html" element={<CountdownTimer />} />
+            <Route path="/pomodoro.html" element={<Pomodoro />} />
+            <Route path="/spin-wheel.html" element={<SpinWheel />} />
             <Route path="/:timezoneSlug" element={<TimezonePage />} />
             <Route path={`/${TIMEIN}:citySlug`} element={<CityPage />} />
             <Route path="/country/:countrySlug" element={<CountryPage />} />
+            <Route path="/world-time-map.html" element={<WorldTimeMapPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

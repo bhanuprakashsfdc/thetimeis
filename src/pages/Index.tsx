@@ -11,6 +11,8 @@ import { Link } from 'react-router-dom';
 import { APP_NAME, TIMEIN } from '@/constants/constants';
 import Weather from '@/components/Weather';
 import TimezonesComponent from '@/components/TimezonesComponent';
+import PopularTimezones from '@/components/PopularTimezones';
+import ToolsAndResources from '@/components/ToolsAndResources';
 
 const Index = () => {
   const [format24h, setFormat24h] = useState(false);
@@ -117,22 +119,8 @@ const Index = () => {
         <div className="mb-16">
           <h2 className="text-2xl font-bold mb-6">Related Time Zones</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="p-6 bg-card rounded-lg border border-border/50">
-              <h3 className="text-xl font-semibold mb-4">Popular Time Zones</h3>
-              <ul className="space-y-2">
-                <li><Link to="/timezone/UTC.html" className="text-primary hover:underline">UTC (Coordinated Universal Time)</Link></li>
-                <li><Link to="/timezone/EST.html" className="text-primary hover:underline">EST (Eastern Standard Time)</Link></li>
-                <li><Link to="/timezone/PST.html" className="text-primary hover:underline">PST (Pacific Standard Time)</Link></li>
-              </ul>
-            </div>
-            <div className="p-6 bg-card rounded-lg border border-border/50">
-              <h3 className="text-xl font-semibold mb-4">Tools & Resources</h3>
-              <ul className="space-y-2">
-                <li><Link to="/world-clock.html" className="text-primary hover:underline">World Clock</Link></li>
-                <li><Link to="/calendar.html" className="text-primary hover:underline">Calendar</Link></li>
-                <li><Link to="/timezone.html" className="text-primary hover:underline">Time Zone Converter</Link></li>
-              </ul>
-            </div>
+            <PopularTimezones />
+            <ToolsAndResources />
           </div>
         </div>
       </div>

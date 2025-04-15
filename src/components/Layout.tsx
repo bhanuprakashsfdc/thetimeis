@@ -15,6 +15,8 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
+import { mainMenuItems } from '@/constants/mainMenuItems';
+import { toolsItems } from '@/constants/toolsItems';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -59,23 +61,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     setSearchDialogOpen(true);
   };
   
-  const mainMenuItems = [
-    { name: "Home", path: "/", icon: <Home className="h-4 w-4 mr-2" /> },
-    { name: "Tools", path: "#", icon: <Wrench className="h-4 w-4 mr-2" />, hasSubmenu: true },
-    { name: "About", path: "/about.html", icon: <Info className="h-4 w-4 mr-2" /> },
-    { name: "Blog", path: "/blog.html", icon: <BookOpen className="h-4 w-4 mr-2" /> },
-    { name: "Contact", path: "/contact.html", icon: <MessageSquare className="h-4 w-4 mr-2" /> }
-  ];
-  
-  const toolsItems = [
-    { name: "World Clock", path: "/world-clock.html", icon: <Clock className="h-4 w-4" /> },
-    { name: "Time Zone", path: "/timezone.html", icon: <Timer className="h-4 w-4" /> },
-    { name: "Calendar", path: "/calendar.html", icon: <Calendar1 className="h-4 w-4" /> },
-    { name: "Countdown Timer", path: "/countdown-timer.html", icon: <Timer className="h-4 w-4" /> },
-    { name: "Spin Wheel", path: "/spin-wheel.html", icon: <LoaderPinwheel className="h-4 w-4" /> },
-    { name: "Pomodoro Timer", path: "/pomodoro.html", icon: <Timer className="h-4 w-4" /> }
-  ];
-
   return (
     <div className="min-h-screen flex flex-col">
       <header className="bg-primary text-primary-foreground py-4 px-6">
@@ -270,9 +255,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             
             <div>
               <h3 className="text-lg font-semibold mb-4">Quick Countdown</h3>
-              <div className="bg-background/30 p-3 rounded-lg mb-4">
-                <CountdownTimer initialTime={300} compact={false} />
-              </div>
+
               <p className="text-secondary-foreground mb-2 mt-4">Have questions or feedback?</p>
               <Link 
                 to="/contact.html" 
