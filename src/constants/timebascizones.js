@@ -1,4 +1,5 @@
-// src/constants/constants.js
+
+// src/constants/timebascizones.js
 
 export const timezones = [
     { id: 1, name: 'UTC', path: '/utc.html', timeZone: 'UTC' },
