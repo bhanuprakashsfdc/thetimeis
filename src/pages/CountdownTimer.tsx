@@ -1,10 +1,11 @@
 
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Timer, Clock, AlarmClock } from 'lucide-react';
+import { Timer, Clock, AlarmClock, Globe } from 'lucide-react';
 import { APP_NAME } from '@/constants/constants';
 import Layout from '@/components/Layout';
 import CountdownTimer from '@/components/CountdownTimer';
+import WorldTimeMap from '@/components/WorldTimeMap';
 import { Card, CardContent } from '@/components/ui/card';
 
 const CountdownTimerPage = () => {
@@ -25,7 +26,7 @@ const CountdownTimerPage = () => {
           Set custom countdowns for any occasion. Perfect for cooking, workouts, breaks, presentations, and more.
         </p>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
           <div>
             <Card className="bg-card">
               <CardContent className="p-0">
@@ -107,6 +108,23 @@ const CountdownTimerPage = () => {
               </CardContent>
             </Card>
           </div>
+        </div>
+        
+        <div className="mb-10">
+          <Card>
+            <CardContent className="p-6">
+              <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
+                <Globe className="h-6 w-6 text-primary" />
+                World Time Map
+              </h2>
+              <p className="text-muted-foreground mb-6">
+                Explore different time zones across the globe. This map shows the current time in various regions of the world.
+              </p>
+              <div className="h-[400px] md:h-[500px] rounded-lg overflow-hidden">
+                <WorldTimeMap />
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </Layout>
