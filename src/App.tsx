@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import WorldClock from "./pages/WorldClock";
 import Timezone from "./pages/Timezone";
 import Calendar from "./pages/Calendar";
+import CountdownTimer from "./pages/CountdownTimer";
 import About from "./pages/About";
 import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
@@ -42,6 +43,7 @@ const App = () => (
             <Route path="/world-clock.html" element={<WorldClock />} />
             <Route path="/timezone.html" element={<Timezone />} />
             <Route path="/calendar.html" element={<Calendar />} />
+            <Route path="/countdown-timer.html" element={<CountdownTimer />} />
             <Route path="/pomodoro.html" element={<Pomodoro />} />
             <Route path="/spin-wheel.html" element={<SpinWheel />} />
             <Route path="/about.html" element={<About />} />
