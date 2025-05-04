@@ -84,7 +84,7 @@ const CityPage = () => {
           <div className="text-center mb-10">
             <h1 className="text-4xl font-bold mb-4">Current Time in {cityInfo.name}</h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            {cityInfo?.country ?? 'Unknown Country'}, {cityInfo?.region ?? 'Unknown Region'} • {cityInfo?.timezone?.replace('_', ' ') ?? 'Unknown Timezone'}
+            {cityInfo?.country || cityInfo?.Continent || 'Unknown Country'}, {cityInfo?.region || cityInfo?.Country || 'Unknown Region'} • {cityInfo?.timeZone?.replace('/', ': ').replace(/_/g, ' ') || 'Unknown Timezone'}
             </p>
             <div className="flex justify-center mt-4">
               <Weather city={cityInfo.name} />

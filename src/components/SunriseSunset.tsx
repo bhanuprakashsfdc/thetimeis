@@ -33,13 +33,28 @@ const SunriseSunset: React.FC<SunriseSunsetProps> = ({ city, className }) => {
       
       try {
         setLoading(true);
-        const response = await fetch(`https://wttr.in/${encodeURIComponent(city)}?format=j1`);
+        // First get coordinates for the city
+        const geoResponse = await fetch(`https://wttr.in/~${encodeURIComponent(city)}?format=j1`);
         
-        if (!response.ok) {
-          throw new Error(`Failed to fetch data: ${response.status}`);
+        if (!geoResponse.ok) {
+          throw new Error(`Failed to fetch location data: ${geoResponse.status}`);
         }
         
-        const data: WeatherData = await response.json();
+        const geoData = await geoResponse.json();
+        const nearest_area = geoData?.nearest_area?.[0];
+        
+        if (!nearest_area?.latitude || !nearest_area?.longitude) {
+          throw new Error('Could not determine location coordinates');
+        }
+        
+        // Now get weather data using coordinates for more accurate results
+        const weatherResponse = await fetch(`https://wttr.in/${nearest_area.latitude},${nearest_area.longitude}?format=j1`);
+        
+        if (!weatherResponse.ok) {
+          throw new Error(`Failed to fetch weather data: ${weatherResponse.status}`);
+        }
+        
+        const data: WeatherData = await weatherResponse.json();
         
         if (data.weather && data.weather[0]?.astronomy && data.weather[0].astronomy[0]) {
           const { sunrise, sunset } = data.weather[0].astronomy[0];
