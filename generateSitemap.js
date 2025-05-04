@@ -85,7 +85,7 @@ const generateSitemap = () => {
     const slug = escapeXml(country.toLowerCase().replace(/\s+/g, '-'));
     return {
       keyword: country,
-      loc: `${websiteUrl}/country/${slug}.html`,
+      loc: `${websiteUrl}country/${slug}.html`,
       lastmod: new Date().toISOString(),
       changefreq: 'weekly',
       priority: 0.8
