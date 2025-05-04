@@ -23,7 +23,7 @@ import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import Contact from "./pages/Contact";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-import { APP_NAME, TIMEIN } from "@/constants/constants";
+import { APP_NAME, TIMEIN, WHATISTHETIMERIGHTNOWIN, TIMENOW, LOCALTIME, WHATTIMEITISIN } from "@/constants/constants";
 
 // Create a new QueryClient instance
 const queryClient = new QueryClient();
@@ -56,7 +56,16 @@ const App = () => (
             <Route path="/:timezoneSlug" element={<TimezonePage />} />
             <Route path={`/${TIMEIN}:citySlug`} element={<CityPage />} />
             <Route path="/country/:countrySlug" element={<CountryPage />} />
-            <Route path="/world-time-map.html" element={<WorldTimeMapPage />} />
+            <Route path="/world-time-map.html" element={<WorldTimeMapPage />} />            
+            <Route path={`/${TIMENOW}:citySlug`} element={<CityPage />} />
+            <Route path={`/${LOCALTIME}:citySlug`} element={<CityPage />} />
+            <Route path={`/${WHATISTHETIMERIGHTNOWIN}:citySlug`} element={<CityPage />} />
+            <Route path={`/${WHATTIMEITISIN}:citySlug`} element={<CityPage />} />
+            <Route path={`/${TIMEIN}country/:countrySlug`} element={<CountryPage />} />
+            <Route path={`/${TIMENOW}country/:countrySlug`} element={<CountryPage />} />
+            <Route path={`/${LOCALTIME}country/:countrySlug`} element={<CountryPage />} />
+            <Route path={`/${WHATISTHETIMERIGHTNOWIN}country/:countrySlug`} element={<CountryPage />} />
+            <Route path={`/${WHATTIMEITISIN}country/:countrySlug`} element={<CountryPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
