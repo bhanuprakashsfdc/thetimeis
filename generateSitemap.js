@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { cities, cityToSlug } from './src/constants/cities.js';
-import { TIMEIN } from './src/constants/constants.js';
+import { TIMEIN, WHATISTHETIMERIGHTNOWIN, TIMENOW, LOCALTIME, WHATTIMEITISIN } from './src/constants/constants.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -61,17 +61,50 @@ const generateSitemap = () => {
     { loc: `${websiteUrl}calendar.html`, lastmod: new Date().toISOString(), changefreq: 'weekly', priority: 0.9 },
     { loc: `${websiteUrl}pomodoro.html`, lastmod: new Date().toISOString(), changefreq: 'weekly', priority: 0.9 },
     { loc: `${websiteUrl}spin-wheel.html`, lastmod: new Date().toISOString(), changefreq: 'weekly', priority: 0.9 },
+    { loc: `${websiteUrl}world-time-map.html`, lastmod: new Date().toISOString(), changefreq: 'weekly', priority: 0.9 },
+    { loc: `${websiteUrl}contact.html`, lastmod: new Date().toISOString(), changefreq: 'monthly', priority: 0.8 },
+    { loc: `${websiteUrl}countdown-timer.html`, lastmod: new Date().toISOString(), changefreq: 'weekly', priority: 0.9 },
   ];
 
-  const cityPaths = cities.map(city => {
+  const cityPaths = cities.flatMap(city => {
     const slug = escapeXml(cityToSlug(city.name));
-    return {
-      keyword: city.name,
-      loc: `${websiteUrl}${TIMEIN}${slug}.html`,
-      lastmod: new Date().toISOString(),
-      changefreq: 'weekly',
-      priority: 0.8
-    };
+    return [
+      {
+        keyword: city.name,
+        loc: `${websiteUrl}${TIMEIN}${slug}.html`,
+        lastmod: new Date().toISOString(),
+        changefreq: 'weekly',
+        priority: 0.8
+      },
+      {
+        keyword: city.name,
+        loc: `${websiteUrl}${TIMENOW}${slug}.html`,
+        lastmod: new Date().toISOString(),
+        changefreq: 'weekly',
+        priority: 0.8
+      },
+      {
+        keyword: city.name,
+        loc: `${websiteUrl}${LOCALTIME}${slug}.html`,
+        lastmod: new Date().toISOString(),
+        changefreq: 'weekly',
+        priority: 0.8
+      },
+      {
+        keyword: city.name,
+        loc: `${websiteUrl}${WHATISTHETIMERIGHTNOWIN}${slug}.html`,
+        lastmod: new Date().toISOString(),
+        changefreq: 'weekly',
+        priority: 0.8
+      },
+      {
+        keyword: city.name,
+        loc: `${websiteUrl}${WHATTIMEITISIN}${slug}.html`,
+        lastmod: new Date().toISOString(),
+        changefreq: 'weekly',
+        priority: 0.8
+      }
+    ];
   });
 
   const countriesSet = new Set();
@@ -81,15 +114,52 @@ const generateSitemap = () => {
     }
   });
 
-  const countryPaths = Array.from(countriesSet).map(country => {
+  const countryPaths = Array.from(countriesSet).flatMap(country => {
     const slug = escapeXml(country.toLowerCase().replace(/\s+/g, '-'));
-    return {
-      keyword: country,
-      loc: `${websiteUrl}/country/${slug}.html`,
-      lastmod: new Date().toISOString(),
-      changefreq: 'weekly',
-      priority: 0.8
-    };
+    return [
+      {
+        keyword: country,
+        loc: `${websiteUrl}country/${slug}.html`,
+        lastmod: new Date().toISOString(),
+        changefreq: 'weekly',
+        priority: 0.8
+      },
+      {
+        keyword: country,
+        loc: `${websiteUrl}${TIMEIN}country/${slug}.html`,
+        lastmod: new Date().toISOString(),
+        changefreq: 'weekly',
+        priority: 0.8
+      },
+      {
+        keyword: country,
+        loc: `${websiteUrl}${TIMENOW}country/${slug}.html`,
+        lastmod: new Date().toISOString(),
+        changefreq: 'weekly',
+        priority: 0.8
+      },
+      {
+        keyword: country,
+        loc: `${websiteUrl}${LOCALTIME}country/${slug}.html`,
+        lastmod: new Date().toISOString(),
+        changefreq: 'weekly',
+        priority: 0.8
+      },
+      {
+        keyword: country,
+        loc: `${websiteUrl}${WHATISTHETIMERIGHTNOWIN}country/${slug}.html`,
+        lastmod: new Date().toISOString(),
+        changefreq: 'weekly',
+        priority: 0.8
+      },
+      {
+        keyword: country,
+        loc: `${websiteUrl}${WHATTIMEITISIN}country/${slug}.html`,
+        lastmod: new Date().toISOString(),
+        changefreq: 'weekly',
+        priority: 0.8
+      }
+    ];
   });
 
   const allUrls = [...pages, ...cityPaths, ...countryPaths];
