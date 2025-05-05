@@ -4,6 +4,7 @@
  */
 
 export const APP_NAME = "thetimeis.net";
+export const APP_NAME_TEXT = "TheTimeIs.net";
 
 export const TIMEIN = "time-in/";
 export const TIMENOW = "time-now/";
