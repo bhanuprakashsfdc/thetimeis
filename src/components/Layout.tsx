@@ -261,7 +261,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               <ul className="space-y-2">
                 <li>
                   <Link 
-                    to="/blog" 
+                    to="/blog.html" 
                     className="flex items-center gap-2 text-secondary-foreground hover:text-primary transition-colors"
                   >
                     <BookOpen className="h-4 w-4" />

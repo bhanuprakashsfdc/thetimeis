@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Layout from '@/components/Layout';
 import ClockDisplay from '@/components/ClockDisplay';
 import TimezoneInfo from '@/components/TimezoneInfo';
+import WhatIsComponent from '@/components/WhatIsComponent';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import CityCard from '@/components/CityCard';
 import { getPopularCities } from '@/constants/cities';
@@ -91,6 +92,11 @@ const Index = () => {
             <li>Current Time</li>
           </ol>
         </nav>
+
+        {/* Add WhatIsComponent */}
+        <div className="mb-16">
+          <WhatIsComponent />
+        </div>
 
         {/* Add TimezonesComponent before Popular Cities section */}
         <div className="mb-16">
