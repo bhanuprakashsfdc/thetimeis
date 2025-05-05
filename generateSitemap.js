@@ -64,7 +64,12 @@ const generateSitemap = () => {
     { loc: `${websiteUrl}world-time-map.html`, lastmod: new Date().toISOString(), changefreq: 'weekly', priority: 0.9 },
     { loc: `${websiteUrl}contact.html`, lastmod: new Date().toISOString(), changefreq: 'monthly', priority: 0.8 },
     { loc: `${websiteUrl}countdown-timer.html`, lastmod: new Date().toISOString(), changefreq: 'weekly', priority: 0.9 },
+    { loc: `${websiteUrl}accessibility.html`, lastmod: new Date().toISOString(), changefreq: 'monthly', priority: 0.8 },
+    { loc: `${websiteUrl}faq.html`, lastmod: new Date().toISOString(), changefreq: 'weekly', priority: 0.9 },
+    { loc: `${websiteUrl}disclaimer.html`, lastmod: new Date().toISOString(), changefreq: 'monthly', priority: 0.8 },
+    { loc: `${websiteUrl}cookies.html`, lastmod: new Date().toISOString(), changefreq: 'monthly', priority: 0.8 },
   ];
+
 
   const cityPaths = cities.flatMap(city => {
     const slug = escapeXml(cityToSlug(city.name));

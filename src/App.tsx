@@ -12,6 +12,7 @@ import CountdownTimer from "./pages/CountdownTimer";
 import About from "./pages/About";
 import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
+import Disclaimer from "./pages/Disclaimer";
 import NotFound from "./pages/NotFound";
 import CityPage from "./components/CityPage";
 import CountryPage from "./components/CountryPage";
@@ -22,6 +23,9 @@ import SpinWheel from "./pages/SpinWheel";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import Contact from "./pages/Contact";
+import Cookies from "./pages/Cookies";
+import Accessibility from "./pages/Accessibility";
+import FAQ from "./pages/FAQ";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { APP_NAME, TIMEIN, WHATISTHETIMERIGHTNOWIN, TIMENOW, LOCALTIME, WHATTIMEITISIN } from "@/constants/constants";
 
@@ -44,8 +48,12 @@ const App = () => (
             <Route path="/about.html" element={<About />} />
             <Route path="/terms.html" element={<Terms />} />
             <Route path="/privacy.html" element={<Privacy />} />
+            <Route path="/disclaimer.html" element={<Disclaimer />} />
             <Route path="/blog.html" element={<Blog />} />
             <Route path="/contact.html" element={<Contact />} />
+            <Route path="/cookies.html" element={<Cookies />} />
+            <Route path="/accessibility.html" element={<Accessibility />} />
+            <Route path="/faq.html" element={<FAQ />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/world-clock.html" element={<WorldClock />} />
             <Route path="/timezone.html" element={<Timezone />} />
