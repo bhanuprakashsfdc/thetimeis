@@ -113,6 +113,76 @@ const Privacy = () => {
           </div>
         </div>
       </div>
+      {/* Appended static privacy content for AdSense compliance */}
+      <section aria-labelledby="privacy-title-appended" className="prose prose-lg max-w-4xl mx-auto mt-12 px-4">
+        <h1 id="privacy-title-appended">Privacy Policy — thetimeis.net</h1>
+        <p>
+          At thetimeis.net, we respect your privacy and are committed to handling information responsibly. This
+          section explains what information may be processed, how it is used, and your choices regarding that
+          information.
+        </p>
+        <h2>Information We Collect</h2>
+        <p>
+          thetimeis.net is a utility site that displays current local time for selected locations. We do not require
+          account registration. Limited technical information may be processed to operate the site efficiently,
+          such as IP address, device or browser type, referring URLs, and aggregate analytics signals for
+          performance and reliability.
+        </p>
+        <h2>Cookies and Similar Technologies</h2>
+        <p>
+          We aim to minimize cookie use. Some strictly necessary cookies may support core functionality and
+          performance. If advertising is shown, third-party vendors (including Google) may use cookies or local
+          storage to serve and measure ads. You can manage preferences in your browser settings.
+        </p>
+        <h2>Advertising</h2>
+        <p>
+          thetimeis.net may display ads from Google and other partners. Google uses cookies to serve ads based on
+          visits to this and other sites. Learn more at
+          <a href="https://policies.google.com/technologies/ads" rel="noopener" target="_blank">policies.google.com/technologies/ads</a>.
+          Ads will not be placed inside or above the primary time tool on our homepage.
+        </p>
+        <h2>Use of Information</h2>
+        <p>
+          We use limited technical and aggregate data to keep the site secure, improve performance, understand
+          usage at a high level, and maintain accurate time presentation. We do not sell personal information.
+        </p>
+        <h2>Data Sharing</h2>
+        <p>
+          We may share aggregated, non-identifying information for analytics and service reliability. If ads are
+          displayed, data may be shared with advertising partners to deliver and measure ad performance, subject
+          to applicable laws and vendor policies.
+        </p>
+        <h2>International Visitors</h2>
+        <p>
+          By using the site, you understand that your data may be processed in the country where our hosting and
+          service providers operate. We take steps to handle data consistently with relevant laws.
+        </p>
+        <h2>Your Choices</h2>
+        <ul>
+          <li>Manage cookies through browser settings</li>
+          <li>Use privacy modes or content blockers if desired</li>
+          <li>Contact us with questions about this policy</li>
+        </ul>
+        <h2>Security</h2>
+        <p>
+          We implement reasonable security measures to protect information. However, no method of transmission or
+          storage is completely secure. Please use best practices to protect your devices and accounts.
+        </p>
+        <h2>Children’s Privacy</h2>
+        <p>
+          thetimeis.net is a general audience site and is not directed to children. We do not knowingly collect
+          personal information from children.
+        </p>
+        <h2>Updates</h2>
+        <p>
+          We may update this policy to reflect changes in practices or legal requirements. The revised policy will
+          be posted here with an updated effective date.
+        </p>
+        <h2>Contact</h2>
+        <p>
+          For privacy-related questions, email <a href="mailto:privacy@thetimeis.net">privacy@thetimeis.net</a>.
+        </p>
+      </section>
     </Layout>
   );
 };
