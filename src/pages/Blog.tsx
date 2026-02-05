@@ -13,7 +13,7 @@ import {
   PaginationPrevious,
   PaginationEllipsis
 } from '@/components/ui/pagination';
-import { Helmet } from 'react-helmet-async';
+import Seo from '@/components/Seo';
 
 const Blog = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -90,10 +90,11 @@ const Blog = () => {
 
   return (
     <Layout>
-      <Helmet>
-        <title>Blog - Time Management and History</title>
-        <meta name="description" content="Read articles about time management, history of timekeeping, and how different cultures perceive time." />
-      </Helmet>
+      <Seo
+        title="Blog - Time Management and History"
+        description="Read articles about time management, history of timekeeping, and how different cultures perceive time."
+        type="website"
+      />
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto mb-10">
           <h1 className="text-4xl font-bold mb-4">The Time Blog</h1>

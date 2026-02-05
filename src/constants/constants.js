@@ -7,6 +7,8 @@ export const APP_NAME = "thetimeis.net";
 export const APP_NAME_TEXT = "TheTimeIs.net";
 
 export const SITE_URL = "https://www.thetimeis.net/";
+export const DEFAULT_OG_IMAGE = `${SITE_URL}og-image.jpg`;
+export const DEFAULT_TWITTER_CARD = "summary_large_image";
 export const TIMEIN = "time-in/";
 export const TIMENOW = "time-now/";
 export const LOCALTIME = "local-time/";

@@ -1,16 +1,21 @@
 import React from 'react';
 import Layout from '@/components/Layout';
-import { Helmet } from 'react-helmet-async';
+import Seo from '@/components/Seo';
 import { APP_NAME } from '@/constants/constants';
 import { Accessibility as AccessibilityIcon, Check, MousePointer2, Keyboard, Monitor, Users } from 'lucide-react';
 
 const Accessibility = () => {
   return (
     <Layout>
-      <Helmet>
-        <title>Accessibility Statement - {APP_NAME}</title>
-        <meta name="description" content="Learn about our commitment to accessibility and the features we've implemented to ensure our website is usable by everyone." />
-      </Helmet>
+      <Seo
+        title={`Accessibility Statement - ${APP_NAME}`}
+        description="Learn about our commitment to accessibility and the features we've implemented to ensure our website is usable by everyone."
+        type="website"
+        breadcrumbs={[
+          { name: 'Home', item: 'https://www.thetimeis.net/' },
+          { name: 'Accessibility', item: 'https://www.thetimeis.net/accessibility.html' }
+        ]}
+      />
       
       <div className="container mx-auto px-4 py-8">
         <div className="flex items-center justify-center mb-8">

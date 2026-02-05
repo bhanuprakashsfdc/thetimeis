@@ -7,7 +7,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { Mail, Phone, MapPin, Send, Check } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
-import { Helmet } from 'react-helmet-async';
+import Seo from '@/components/Seo';
 
 const Contact = () => {
   const [name, setName] = useState('');
@@ -44,10 +44,15 @@ const Contact = () => {
 
   return (
     <Layout>
-      <Helmet>
-        <title>Contact Us</title>
-        <meta name="description" content="Get in touch with our team for any questions or feedback about our time services." />
-      </Helmet>
+      <Seo
+        title="Contact Us"
+        description="Get in touch with our team for any questions or feedback about our time services."
+        type="website"
+        breadcrumbs={[
+          { name: 'Home', item: 'https://www.thetimeis.net/' },
+          { name: 'Contact', item: 'https://www.thetimeis.net/contact.html' }
+        ]}
+      />
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto mb-10">
           <h1 className="text-4xl font-bold mb-4">Contact Us</h1>

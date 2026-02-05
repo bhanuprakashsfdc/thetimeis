@@ -1,14 +1,19 @@
 import React from 'react';
 import Layout from '@/components/Layout';
-import { Helmet } from 'react-helmet-async';
+import Seo from '@/components/Seo';
 
 const Disclaimer = () => {
   return (
     <Layout>
-      <Helmet>
-        <title>Disclaimer - TheTimeIs.net</title>
-        <meta name="description" content="Legal disclaimer and limitations of liability for TheTimeIs.net" />
-      </Helmet>
+      <Seo
+        title="Disclaimer - TheTimeIs.net"
+        description="Legal disclaimer and limitations of liability for TheTimeIs.net"
+        type="website"
+        breadcrumbs={[
+          { name: 'Home', item: 'https://www.thetimeis.net/' },
+          { name: 'Disclaimer', item: 'https://www.thetimeis.net/disclaimer.html' }
+        ]}
+      />
       <div className="container mx-auto px-4 py-8">
         <div className="text-center mb-10">
           <h1 className="text-4xl font-bold mb-4">Disclaimer</h1>

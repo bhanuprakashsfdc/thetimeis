@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { useParams, Navigate, Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import Seo from '@/components/Seo';
 import Layout from '@/components/Layout';
 import { timezones } from '@/constants/timebascizones';
 import { APP_NAME } from '@/constants/constants';
@@ -42,10 +42,16 @@ const TimezonePage = () => {
   
   return (
     <Layout>
-      <Helmet>
-        <title>{timezone.name} Time - Current Time in {timezone.name} | {APP_NAME}</title>
-        <meta name="description" content={`Current accurate time for ${timezone.name} timezone (${timezone.timeZone}). View local time, DST and GMT/UTC offset.`} />
-      </Helmet>
+      <Seo
+        title={`${timezone.name} Time - Current Time in ${timezone.name} | ${APP_NAME}`}
+        description={`Current accurate time for ${timezone.name} timezone (${timezone.timeZone}). View local time, DST and GMT/UTC offset.`}
+        type="website"
+        breadcrumbs={[
+          { name: 'Home', item: 'https://www.thetimeis.net/' },
+          { name: 'Timezones', item: 'https://www.thetimeis.net/timezone.html' },
+          { name: timezone.name, item: `https://www.thetimeis.net${timezone.path}` }
+        ]}
+      />
       <div className="container mx-auto px-4 py-8">
         <nav className="mb-8" aria-label="breadcrumb">
           <ol className="flex items-center space-x-2 text-sm">

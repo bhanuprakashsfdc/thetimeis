@@ -4,16 +4,22 @@ import WorldTimeMap from '@/components/WorldTimeMap';
 import TimezonesComponent from '@/components/TimezonesComponent';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Globe } from 'lucide-react';
-import { Helmet } from 'react-helmet-async';
-import { APP_NAME } from '@/constants/constants';
+import { APP_NAME, SITE_URL } from '@/constants/constants';
+import Seo from '@/components/Seo';
 
 const WorldTimePage = () => {
   return (
     <Layout>
-      <Helmet>
-        <title>World Time Map - {APP_NAME}</title>
-        <meta name="description" content="Explore current times across different time zones using our interactive World Time Map. Stay on track globally!" />
-      </Helmet>
+      <Seo
+        title={`World Time Map - ${APP_NAME}`}
+        description="Explore current times across different time zones using our interactive World Time Map. Stay on track globally!"
+        type="website"
+        canonical={`${SITE_URL}world-time-map.html`}
+        breadcrumbs={[
+          { name: 'Home', item: SITE_URL },
+          { name: 'World Time Map', item: `${SITE_URL}world-time-map.html` }
+        ]}
+      />
 
       <div className="container mx-auto px-4 py-8">
         <div className="flex items-center justify-center mb-8">

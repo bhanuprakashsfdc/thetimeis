@@ -4,16 +4,22 @@ import Layout from '@/components/Layout';
 import SpinWheel from '@/components/SpinWheel';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { RotateCw } from 'lucide-react';
-import { Helmet } from 'react-helmet-async';
-import { APP_NAME } from '@/constants/constants';
+import { APP_NAME, SITE_URL } from '@/constants/constants';
+import Seo from '@/components/Seo';
 
 const SpinWheelPage = () => {
   return (
     <Layout>
-      <Helmet>
-        <title>Spin a Wheel - {APP_NAME}</title>
-        <meta name="description" content="Spin the wheel to make random selections or decisions. Perfect for giveaways, choosing from options, or adding an element of chance to your decisions." />
-      </Helmet>
+      <Seo
+        title={`Spin a Wheel - ${APP_NAME}`}
+        description="Spin the wheel to make random selections or decisions. Perfect for giveaways, choosing from options, or adding an element of chance to your decisions."
+        type="website"
+        canonical={`${SITE_URL}spin-wheel.html`}
+        breadcrumbs={[
+          { name: 'Home', item: SITE_URL },
+          { name: 'Spin Wheel', item: `${SITE_URL}spin-wheel.html` }
+        ]}
+      />
       
       <div className="container mx-auto px-4 py-8">
         <div className="flex items-center justify-center mb-8">

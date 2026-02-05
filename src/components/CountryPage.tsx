@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useLocation } from 'react-router-dom';
 import { Card, CardContent } from '@/components/ui/card';
-import { Helmet } from 'react-helmet-async';
 import { useToast } from '@/hooks/use-toast';
 import { APP_NAME, SITE_URL, TIMEIN, TIMENOW, LOCALTIME, WHATISTHETIMERIGHTNOWIN, WHATTIMEITISIN } from '@/constants/constants';
 import { Button } from '@/components/ui/button';
@@ -12,6 +11,7 @@ import CityCard from '@/components/CityCard';
 import { cities } from '@/constants/cities';
 import Weather from '@/components/Weather';
 import SunriseSunset from '@/components/SunriseSunset';
+import Seo from '@/components/Seo';
 
 type CityInfo = {
   name: string;
@@ -76,46 +76,28 @@ const CountryPage = () => {
 
   return (
     <Layout>
-      <Helmet>
-        <title>Time in {country} | {APP_NAME}</title>
-        <meta name="description" content={`Current accurate time in cities of ${country}. Local time, time zone information.`} />
-        <meta property="og:title" content={`Time in ${country} | ${APP_NAME}`} />
-        <meta property="og:description" content={`Exact current time in ${country} with time zone information`} />
-        <link rel="canonical" href={`${SITE_URL}country/${(countrySlug || '').replace('.html','')}.html`} />
-        <meta 
-          name="robots" 
-          content={
+      <Seo
+        title={`Time in ${country} | ${APP_NAME}`}
+        description={`Current accurate time in cities of ${country}. Local time, time zone information.`}
+        canonical={`${SITE_URL}country/${(countrySlug || '').replace('.html','')}.html`}
+        robots={
+          (
             location.pathname.startsWith(`/${TIMEIN}country/`) ||
             location.pathname.startsWith(`/${TIMENOW}country/`) ||
             location.pathname.startsWith(`/${LOCALTIME}country/`) ||
             location.pathname.startsWith(`/${WHATISTHETIMERIGHTNOWIN}country/`) ||
             location.pathname.startsWith(`/${WHATTIMEITISIN}country/`)
-              ? "noindex,follow"
-              : "index,follow"
-          } 
-        />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "WebPage",
-            "name": `Current Time in ${country}`,
-            "url": `${SITE_URL}country/${(countrySlug || '').replace('.html','')}.html`,
-            "isPartOf": {
-              "@type": "WebSite",
-              "name": APP_NAME,
-              "url": SITE_URL
-            },
-            "breadcrumb": {
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
-                { "@type": "ListItem", "position": 2, "name": "Countries", "item": `${SITE_URL}world-clock.html` },
-                { "@type": "ListItem", "position": 3, "name": country, "item": `${SITE_URL}country/${(countrySlug || '').replace('.html','')}.html` }
-              ]
-            }
-          })}
-        </script>
-      </Helmet>
+          )
+            ? 'noindex,follow'
+            : 'index,follow'
+        }
+        type="website"
+        breadcrumbs={[
+          { name: 'Home', item: SITE_URL },
+          { name: 'Countries', item: `${SITE_URL}world-clock.html` },
+          { name: country, item: `${SITE_URL}country/${(countrySlug || '').replace('.html','')}.html` }
+        ]}
+      />
       
       <div className="container mx-auto px-4 py-8">
         <div className="text-center mb-10">

@@ -2,10 +2,20 @@
 import React from 'react';
 import Layout from '@/components/Layout';
 import { Clock, Globe, Calendar, Github } from 'lucide-react';
+import Seo from '@/components/Seo';
 
 const AboutPage = () => {
   return (
     <Layout>
+      <Seo
+        title="About TheTimeIs.net"
+        description="Learn about TheTimeIs.net mission to provide accurate global time information, timezone coverage, and helpful tools."
+        type="website"
+        breadcrumbs={[
+          { name: 'Home', item: 'https://www.thetimeis.net/' },
+          { name: 'About', item: 'https://www.thetimeis.net/about.html' }
+        ]}
+      />
       <div className="container mx-auto px-4 py-8">
         <div className="text-center mb-10">
           <h1 className="text-4xl font-bold mb-4">About <a href="https://www.thetimeis.net/">TheTimeIs.net</a></h1>
