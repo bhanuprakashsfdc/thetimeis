@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useEffect } from "react";
+import Seo from "@/components/Seo";
+import { APP_NAME } from "@/constants/constants";
 
 const NotFound = () => {
   const location = useLocation();
@@ -17,6 +19,13 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
+    <>
+    <Seo
+      title={`Page Not Found - ${APP_NAME}`}
+      description="The page you're looking for does not exist."
+      robots="noindex,nofollow"
+      type="website"
+    />
     <div className="min-h-screen flex items-center justify-center bg-background">
       <div className="text-center px-4">
         <div className="mb-6 flex justify-center">
@@ -31,6 +40,7 @@ const NotFound = () => {
         </Button>
       </div>
     </div>
+    </>
   );
 };
 

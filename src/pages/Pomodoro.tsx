@@ -3,16 +3,22 @@ import React from 'react';
 import Layout from '@/components/Layout';
 import PomodoroTimer from '@/components/PomodoroTimer';
 import { Timer, CheckCircle } from 'lucide-react';
-import { Helmet } from 'react-helmet-async';
-import { APP_NAME } from '@/constants/constants';
+import { APP_NAME, SITE_URL } from '@/constants/constants';
+import Seo from '@/components/Seo';
 
 const PomodoroPage = () => {
   return (
     <Layout>
-      <Helmet>
-        <title>Pomodoro Timer - {APP_NAME}</title>
-        <meta name="description" content="Use our Pomodoro Timer to boost your productivity with focused work sessions and regular breaks." />
-      </Helmet>
+      <Seo
+        title={`Pomodoro Timer - ${APP_NAME}`}
+        description="Use our Pomodoro Timer to boost your productivity with focused work sessions and regular breaks."
+        type="website"
+        canonical={`${SITE_URL}pomodoro.html`}
+        breadcrumbs={[
+          { name: 'Home', item: SITE_URL },
+          { name: 'Pomodoro', item: `${SITE_URL}pomodoro.html` }
+        ]}
+      />
       
       <div className="container mx-auto px-4 py-8">
         <div className="flex items-center justify-center mb-8">

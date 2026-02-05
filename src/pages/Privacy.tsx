@@ -1,10 +1,22 @@
 
 import React from 'react';
 import Layout from '@/components/Layout';
+import Seo from '@/components/Seo';
+import { APP_NAME, SITE_URL } from '@/constants/constants';
 
 const Privacy = () => {
   return (
     <Layout>
+      <Seo
+        title={`Privacy Policy - ${APP_NAME}`}
+        description="Read how we collect, use, and protect information, including advertising disclosures and cookie practices."
+        type="website"
+        canonical={`${SITE_URL}privacy.html`}
+        breadcrumbs={[
+          { name: 'Home', item: SITE_URL },
+          { name: 'Privacy Policy', item: `${SITE_URL}privacy.html` }
+        ]}
+      />
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-3xl font-bold mb-6">Privacy Policy</h1>

@@ -51,8 +51,8 @@ const TimezonesComponent: React.FC<TimezonesComponentProps> = ({ className }) =>
                 <div className="flex items-center justify-between mb-2">
                   <h3 className="text-xl font-semibold">{zone.name}</h3>
                   <div className="flex items-center">
-                    <span className="text-xs text-muted-foreground mr-2 hover:text-primary">
-                      <Link to="/timezone.html" className="hover:underline">View timezone</Link>
+                    <span className="text-xs text-primary mr-2 hover:underline">
+                      View timezone
                     </span>
                     <Clock className="h-5 w-5 text-primary" />
                   </div>

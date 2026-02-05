@@ -1,8 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
-import { Helmet } from 'react-helmet-async';
 import { Timer, Clock, AlarmClock, Globe, Calendar, MapPin } from 'lucide-react';
-import { APP_NAME } from '@/constants/constants';
+import { APP_NAME, SITE_URL } from '@/constants/constants';
 import Layout from '@/components/Layout';
 import CountdownTimer from '@/components/CountdownTimer';
 import WorldTimeMap from '@/components/WorldTimeMap';
@@ -10,6 +9,7 @@ import PublicHolidays from '@/components/PublicHolidays';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
+import Seo from '@/components/Seo';
 
 const CountdownTimerPage = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -74,10 +74,16 @@ const CountdownTimerPage = () => {
   
   return (
     <Layout>
-      <Helmet>
-        <title>Countdown Timer - {APP_NAME}</title>
-        <meta name="description" content="Use our countdown timer to keep track of time for cooking, workouts, presentations or any other timed activity." />
-      </Helmet>
+      <Seo
+        title={`Countdown Timer - ${APP_NAME}`}
+        description="Use our countdown timer to keep track of time for cooking, workouts, presentations or any other timed activity."
+        type="website"
+        canonical={`${SITE_URL}countdown-timer.html`}
+        breadcrumbs={[
+          { name: 'Home', item: SITE_URL },
+          { name: 'Countdown Timer', item: `${SITE_URL}countdown-timer.html` }
+        ]}
+      />
       
       <div className="container mx-auto px-4 py-8">
         <div className="flex items-center justify-center mb-4">

@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Navigate } from 'react-router-dom';
+import { useParams, Navigate, useLocation } from 'react-router-dom';
 import ClockDisplay from '@/components/ClockDisplay';
 import CityCard from '@/components/CityCard';
 import { getCityBySlug } from '@/constants/cities';
 import { Card, CardContent } from '@/components/ui/card';
-import { Helmet } from 'react-helmet-async';
 import { useToast } from '@/hooks/use-toast';
-import { APP_NAME } from '@/constants/constants';
+import { APP_NAME, SITE_URL, TIMEIN } from '@/constants/constants';
 
 import { getPopularCities } from '@/constants/cities';
 import { Button } from '@/components/ui/button';
@@ -15,11 +14,22 @@ import { Link } from 'react-router-dom';
 import Layout from '@/components/Layout';
 import Weather from '@/components/Weather';
 import SunriseSunset from '@/components/SunriseSunset';
+import Seo from '@/components/Seo';
+
+type CityInfo = {
+  name: string;
+  country?: string;
+  timeZone: string;
+  region?: string;
+  Country?: string;
+  Continent?: string;
+};
 
 const CityPage = () => {
   const { citySlug } = useParams<{ citySlug: string }>();
+  const location = useLocation();
   const [time, setTime] = useState(new Date());
-  const [cityInfo, setCityInfo] = useState<any>(null);
+  const [cityInfo, setCityInfo] = useState<CityInfo | null>(null);
   const { toast } = useToast();
   const [format24h, setFormat24h] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -71,14 +81,24 @@ const CityPage = () => {
     });
   };
 
+  const cleanSlug = citySlug?.replace('.html', '') || '';
+  const canonicalUrl = `${SITE_URL}${TIMEIN}${cleanSlug}.html`;
+  const isCanonicalPath = location.pathname.startsWith(`/${TIMEIN}`);
+  const robotsContent = isCanonicalPath ? "index,follow" : "noindex,follow";
+
   return (
     <Layout>
-      <Helmet>
-        <title>Current Time in {cityInfo.name} | {APP_NAME}</title>
-        <meta name="description" content={`Current accurate time in ${cityInfo.name}, ${cityInfo.country}. Local time, time zone, DST, GMT/UTC offset.`} />
-        <meta property="og:title" content={`Time in ${cityInfo.name} | ${APP_NAME}`} />
-        <meta property="og:description" content={`Exact current time in ${cityInfo.name}, ${cityInfo.country} with time zone information`} />
-      </Helmet>
+      <Seo
+        title={`Current Time in ${cityInfo.name} | ${APP_NAME}`}
+        description={`Current accurate time in ${cityInfo.name}, ${cityInfo.country}. Local time, time zone, DST, GMT/UTC offset.`}
+        canonical={canonicalUrl}
+        robots={robotsContent as 'index,follow' | 'noindex,follow' | 'noindex,nofollow' | 'index,nofollow'}
+        type="website"
+        breadcrumbs={[
+          { name: 'Home', item: SITE_URL },
+          { name: 'Time in City', item: canonicalUrl }
+        ]}
+      />
       <div className="city-page-container">
         <div className="container mx-auto px-4 py-8">
           <div className="text-center mb-10">

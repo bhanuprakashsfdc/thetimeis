@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from '@/components/Layout';
-import { Helmet } from 'react-helmet-async';
+import Seo from '@/components/Seo';
 import { APP_NAME } from '@/constants/constants';
 import { HelpCircle, Clock, Globe, Calendar as CalendarIcon, Timer, Focus } from 'lucide-react';
 import {
@@ -13,10 +13,15 @@ import {
 const FAQ = () => {
   return (
     <Layout>
-      <Helmet>
-        <title>Frequently Asked Questions - {APP_NAME}</title>
-        <meta name="description" content="Find answers to common questions about using our time services, world clock, timezone converter, and other features." />
-      </Helmet>
+      <Seo
+        title={`Frequently Asked Questions - ${APP_NAME}`}
+        description="Find answers to common questions about using our time services, world clock, timezone converter, and other features."
+        type="website"
+        breadcrumbs={[
+          { name: 'Home', item: 'https://www.thetimeis.net/' },
+          { name: 'FAQ', item: 'https://www.thetimeis.net/faq.html' }
+        ]}
+      />
       
       <div className="container mx-auto px-4 py-8">
         <div className="flex items-center justify-center mb-8">

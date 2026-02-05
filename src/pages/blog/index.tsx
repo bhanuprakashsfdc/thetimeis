@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from '@/components/Layout';
-import { Helmet } from 'react-helmet-async';
+import Seo from '@/components/Seo';
 import { Link } from 'react-router-dom';
 import { Clock, Globe, Calendar, ArrowRight } from 'lucide-react';
 
@@ -19,10 +19,15 @@ const BlogIndex = () => {
 
   return (
     <Layout>
-      <Helmet>
-        <title>Time Zone Blog - Articles About Time | TheTimeIs.net</title>
-        <meta name="description" content="Explore articles about time zones, world clocks, and time management. Learn about different time systems and how they affect our daily lives." />
-      </Helmet>
+      <Seo
+        title="Time Zone Blog - Articles About Time | TheTimeIs.net"
+        description="Explore articles about time zones, world clocks, and time management. Learn about different time systems and how they affect our daily lives."
+        type="website"
+        breadcrumbs={[
+          { name: 'Home', item: 'https://www.thetimeis.net/' },
+          { name: 'Blog', item: 'https://www.thetimeis.net/blog.html' }
+        ]}
+      />
       <div className="container mx-auto px-4 py-8">
         <div className="text-center mb-10">
           <h1 className="text-4xl font-bold mb-4">Time Zone Blog</h1>
