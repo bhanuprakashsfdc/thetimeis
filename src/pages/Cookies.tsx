@@ -1,17 +1,23 @@
 import React from 'react';
 import Layout from '@/components/Layout';
-import { Helmet } from 'react-helmet-async';
-import { APP_NAME } from '@/constants/constants';
+import { APP_NAME, SITE_URL } from '@/constants/constants';
 import { Link } from 'react-router-dom';
 import { Shield, Cookie, Info } from 'lucide-react';
+import Seo from '@/components/Seo';
 
 const CookiesPage = () => {
   return (
     <Layout>
-      <Helmet>
-        <title>Cookie Policy - {APP_NAME}</title>
-        <meta name="description" content="Learn about how we use cookies and similar technologies to improve your experience on our website." />
-      </Helmet>
+      <Seo
+        title={`Cookie Policy - ${APP_NAME}`}
+        description="Learn about how we use cookies and similar technologies to improve your experience on our website."
+        type="website"
+        canonical={`${SITE_URL}cookies.html`}
+        breadcrumbs={[
+          { name: 'Home', item: SITE_URL },
+          { name: 'Cookie Policy', item: `${SITE_URL}cookies.html` }
+        ]}
+      />
       
       <div className="container mx-auto px-4 py-8">
         <nav className="mb-8" aria-label="breadcrumb">

@@ -3,16 +3,22 @@ import React from 'react';
 import Layout from '@/components/Layout';
 import WorldClock from '@/components/WorldClock';
 import { Globe } from 'lucide-react';
-import { Helmet } from 'react-helmet-async';
-import { APP_NAME } from '@/constants/constants';
+import { APP_NAME, SITE_URL } from '@/constants/constants';
+import Seo from '@/components/Seo';
 
 const WorldClockPage = () => {
   return (
     <Layout>
-      <Helmet>
-        <title>World Clock - {APP_NAME}</title>
-        <meta name="description" content="Track time across multiple cities and timezones around the world with our easy-to-use world clock." />
-      </Helmet>
+      <Seo
+        title={`World Clock - ${APP_NAME}`}
+        description="Track time across multiple cities and timezones around the world with our easy-to-use world clock."
+        type="website"
+        canonical={`${SITE_URL}world-clock.html`}
+        breadcrumbs={[
+          { name: 'Home', item: SITE_URL },
+          { name: 'World Clock', item: `${SITE_URL}world-clock.html` }
+        ]}
+      />
       <div className="container mx-auto px-4 py-8">
         <div className="flex items-center justify-center mb-8">
           <Globe className="h-8 w-8 text-primary mr-3" />

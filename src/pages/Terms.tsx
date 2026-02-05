@@ -1,10 +1,22 @@
 
 import React from 'react';
 import Layout from '@/components/Layout';
+import Seo from '@/components/Seo';
+import { APP_NAME, SITE_URL } from '@/constants/constants';
 
 const Terms = () => {
   return (
     <Layout>
+      <Seo
+        title={`Terms of Service - ${APP_NAME}`}
+        description="Read the terms governing use of TheTimeIs.net, acceptable use, accuracy, and contact information."
+        type="website"
+        canonical={`${SITE_URL}terms.html`}
+        breadcrumbs={[
+          { name: 'Home', item: SITE_URL },
+          { name: 'Terms of Service', item: `${SITE_URL}terms.html` }
+        ]}
+      />
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-3xl font-bold mb-6">Terms of Service</h1>
