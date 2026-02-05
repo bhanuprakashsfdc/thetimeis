@@ -1,10 +1,10 @@
 
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useLocation } from 'react-router-dom';
 import { Card, CardContent } from '@/components/ui/card';
 import { Helmet } from 'react-helmet-async';
 import { useToast } from '@/hooks/use-toast';
-import { APP_NAME } from '@/constants/constants';
+import { APP_NAME, SITE_URL, TIMEIN, TIMENOW, LOCALTIME, WHATISTHETIMERIGHTNOWIN, WHATTIMEITISIN } from '@/constants/constants';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Globe, Clock } from 'lucide-react';
 import Layout from '@/components/Layout';
@@ -13,10 +13,17 @@ import { cities } from '@/constants/cities';
 import Weather from '@/components/Weather';
 import SunriseSunset from '@/components/SunriseSunset';
 
+type CityInfo = {
+  name: string;
+  timeZone: string;
+  Country?: string;
+};
+
 const CountryPage = () => {
   const { countrySlug } = useParams<{ countrySlug: string }>();
+  const location = useLocation();
   const [country, setCountry] = useState<string>('');
-  const [citiesInCountry, setCitiesInCountry] = useState<any[]>([]);
+  const [citiesInCountry, setCitiesInCountry] = useState<CityInfo[]>([]);
   const [loading, setLoading] = useState(true);
   const { toast } = useToast();
 
@@ -74,6 +81,40 @@ const CountryPage = () => {
         <meta name="description" content={`Current accurate time in cities of ${country}. Local time, time zone information.`} />
         <meta property="og:title" content={`Time in ${country} | ${APP_NAME}`} />
         <meta property="og:description" content={`Exact current time in ${country} with time zone information`} />
+        <link rel="canonical" href={`${SITE_URL}country/${(countrySlug || '').replace('.html','')}.html`} />
+        <meta 
+          name="robots" 
+          content={
+            location.pathname.startsWith(`/${TIMEIN}country/`) ||
+            location.pathname.startsWith(`/${TIMENOW}country/`) ||
+            location.pathname.startsWith(`/${LOCALTIME}country/`) ||
+            location.pathname.startsWith(`/${WHATISTHETIMERIGHTNOWIN}country/`) ||
+            location.pathname.startsWith(`/${WHATTIMEITISIN}country/`)
+              ? "noindex,follow"
+              : "index,follow"
+          } 
+        />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": `Current Time in ${country}`,
+            "url": `${SITE_URL}country/${(countrySlug || '').replace('.html','')}.html`,
+            "isPartOf": {
+              "@type": "WebSite",
+              "name": APP_NAME,
+              "url": SITE_URL
+            },
+            "breadcrumb": {
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
+                { "@type": "ListItem", "position": 2, "name": "Countries", "item": `${SITE_URL}world-clock.html` },
+                { "@type": "ListItem", "position": 3, "name": country, "item": `${SITE_URL}country/${(countrySlug || '').replace('.html','')}.html` }
+              ]
+            }
+          })}
+        </script>
       </Helmet>
       
       <div className="container mx-auto px-4 py-8">

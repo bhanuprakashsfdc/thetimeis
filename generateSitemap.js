@@ -71,45 +71,15 @@ const generateSitemap = () => {
   ];
 
 
-  const cityPaths = cities.flatMap(city => {
+  const cityPaths = cities.map(city => {
     const slug = escapeXml(cityToSlug(city.name));
-    return [
-      {
-        keyword: city.name,
-        loc: `${websiteUrl}${TIMEIN}${slug}.html`,
-        lastmod: new Date().toISOString(),
-        changefreq: 'weekly',
-        priority: 0.8
-      },
-      {
-        keyword: city.name,
-        loc: `${websiteUrl}${TIMENOW}${slug}.html`,
-        lastmod: new Date().toISOString(),
-        changefreq: 'weekly',
-        priority: 0.8
-      },
-      {
-        keyword: city.name,
-        loc: `${websiteUrl}${LOCALTIME}${slug}.html`,
-        lastmod: new Date().toISOString(),
-        changefreq: 'weekly',
-        priority: 0.8
-      },
-      {
-        keyword: city.name,
-        loc: `${websiteUrl}${WHATISTHETIMERIGHTNOWIN}${slug}.html`,
-        lastmod: new Date().toISOString(),
-        changefreq: 'weekly',
-        priority: 0.8
-      },
-      {
-        keyword: city.name,
-        loc: `${websiteUrl}${WHATTIMEITISIN}${slug}.html`,
-        lastmod: new Date().toISOString(),
-        changefreq: 'weekly',
-        priority: 0.8
-      }
-    ];
+    return {
+      keyword: city.name,
+      loc: `${websiteUrl}${TIMEIN}${slug}.html`,
+      lastmod: new Date().toISOString(),
+      changefreq: 'weekly',
+      priority: 0.8
+    };
   });
 
   const countriesSet = new Set();
@@ -119,52 +89,15 @@ const generateSitemap = () => {
     }
   });
 
-  const countryPaths = Array.from(countriesSet).flatMap(country => {
+  const countryPaths = Array.from(countriesSet).map(country => {
     const slug = escapeXml(country.toLowerCase().replace(/\s+/g, '-'));
-    return [
-      {
-        keyword: country,
-        loc: `${websiteUrl}country/${slug}.html`,
-        lastmod: new Date().toISOString(),
-        changefreq: 'weekly',
-        priority: 0.8
-      },
-      {
-        keyword: country,
-        loc: `${websiteUrl}${TIMEIN}country/${slug}.html`,
-        lastmod: new Date().toISOString(),
-        changefreq: 'weekly',
-        priority: 0.8
-      },
-      {
-        keyword: country,
-        loc: `${websiteUrl}${TIMENOW}country/${slug}.html`,
-        lastmod: new Date().toISOString(),
-        changefreq: 'weekly',
-        priority: 0.8
-      },
-      {
-        keyword: country,
-        loc: `${websiteUrl}${LOCALTIME}country/${slug}.html`,
-        lastmod: new Date().toISOString(),
-        changefreq: 'weekly',
-        priority: 0.8
-      },
-      {
-        keyword: country,
-        loc: `${websiteUrl}${WHATISTHETIMERIGHTNOWIN}country/${slug}.html`,
-        lastmod: new Date().toISOString(),
-        changefreq: 'weekly',
-        priority: 0.8
-      },
-      {
-        keyword: country,
-        loc: `${websiteUrl}${WHATTIMEITISIN}country/${slug}.html`,
-        lastmod: new Date().toISOString(),
-        changefreq: 'weekly',
-        priority: 0.8
-      }
-    ];
+    return {
+      keyword: country,
+      loc: `${websiteUrl}country/${slug}.html`,
+      lastmod: new Date().toISOString(),
+      changefreq: 'weekly',
+      priority: 0.8
+    };
   });
 
   const allUrls = [...pages, ...cityPaths, ...countryPaths];
