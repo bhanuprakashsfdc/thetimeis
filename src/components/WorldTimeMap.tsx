@@ -5,6 +5,7 @@ import { timezones } from '@/constants/timebascizones';
 import { Link } from 'react-router-dom';
 import { Clock, Calendar, Globe } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
+import * as L from 'leaflet';
 
 const WorldTimeMap = () => {
   const mapContainerRef = useRef<HTMLDivElement>(null);
@@ -69,15 +70,14 @@ const WorldTimeMap = () => {
     link.crossOrigin = '';
     document.head.appendChild(link);
     
-    let map: any;
+    let map: L.Map | null = null;
     
     // Initialize map after script loads
     script.onload = () => {
-      const L = (window as any).L;
       if (!L || map) return;
       
       // Create map
-      map = L.map(mapContainerRef.current).setView([20, 0], 2);
+      map = L.map(mapContainerRef.current!).setView([20, 0], 2);
       
       // Add OpenStreetMap tiles
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -131,6 +131,7 @@ const WorldTimeMap = () => {
         resizeObserver.disconnect();
         if (map) {
           map.remove();
+          map = null;
         }
       };
     };

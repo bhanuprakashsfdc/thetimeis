@@ -75,15 +75,15 @@ const BlogPostPage: React.FC = () => {
           <h1 className="text-3xl md:text-4xl font-bold mb-4">{post.title}</h1>
           <div className="flex flex-wrap items-center gap-4 text-muted-foreground mb-6">
             <div className="flex items-center gap-1">
-              <User className="h-4 w-4" />
+              <User className="h-4 w-4" aria-hidden="true" />
               <span>{post.author}</span>
             </div>
             <div className="flex items-center gap-1">
-              <Calendar className="h-4 w-4" />
+              <Calendar className="h-4 w-4" aria-hidden="true" />
               <span>{new Date(post.date).toLocaleDateString()}</span>
             </div>
             <div className="flex items-center gap-1">
-              <Clock className="h-4 w-4" />
+              <Clock className="h-4 w-4" aria-hidden="true" />
               <span>{post.readTime} min read</span>
             </div>
             <Badge variant="secondary">{post.category}</Badge>

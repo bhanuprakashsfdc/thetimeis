@@ -17,7 +17,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import { mainMenuItems } from '@/constants/mainMenuItems';
 import { toolsItems } from '@/constants/toolsItems';
-import CookieConsent from '@/components/CookieConsent';
+import CookieConsentBanner from '@/components/CookieConsentBanner';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -222,7 +222,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       <main className="flex-1 container mx-auto px-4 py-8">
         {children}
       </main>
-      <CookieConsent />
+      <CookieConsentBanner />
       
       <footer className="bg-secondary py-6 mt-auto">
         <div className="container mx-auto px-6">

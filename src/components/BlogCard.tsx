@@ -29,19 +29,19 @@ const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
           </Badge>
           {post.tags.includes('time zones') && (
             <Badge variant="outline" className="hover:bg-primary/10">
-              <a href="/timezone.html" className="hover:text-primary">Timezone Tool</a>
+              Timezone Tool
             </Badge>
           )}
           {post.tags.includes('clocks') && (
             <Badge variant="outline" className="hover:bg-primary/10">
-              <a href="/world-clock.html" className="hover:text-primary">World Clock</a>
+              World Clock
             </Badge>
           )}
         </div>
       </CardContent>
       <CardFooter className="pt-0 flex items-center justify-between text-sm text-muted-foreground border-t pt-3">
         <div className="flex items-center gap-1">
-          <Calendar className="h-3 w-3" />
+          <Calendar className="h-3 w-3" aria-hidden="true" />
           <span>{new Date(post.date).toLocaleDateString()}</span>
         </div>
         <span>{post.readTime} min read</span>

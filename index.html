@@ -40,11 +40,16 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
+      
+      // Default consent denied
       gtag('consent', 'default', { 
         ad_storage: 'denied', 
         analytics_storage: 'denied',
         ad_user_data: 'denied',
-        ad_personalization: 'denied'
+        ad_personalization: 'denied',
+        functionality_storage: 'denied',
+        personalization_storage: 'denied',
+        security_storage: 'granted'
       });
 
       gtag('config', 'G-ZNC6SDVS89');

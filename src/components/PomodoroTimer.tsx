@@ -19,12 +19,11 @@ const PomodoroTimer: React.FC<PomodoroTimerProps> = ({ minimal = false }) => {
   const { toast } = useToast();
   const audioRef = useRef<HTMLAudioElement | null>(null);
   
-  // Timer durations in seconds
-  const durations = {
+  const durations = React.useMemo(() => ({
     pomodoro: 25 * 60,
     shortBreak: 5 * 60,
     longBreak: 15 * 60
-  };
+  }), []);
 
   // Initialize audio element
   useEffect(() => {
@@ -60,7 +59,7 @@ const PomodoroTimer: React.FC<PomodoroTimerProps> = ({ minimal = false }) => {
     if (audioRef.current) {
       audioRef.current.pause();
     }
-  }, [mode]);
+  }, [mode, durations]);
 
   // Timer logic
   useEffect(() => {
@@ -101,7 +100,7 @@ const PomodoroTimer: React.FC<PomodoroTimerProps> = ({ minimal = false }) => {
     if (audioRef.current) {
       audioRef.current.pause();
     }
-  }, [mode]);
+  }, [mode, durations]);
 
   const switchMode = useCallback((newMode: TimerMode) => {
     if (mode !== newMode) {

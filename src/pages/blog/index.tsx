@@ -38,8 +38,8 @@ const BlogIndex = () => {
         
         <div className="max-w-4xl mx-auto">
           <div className="grid gap-6">
-            {articles.map((article, index) => (
-              <article key={index} className="bg-card rounded-lg shadow-md p-6 elevation-shadow hover:shadow-lg transition-shadow">
+            {articles.map((article) => (
+              <article key={article.link} className="bg-card rounded-lg shadow-md p-6 elevation-shadow hover:shadow-lg transition-shadow">
                 <Link to={article.link} className="block">
                   <div className="flex items-start space-x-4">
                     <div className="flex-shrink-0">
@@ -59,7 +59,7 @@ const BlogIndex = () => {
                       </div>
                     </div>
                     <div className="flex-shrink-0">
-                      <ArrowRight className="h-6 w-6 text-muted-foreground" />
+                      <ArrowRight className="h-6 w-6 text-muted-foreground" aria-hidden="true" />
                     </div>
                   </div>
                 </Link>

@@ -10,7 +10,7 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 
-const FAQ = () => {
+export default function FAQ() {
   return (
     <Layout>
       <Seo
@@ -166,6 +166,4 @@ const FAQ = () => {
       </div>
     </Layout>
   );
-};
-
-export default FAQ;
+}

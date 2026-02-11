@@ -18,8 +18,7 @@ const SpinWheel: React.FC<SpinWheelProps> = ({ minimal = false }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const { toast } = useToast();
 
-  // Colors for the wheel
-  const colors = ['#9b87f5', '#7E69AB', '#6E59A5', '#D6BCFA', '#E5DEFF', '#8B5CF6'];
+  const colors = React.useMemo(() => ['#9b87f5', '#7E69AB', '#6E59A5', '#D6BCFA', '#E5DEFF', '#8B5CF6'], []);
 
   const addName = (name: string) => {
     if (name.trim() !== '') {
@@ -146,7 +145,7 @@ const SpinWheel: React.FC<SpinWheelProps> = ({ minimal = false }) => {
     ctx.fillStyle = '#D946EF';
     ctx.fill();
     
-  }, [names]);
+  }, [names, colors]);
 
   // Apply rotation transform when spinning
   useEffect(() => {

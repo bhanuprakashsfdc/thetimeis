@@ -42,7 +42,7 @@ const CityCard: React.FC<CityCardProps> = ({ name, timezone, country }) => {
             <h3 className="text-xl font-semibold">{name}</h3>
             <div className="flex items-center">
               <span className="text-xs text-muted-foreground mr-2 hover:text-primary">
-                <a href="/timezone.html" className="hover:underline">View timezone</a>
+                View timezone
               </span>
               <Clock className="h-5 w-5 text-primary" />
             </div>

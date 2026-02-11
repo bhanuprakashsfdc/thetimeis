@@ -50,7 +50,7 @@ const ClockDisplay: React.FC<ClockDisplayProps> = ({
       clearInterval(timeInterval);
       clearInterval(colonInterval);
     };
-  }, []);
+  }, [format24h, showSeconds, timezone]);
   
   // Format the time for the specified timezone
   const formatTimeForDisplay = () => {
@@ -65,21 +65,23 @@ const ClockDisplay: React.FC<ClockDisplayProps> = ({
     const formattedTime = new Intl.DateTimeFormat('en-US', options).format(time);
     
     // Extract hours, minutes, seconds, and AM/PM
-    let [timePart, ampm] = formattedTime.split(' ');
+    const [timePart, ampm] = formattedTime.split(' ');
     
     // Handle 24-hour format which doesn't have AM/PM part
-    if (!ampm) {
-      ampm = '';
+    let newAmpm = ampm;
+    if (!newAmpm) {
+      newAmpm = '';
     }
     
-    let [hours, minutes, seconds] = (timePart || '').split(':');
+    const [hours, minutes, seconds] = (timePart || '').split(':');
     
     // Sometimes seconds are not included in the formatted time
+    let newSeconds = seconds;
     if (!showSeconds) {
-      seconds = undefined;
+      newSeconds = undefined;
     }
     
-    return { hours, minutes, seconds, ampm };
+    return { hours, minutes, seconds: newSeconds, ampm: newAmpm };
   };
   
   // Format the date for the specified timezone
