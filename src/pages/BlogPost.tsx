@@ -7,7 +7,8 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { ArrowLeft, Calendar, Clock, User } from 'lucide-react';
-import { Helmet } from 'react-helmet-async';
+import Seo from '@/components/Seo';
+import { SITE_URL, APP_NAME } from '@/constants/constants';
 import BlogCard from '@/components/BlogCard';
 
 const BlogPostPage: React.FC = () => {
@@ -34,10 +35,34 @@ const BlogPostPage: React.FC = () => {
 
   return (
     <Layout>
-      <Helmet>
-        <title>{post.title}</title>
-        <meta name="description" content={post.excerpt} />
-      </Helmet>
+      <Seo
+        title={`${post.title} | ${APP_NAME}`}
+        description={post.excerpt}
+        type="article"
+        image={post.coverImage || `${SITE_URL}og-image.jpg`}
+        canonical={`${SITE_URL}blog/${post.slug}.html`}
+        breadcrumbs={[
+          { name: 'Home', item: `${SITE_URL}` },
+          { name: 'Blog', item: `${SITE_URL}blog.html` },
+          { name: post.title, item: `${SITE_URL}blog/${post.slug}.html` }
+        ]}
+        schema={{
+          '@context': 'https://schema.org',
+          '@type': 'Article',
+          headline: post.title,
+          description: post.excerpt,
+          image: post.coverImage || `${SITE_URL}og-image.jpg`,
+          author: {
+            '@type': 'Person',
+            name: post.author
+          },
+          datePublished: post.date,
+          mainEntityOfPage: {
+            '@type': 'WebPage',
+            '@id': `${SITE_URL}blog/${post.slug}.html`
+          }
+        }}
+      />
 
       <div className="container mx-auto px-4 py-8">
         <div className="mb-8">
@@ -93,4 +118,3 @@ const BlogPostPage: React.FC = () => {
 };
 
 export default BlogPostPage;
-

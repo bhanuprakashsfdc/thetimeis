@@ -7,7 +7,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { Mail, Phone, MapPin, Send, Check } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
-import { Helmet } from 'react-helmet-async';
+import Seo from '@/components/Seo';
 
 const Contact = () => {
   const [name, setName] = useState('');
@@ -44,10 +44,15 @@ const Contact = () => {
 
   return (
     <Layout>
-      <Helmet>
-        <title>Contact Us</title>
-        <meta name="description" content="Get in touch with our team for any questions or feedback about our time services." />
-      </Helmet>
+      <Seo
+        title="Contact Us"
+        description="Get in touch with our team for any questions or feedback about our time services."
+        type="website"
+        breadcrumbs={[
+          { name: 'Home', item: 'https://www.thetimeis.net/' },
+          { name: 'Contact', item: 'https://www.thetimeis.net/contact.html' }
+        ]}
+      />
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto mb-10">
           <h1 className="text-4xl font-bold mb-4">Contact Us</h1>
@@ -166,6 +171,31 @@ const Contact = () => {
             </CardFooter>
           </Card>
         </div>
+        {/* Appended static content block for AdSense policy compliance */}
+        <section aria-labelledby="contact-title-appended" className="prose prose-lg max-w-4xl mx-auto mt-12">
+          <h1 id="contact-title-appended">Contact thetimeis.net</h1>
+          <p>
+            We welcome questions, feedback, and partnership inquiries. Please use the options below to get in touch.
+          </p>
+          <h2>Email</h2>
+          <p>
+            For general support or business inquiries: <a href="mailto:contact@thetimeis.net">contact@thetimeis.net</a>
+          </p>
+          <h2>Feedback</h2>
+          <p>
+            If you notice an issue with a displayed time or have a suggestion to improve the site, let us know.
+            We review messages regularly and aim to respond promptly.
+          </p>
+          <h2>Availability</h2>
+          <p>
+            Responses typically occur during standard business hours. Please allow up to 2–3 business days for a reply.
+          </p>
+          <h2>Accessibility</h2>
+          <p>
+            We strive to provide an accessible experience. If you require assistance or encounter barriers using the
+            site, contact us and we will do our best to help.
+          </p>
+        </section>
       </div>
     </Layout>
   );

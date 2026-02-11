@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { cities, cityToSlug } from './src/constants/cities.js';
-import { TIMEIN } from './src/constants/constants.js';
+import { TIMEIN, WHATISTHETIMERIGHTNOWIN, TIMENOW, LOCALTIME, WHATTIMEITISIN } from './src/constants/constants.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -61,7 +61,15 @@ const generateSitemap = () => {
     { loc: `${websiteUrl}calendar.html`, lastmod: new Date().toISOString(), changefreq: 'weekly', priority: 0.9 },
     { loc: `${websiteUrl}pomodoro.html`, lastmod: new Date().toISOString(), changefreq: 'weekly', priority: 0.9 },
     { loc: `${websiteUrl}spin-wheel.html`, lastmod: new Date().toISOString(), changefreq: 'weekly', priority: 0.9 },
+    { loc: `${websiteUrl}world-time-map.html`, lastmod: new Date().toISOString(), changefreq: 'weekly', priority: 0.9 },
+    { loc: `${websiteUrl}contact.html`, lastmod: new Date().toISOString(), changefreq: 'monthly', priority: 0.8 },
+    { loc: `${websiteUrl}countdown-timer.html`, lastmod: new Date().toISOString(), changefreq: 'weekly', priority: 0.9 },
+    { loc: `${websiteUrl}accessibility.html`, lastmod: new Date().toISOString(), changefreq: 'monthly', priority: 0.8 },
+    { loc: `${websiteUrl}faq.html`, lastmod: new Date().toISOString(), changefreq: 'weekly', priority: 0.9 },
+    { loc: `${websiteUrl}disclaimer.html`, lastmod: new Date().toISOString(), changefreq: 'monthly', priority: 0.8 },
+    { loc: `${websiteUrl}cookies.html`, lastmod: new Date().toISOString(), changefreq: 'monthly', priority: 0.8 },
   ];
+
 
   const cityPaths = cities.map(city => {
     const slug = escapeXml(cityToSlug(city.name));
@@ -85,7 +93,7 @@ const generateSitemap = () => {
     const slug = escapeXml(country.toLowerCase().replace(/\s+/g, '-'));
     return {
       keyword: country,
-      loc: `${websiteUrl}/country/${slug}.html`,
+      loc: `${websiteUrl}country/${slug}.html`,
       lastmod: new Date().toISOString(),
       changefreq: 'weekly',
       priority: 0.8

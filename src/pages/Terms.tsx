@@ -1,10 +1,22 @@
 
 import React from 'react';
 import Layout from '@/components/Layout';
+import Seo from '@/components/Seo';
+import { APP_NAME, SITE_URL } from '@/constants/constants';
 
 const Terms = () => {
   return (
     <Layout>
+      <Seo
+        title={`Terms of Service - ${APP_NAME}`}
+        description="Read the terms governing use of TheTimeIs.net, acceptable use, accuracy, and contact information."
+        type="website"
+        canonical={`${SITE_URL}terms.html`}
+        breadcrumbs={[
+          { name: 'Home', item: SITE_URL },
+          { name: 'Terms of Service', item: `${SITE_URL}terms.html` }
+        ]}
+      />
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-3xl font-bold mb-6">Terms of Service</h1>
@@ -87,6 +99,66 @@ const Terms = () => {
           </div>
         </div>
       </div>
+      {/* Appended static terms content for AdSense compliance */}
+      <section aria-labelledby="terms-title-appended" className="prose prose-lg max-w-4xl mx-auto mt-12 px-4">
+        <h1 id="terms-title-appended">Terms of Service — thetimeis.net</h1>
+        <p>
+          These Terms govern your use of thetimeis.net. By accessing or using the site, you agree to these
+          Terms.
+        </p>
+        <h2>Service Description</h2>
+        <p>
+          thetimeis.net is a utility that displays the current local time for selected locations based on UTC and
+          official time zone rules. We strive for accuracy but cannot guarantee that all information will be
+          error-free or updated instantly for every jurisdiction.
+        </p>
+        <h2>Acceptable Use</h2>
+        <p>
+          You agree not to misuse the site, interfere with its operation, attempt unauthorized access, or use it
+          in violation of applicable laws. You may use the site for personal or professional time-checking
+          purposes.
+        </p>
+        <h2>Accuracy and Updates</h2>
+        <p>
+          We work to keep time zone data and rules current. Changes to regional policies or technical limitations
+          may affect displayed times. Confirm critical timing requirements independently when needed.
+        </p>
+        <h2>Intellectual Property</h2>
+        <p>
+          Content on the site, including text, design, and branding, is owned by or licensed to thetimeis.net.
+          You may not copy, redistribute, or create derivative works without permission, except for fair use or
+          as permitted by law.
+        </p>
+        <h2>Third-Party Links and Services</h2>
+        <p>
+          thetimeis.net may include links to third-party resources. We are not responsible for the content,
+          policies, or practices of third-party sites or services.
+        </p>
+        <h2>Disclaimer of Warranties</h2>
+        <p>
+          The site is provided “as is” and “as available.” We disclaim all warranties, express or implied,
+          including merchantability, fitness for a particular purpose, and non-infringement.
+        </p>
+        <h2>Limitation of Liability</h2>
+        <p>
+          To the maximum extent permitted by law, thetimeis.net is not liable for indirect, incidental,
+          consequential, special, or punitive damages arising from your use of the site.
+        </p>
+        <h2>Indemnification</h2>
+        <p>
+          You agree to indemnify and hold thetimeis.net harmless from claims arising out of your use of the site
+          or violation of these Terms.
+        </p>
+        <h2>Changes to Terms</h2>
+        <p>
+          We may update these Terms from time to time. Your continued use of the site following changes
+          constitutes acceptance of the updated Terms.
+        </p>
+        <h2>Contact</h2>
+        <p>
+          Questions about these Terms may be sent to <a href="mailto:legal@thetimeis.net">legal@thetimeis.net</a>.
+        </p>
+      </section>
     </Layout>
   );
 };

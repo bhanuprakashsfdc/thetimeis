@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Clock, Sun, Moon, Menu, X, Timer, Home, Wrench, Info, BookOpen, MessageSquare, Calendar1, LoaderPinwheel, Search } from 'lucide-react';
+import { Clock, Sun, Moon, Menu, X, Timer, Home, Wrench, Info, BookOpen, MessageSquare, Calendar1, LoaderPinwheel, Search, Shield, Scale, Cookie, AlertTriangle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { APP_NAME } from '@/constants/constants';
@@ -15,6 +15,9 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
+import { mainMenuItems } from '@/constants/mainMenuItems';
+import { toolsItems } from '@/constants/toolsItems';
+import CookieConsent from '@/components/CookieConsent';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -59,23 +62,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     setSearchDialogOpen(true);
   };
   
-  const mainMenuItems = [
-    { name: "Home", path: "/", icon: <Home className="h-4 w-4 mr-2" /> },
-    { name: "Tools", path: "#", icon: <Wrench className="h-4 w-4 mr-2" />, hasSubmenu: true },
-    { name: "About", path: "/about.html", icon: <Info className="h-4 w-4 mr-2" /> },
-    { name: "Blog", path: "/blog.html", icon: <BookOpen className="h-4 w-4 mr-2" /> },
-    { name: "Contact", path: "/contact.html", icon: <MessageSquare className="h-4 w-4 mr-2" /> }
-  ];
-  
-  const toolsItems = [
-    { name: "World Clock", path: "/world-clock.html", icon: <Clock className="h-4 w-4" /> },
-    { name: "Time Zone", path: "/timezone.html", icon: <Timer className="h-4 w-4" /> },
-    { name: "Calendar", path: "/calendar.html", icon: <Calendar1 className="h-4 w-4" /> },
-    { name: "Countdown Timer", path: "/countdown-timer.html", icon: <Timer className="h-4 w-4" /> },
-    { name: "Spin Wheel", path: "/spin-wheel.html", icon: <LoaderPinwheel className="h-4 w-4" /> },
-    { name: "Pomodoro Timer", path: "/pomodoro.html", icon: <Timer className="h-4 w-4" /> }
-  ];
-
   return (
     <div className="min-h-screen flex flex-col">
       <header className="bg-primary text-primary-foreground py-4 px-6">
@@ -236,19 +222,23 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       <main className="flex-1 container mx-auto px-4 py-8">
         {children}
       </main>
+      <CookieConsent />
       
       <footer className="bg-secondary py-6 mt-auto">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
               <h3 className="text-lg font-semibold mb-4">About {APP_NAME}</h3>
               <p className="text-secondary-foreground mb-4">
                 Accurate time synchronized with atomic clocks. The most reliable time service available.
               </p>
-              <div className="flex space-x-4">
-                <Link to="/terms.html" className="text-secondary-foreground hover:text-primary transition-colors">Terms</Link>
-                <Link to="/privacy.html" className="text-secondary-foreground hover:text-primary transition-colors">Privacy</Link>
-              </div>
+              <Link 
+                to="/about.html" 
+                className="inline-flex items-center text-secondary-foreground hover:text-primary transition-colors"
+              >
+                <Info className="h-4 w-4 mr-2" />
+                <span>Learn More</span>
+              </Link>
             </div>
             
             <div>
@@ -269,25 +259,96 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             </div>
             
             <div>
-              <h3 className="text-lg font-semibold mb-4">Quick Countdown</h3>
-              <div className="bg-background/30 p-3 rounded-lg mb-4">
-                <CountdownTimer initialTime={300} compact={false} />
-              </div>
-              <p className="text-secondary-foreground mb-2 mt-4">Have questions or feedback?</p>
-              <Link 
-                to="/contact.html" 
-                className="inline-flex items-center text-primary hover:underline"
-              >
-                <MessageSquare className="h-4 w-4 mr-2" />
-                <span>Get in touch</span>
-              </Link>
+              <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link 
+                    to="/blog.html" 
+                    className="flex items-center gap-2 text-secondary-foreground hover:text-primary transition-colors"
+                  >
+                    <BookOpen className="h-4 w-4" />
+                    <span>Blog</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    to="/contact.html" 
+                    className="flex items-center gap-2 text-secondary-foreground hover:text-primary transition-colors"
+                  >
+                    <MessageSquare className="h-4 w-4" />
+                    <span>Contact</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    to="/faq.html" 
+                    className="flex items-center gap-2 text-secondary-foreground hover:text-primary transition-colors"
+                  >
+                    <Wrench className="h-4 w-4" />
+                    <span>FAQ</span>
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Legal</h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link 
+                    to="/terms.html" 
+                    className="flex items-center gap-2 text-secondary-foreground hover:text-primary transition-colors"
+                  >
+                    <Scale className="h-4 w-4" />
+                    <span>Terms of Service</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    to="/privacy.html" 
+                    className="flex items-center gap-2 text-secondary-foreground hover:text-primary transition-colors"
+                  >
+                    <Shield className="h-4 w-4" />
+                    <span>Privacy Policy</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    to="/cookies.html" 
+                    className="flex items-center gap-2 text-secondary-foreground hover:text-primary transition-colors"
+                  >
+                    <Cookie className="h-4 w-4" />
+                    <span>Cookie Policy</span>
+                  </Link>
+                </li>
+              </ul>
             </div>
           </div>
           
-          <div className="border-t border-secondary-foreground/20 mt-8 pt-6 flex flex-col md:flex-row justify-between items-center">
-            <p className="text-secondary-foreground">
+          <div className="border-t border-secondary-foreground/20 mt-8 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-secondary-foreground text-center md:text-left">
               &copy; {new Date().getFullYear()} {APP_NAME}. All rights reserved.
             </p>
+            <div className="flex flex-wrap justify-center md:justify-end gap-4">
+              <Link 
+                to="/sitemap.html" 
+                className="text-secondary-foreground hover:text-primary transition-colors text-sm"
+              >
+                Sitemap
+              </Link>
+              <Link 
+                to="/accessibility.html" 
+                className="text-secondary-foreground hover:text-primary transition-colors text-sm"
+              >
+                Accessibility
+              </Link>
+              <Link 
+                to="/disclaimer.html" 
+                className="text-secondary-foreground hover:text-primary transition-colors text-sm"
+              >
+                Disclaimer
+              </Link>
+            </div>
           </div>
         </div>
       </footer>

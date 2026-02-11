@@ -2,10 +2,20 @@
 import React from 'react';
 import Layout from '@/components/Layout';
 import { Clock, Globe, Calendar, Github } from 'lucide-react';
+import Seo from '@/components/Seo';
 
 const AboutPage = () => {
   return (
     <Layout>
+      <Seo
+        title="About TheTimeIs.net"
+        description="Learn about TheTimeIs.net mission to provide accurate global time information, timezone coverage, and helpful tools."
+        type="website"
+        breadcrumbs={[
+          { name: 'Home', item: 'https://www.thetimeis.net/' },
+          { name: 'About', item: 'https://www.thetimeis.net/about.html' }
+        ]}
+      />
       <div className="container mx-auto px-4 py-8">
         <div className="text-center mb-10">
           <h1 className="text-4xl font-bold mb-4">About <a href="https://www.thetimeis.net/">TheTimeIs.net</a></h1>
@@ -100,6 +110,44 @@ const AboutPage = () => {
           </div>
         </div>
       </div>
+      {/* Appended static content block for AdSense policy compliance */}
+      <section aria-labelledby="about-title-appended" className="prose prose-lg max-w-4xl mx-auto mt-12 px-4">
+        <h1 id="about-title-appended">About thetimeis.net</h1>
+        <p>
+          thetimeis.net is a minimalist, fast, and reliable world clock designed to make it effortless to check
+          the current local time in any city or country. We focus on clarity, speed, and accuracy, so you can quickly
+          find time information without distractions.
+        </p>
+        <h2>Our Mission</h2>
+        <p>
+          We aim to provide a clean, trustworthy tool for global timekeeping. Whether you are coordinating
+          international meetings, planning travel, or tracking markets, thetimeis.net helps you confirm the
+          correct time wherever you need it.
+        </p>
+        <h2>What We Offer</h2>
+        <ul>
+          <li>Accurate local times based on UTC and official time zone rules</li>
+          <li>Simple, fast interface optimized for mobile and desktop</li>
+          <li>Location search and quick access to major cities and countries</li>
+          <li>No clutter—just the time and essential context</li>
+        </ul>
+        <h2>How Accuracy Works</h2>
+        <p>
+          Local times are derived from Coordinated Universal Time (UTC) using authoritative time zone definitions,
+          including daylight saving policies where applicable. We monitor updates to time zone rules to keep
+          displayed times current.
+        </p>
+        <h2>Who Uses thetimeis.net</h2>
+        <p>
+          Remote workers, travelers, students, and global teams use thetimeis.net daily for reliable time checks.
+          Professionals rely on accurate local times to schedule meetings, coordinate operations, and serve
+          customers across multiple regions.
+        </p>
+        <h2>Contact</h2>
+        <p>
+          For general inquiries, partnership opportunities, or feedback, please reach out via our contact page.
+        </p>
+      </section>
     </Layout>
   );
 };
