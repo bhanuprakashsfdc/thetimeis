@@ -144,6 +144,25 @@ const CountryPage = () => {
             ))}
           </div>
         </div>
+
+        {/* AdSense Compliant Content Section - Substantial publisher content above any ads */}
+        <div className="mt-8 mb-16">
+          <div className="prose max-w-none">
+            <h2 className="text-2xl font-bold mb-4">About Time in {country}</h2>
+            <p className="text-lg text-muted-foreground mb-4">
+              <strong>{country}</strong> uses standardized time zones to maintain consistent timekeeping across the entire country. The time zone system in {country} ensures that business operations, 
+              transportation schedules, and daily communications operate smoothly. Understanding the local time in {country} is essential for international business dealings, tourism, and staying connected with friends and family.
+            </p>
+            <p className="text-lg text-muted-foreground mb-4">
+              The time zone(s) used by {country} are part of the global effort to standardize time measurement. This allows for accurate scheduling of international meetings, flights, and events. 
+              Many countries also observe Daylight Saving Time, which temporarily shifts the local time to make better use of natural daylight during longer summer days.
+            </p>
+            <p className="text-lg text-muted-foreground mb-4">
+              Whether you're planning a trip to {country}, conducting business with partners in the region, or simply curious about the local time, having accurate time information helps ensure you stay synchronized 
+              with the country's daily rhythm. The cities listed above all operate on the same official time standards established by {country}'s timekeeping authorities.
+            </p>
+          </div>
+        </div>
       </div>
     </Layout>
   );
