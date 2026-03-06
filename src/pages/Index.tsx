@@ -7,7 +7,7 @@ import WhatIsComponent from '@/components/WhatIsComponent';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import CityCard from '@/components/CityCard';
 import { getPopularCities } from '@/constants/cities';
-import Seo from '@/components/Seo';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { APP_NAME, TIMEIN } from '@/constants/constants';
 import Weather from '@/components/Weather';
@@ -24,11 +24,26 @@ const Index = () => {
   
   return (
     <Layout>
-      <Seo
-        title={`Current Time - Exact Time for Any Time Zone | ${APP_NAME}`}
-        description="Get the exact current time for any location worldwide. View accurate atomic clock time, time zones, and local times for cities across the globe."
-        type="website"
-      />
+      <Helmet>
+        <title>Current Time - Exact Time for Any Time Zone | {APP_NAME}</title>
+        <meta name="description" content="Get the exact current time for any location worldwide. View accurate atomic clock time, time zones, and local times for cities across the globe." />
+        <meta property="og:title" content={`Current Time - Exact Time for Any Time Zone | ${APP_NAME}`} />
+        <meta property="og:description" content="Get the exact current time for any location worldwide. View accurate atomic clock time, time zones, and local times for cities across the globe." />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": APP_NAME,
+            "url": "https://www.thetimeis.net/",
+            "description": "Get the exact current time for any location worldwide",
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": "https://www.thetimeis.net//search?q={search_term_string}",
+              "query-input": "required name=search_term_string"
+            }
+          })}
+        </script>
+      </Helmet>
       <div className="container mx-auto px-4 py-8">
         <div className="flex flex-col items-center justify-center mb-16">
           <h1 className="text-4xl font-bold text-center mb-8">Current Time</h1>

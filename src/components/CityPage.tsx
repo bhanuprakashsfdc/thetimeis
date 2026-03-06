@@ -153,6 +153,23 @@ const CityPage = () => {
               <SunriseSunset city={cityInfo.name} />
             </div>
           </div>
+
+          {/* AdSense Compliant Content Section - Substantial publisher content above any ads */}
+          <div className="mt-16 mb-8">
+            <div className="prose max-w-none">
+              <h2 className="text-2xl font-bold mb-4">About Time in {cityInfo.name}</h2>
+              <p className="text-lg text-muted-foreground mb-4">
+                <strong>{cityInfo.name}</strong> is located in <strong>{cityInfo.country || cityInfo.Country || 'the specified region'}</strong> and operates on <strong>{cityInfo.timeZone.replace('/', ': ').replace(/_/g, ' ')}</strong>. 
+                This timezone is part of the global system of time zones that helps synchronize time across different regions of the world. The city's time is accurately tracked using atomic clocks, ensuring precision for both local residents and businesses interacting internationally.
+              </p>
+              <p className="text-lg text-muted-foreground mb-4">
+                Understanding the local time in {cityInfo.name} is essential for scheduling meetings, coordinating with international partners, and planning travel. 
+                {cityInfo.timeZone.includes('Asia') || cityInfo.timeZone.includes('America') || cityInfo.timeZone.includes('Europe') 
+                  ? `As part of ${cityInfo.timeZone.split('/')[0]}, ${cityInfo.name} follows the regional time standards established by local authorities.` 
+                  : `The timezone ensures consistent timekeeping across the region.`}
+                </p>
+              </div>
+          </div>
         </div>
         <div className="container mx-auto px-4 mb-16">
           <div className="flex items-center justify-between mb-6">

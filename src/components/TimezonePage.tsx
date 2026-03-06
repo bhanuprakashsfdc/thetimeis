@@ -98,6 +98,21 @@ const TimezonePage = () => {
             )}
           </div>
         </div>
+
+        {/* AdSense Compliant Content Section - Substantial publisher content above any ads */}
+        <div className="mt-16 mb-8">
+          <div className="prose max-w-none">
+            <h2 className="text-2xl font-bold mb-4">About {timezone.name} Time Zone</h2>
+            <p className="text-lg text-muted-foreground mb-4">
+              The <strong>{timezone.name}</strong> timezone (identifier: <strong>{timezone.timeZone}</strong>) is one of the world's standard time zones used by countries and regions across the globe. 
+              This timezone helps synchronize business operations, communications, and daily activities for millions of people in the affected areas. The offset from UTC is determined by international standards and local governmental decisions.
+            </p>
+            <p className="text-lg text-muted-foreground mb-4">
+              Time zones like {timezone.name} play a crucial role in our interconnected world. Whether you're scheduling international conference calls, planning travel, or coordinating with friends and family in different parts of the world, 
+              understanding the local time in this timezone is essential. Many countries in this timezone also observe Daylight Saving Time, which temporarily adjusts the local time during summer months to maximize daylight hours.
+            </p>
+          </div>
+        </div>
         
         <div className="mt-10">
           <Button asChild variant="outline">
